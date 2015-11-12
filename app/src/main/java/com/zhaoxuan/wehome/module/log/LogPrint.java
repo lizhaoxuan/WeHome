@@ -6,7 +6,8 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
 
-import com.envisioncn.challengerplus.MyApplication;
+
+import com.zhaoxuan.wehome.MyApplication;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -170,6 +171,7 @@ public class LogPrint {
      * @param explainString
      */
     protected static void saveLogToFile(int flag, String explainString) {
+
         Context context = MyApplication.getInstance();
         StringBuilder message = new StringBuilder();
         message.append("time" + "=" + mSimpleDateFormat.format(new Date()) + "\r\n");

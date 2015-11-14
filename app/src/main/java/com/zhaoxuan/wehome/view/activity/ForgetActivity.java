@@ -3,11 +3,6 @@ package com.zhaoxuan.wehome.view.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -26,10 +21,6 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
 
     @Bind(R.id.accountEdit)
     protected EditText accountEdit;
-    @Bind(R.id.passwordEdit)
-    protected EditText passwordEdit;
-    @Bind(R.id.passwordAgainEdit)
-    protected EditText passwordAgainEdit;
     @Bind(R.id.forgetBtn)
     protected Button forgetBtn;
 
@@ -51,10 +42,9 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
 
 
     @OnClick(R.id.forgetBtn)
-    public void forgetOnClick(){
+    public void forgetOnClick() {
         presenter.forgetPassword(accountEdit.getText().toString());
     }
-
 
 
     @Override

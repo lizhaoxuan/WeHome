@@ -87,8 +87,8 @@ public class LoginActivity extends Activity implements ILoginView{
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        mPresenter.onActivityResult(requestCode,resultCode,data.getStringExtra("account"));
+        if(resultCode == RESULT_OK)
+            mPresenter.onActivityResult(requestCode,resultCode,data.getStringExtra("account"));
 
     }
 

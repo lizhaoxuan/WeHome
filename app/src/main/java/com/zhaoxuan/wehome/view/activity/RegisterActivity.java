@@ -8,12 +8,32 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.baseclass.BaseActivity;
+import com.zhaoxuan.wehome.framework.presenter.IRegisterPresenter;
+import com.zhaoxuan.wehome.framework.presenter.impl.LoginPresenter;
+import com.zhaoxuan.wehome.framework.view.IRegisterView;
+import com.zhaoxuan.wehome.view.widget.TopToast;
 
-public class RegisterActivity extends BaseActivity {
+import butterknife.Bind;
+import butterknife.OnClick;
 
+public class RegisterActivity extends BaseActivity implements IRegisterView{
+    private static final String TAG = RegisterActivity.class.getName();
+
+    @Bind(R.id.accountEdit)
+    protected EditText accountEdit;
+    @Bind(R.id.passwordEdit)
+    protected EditText passwordEdit;
+    @Bind(R.id.passwordAgainEdit)
+    protected EditText passwordAgainEdit;
+    @Bind(R.id.registerBtn)
+    protected Button registerBtn;
+
+    private IRegisterPresenter presenter ;
 
     public static void startActivity(Activity activity , int requestCode){
         Intent intent = new Intent(activity,RegisterActivity.class);
@@ -25,6 +45,34 @@ public class RegisterActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        presenter = new LoginPresenter(this);
+
     }
 
+    @OnClick(R.id.registerBtn)
+    public void registerOnClick(){
+        presenter.register(accountEdit.getText().toString(), passwordEdit.getText().toString(),
+                passwordAgainEdit.getText().toString());
+    }
+
+
+    @Override
+    public void sendSuccess() {
+        ChatActivity.startActivity(this);
+    }
+
+    @Override
+    public void showToast(String tips) {
+        TopToast.makeText(this,tips).showPopupWindow(accountEdit);
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
 }

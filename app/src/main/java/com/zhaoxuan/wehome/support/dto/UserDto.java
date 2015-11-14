@@ -13,12 +13,13 @@ public class UserDto {
     private String post;
     private boolean haveHome;
     private String headImageUri;
+    private String headImagePath;
     private String familyBuild;
 
     public UserDto() {
     }
 
-    public UserDto(String account, String password, String name, String familyAccount, String familyName, String post, boolean haveHome, String headImageUri, String familyBuild) {
+    public UserDto(String account, String password, String name, String familyAccount, String familyName, String post, boolean haveHome, String headImageUri, String familyBuild, String headImagePath) {
         this.account = account;
         this.password = password;
         this.name = name;
@@ -28,6 +29,7 @@ public class UserDto {
         this.haveHome = haveHome;
         this.headImageUri = headImageUri;
         this.familyBuild = familyBuild;
+        this.headImagePath = headImagePath;
     }
 
     public String getPassword() {

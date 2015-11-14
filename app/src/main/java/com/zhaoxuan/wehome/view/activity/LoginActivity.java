@@ -21,6 +21,7 @@ import com.zhaoxuan.wehome.framework.presenter.impl.LoginPresenter;
 import com.zhaoxuan.wehome.framework.view.ILoginView;
 import com.zhaoxuan.wehome.support.constants.Ints;
 import com.zhaoxuan.wehome.support.dto.UserDto;
+import com.zhaoxuan.wehome.view.widget.TopToast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -98,7 +99,7 @@ public class LoginActivity extends Activity implements ILoginView{
 
     @Override
     public void showToast(String tips) {
-
+        TopToast.makeText(this,tips).showPopupWindow(loginBtn,TopToast.StateHeight);
     }
 
     @Override

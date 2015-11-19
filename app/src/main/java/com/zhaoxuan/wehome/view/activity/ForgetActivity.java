@@ -51,6 +51,9 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
     }
 
 
+    /**
+     * -------------- View方法 ----------------
+     **/
     @Override
     public void sendSuccess(String account) {
         Intent in = getIntent();

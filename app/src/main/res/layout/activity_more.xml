@@ -21,7 +21,7 @@
             android:layout_weight="1"
             android:gravity="center">
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/anniversaryBut"
                 android:layout_width="90dip"
                 android:layout_height="90dip"
@@ -48,7 +48,7 @@
             android:layout_weight="1"
             android:gravity="center">
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/wishBut"
                 android:layout_width="90dip"
                 android:layout_height="90dip"
@@ -83,7 +83,7 @@
             android:layout_weight="1"
             android:gravity="center">
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/familyBut"
                 android:layout_width="90dip"
                 android:layout_height="90dip"
@@ -116,11 +116,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:descendantFocusability="blocksDescendants"
+            android:descendantFocusability="beforeDescendants"
             android:layout_weight="1"
             android:gravity="center">
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/InviteBut"
                 android:layout_width="90dip"
                 android:layout_height="90dip"
@@ -147,7 +147,7 @@
             android:layout_weight="1"
             android:gravity="center">
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/zoneBut"
                 android:layout_width="80dip"
                 android:layout_height="80dip"

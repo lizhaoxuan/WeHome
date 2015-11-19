@@ -55,7 +55,9 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
                 passwordAgainEdit.getText());
     }
 
-
+    /**
+     * -------------- View方法 ----------------
+     **/
     @Override
     public void sendSuccess() {
         ChatActivity.startActivity(this);

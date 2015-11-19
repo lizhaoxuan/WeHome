@@ -11,6 +11,7 @@ import com.zhaoxuan.wehome.framework.baseclass.BaseActivity;
 import com.zhaoxuan.wehome.framework.presenter.IForgetPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.LoginPresenter;
 import com.zhaoxuan.wehome.framework.view.IForgetView;
+import com.zhaoxuan.wehome.view.widget.ImageEditText;
 import com.zhaoxuan.wehome.view.widget.TopToast;
 
 import butterknife.Bind;
@@ -20,7 +21,7 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
     private static final String TAG = ForgetActivity.class.getName();
 
     @Bind(R.id.accountEdit)
-    protected EditText accountEdit;
+    protected ImageEditText accountEdit;
     @Bind(R.id.forgetBtn)
     protected Button forgetBtn;
 
@@ -38,8 +39,12 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
 
         presenter = new LoginPresenter(this);
 
+        initView();
     }
 
+    private void initView(){
+        getActionBar().setTitle("忘记密码");
+    }
 
     @OnClick(R.id.forgetBtn)
     public void forgetOnClick() {

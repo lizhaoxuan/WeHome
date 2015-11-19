@@ -16,6 +16,7 @@ import com.zhaoxuan.wehome.framework.baseclass.BaseActivity;
 import com.zhaoxuan.wehome.framework.presenter.IRegisterPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.LoginPresenter;
 import com.zhaoxuan.wehome.framework.view.IRegisterView;
+import com.zhaoxuan.wehome.view.widget.ImageEditText;
 import com.zhaoxuan.wehome.view.widget.TopToast;
 
 import butterknife.Bind;
@@ -25,11 +26,11 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
     private static final String TAG = RegisterActivity.class.getName();
 
     @Bind(R.id.accountEdit)
-    protected EditText accountEdit;
+    protected ImageEditText accountEdit;
     @Bind(R.id.passwordEdit)
-    protected EditText passwordEdit;
+    protected ImageEditText passwordEdit;
     @Bind(R.id.passwordAgainEdit)
-    protected EditText passwordAgainEdit;
+    protected ImageEditText passwordAgainEdit;
     @Bind(R.id.registerBtn)
     protected Button registerBtn;
 

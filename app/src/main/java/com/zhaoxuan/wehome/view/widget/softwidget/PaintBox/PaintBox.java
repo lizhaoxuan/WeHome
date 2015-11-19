@@ -2,6 +2,9 @@ package com.zhaoxuan.wehome.view.widget.softwidget.PaintBox;
 
 import android.graphics.Paint;
 
+import com.zhaoxuan.wehome.MyApplication;
+import com.zhaoxuan.wehome.R;
+
 
 /**
  * Created by zhaoxuan.li on 2015/8/12.
@@ -34,22 +37,13 @@ public class PaintBox {
      * @param border 带边框
      */
     public static void drawRoundRect(DrawingCanvas canvas ,int color , int alpha,boolean border){
-        if(border){
-            Paint paint = new Paint();
-            paint.setStyle(Paint.Style.FILL);
-            paint.setAntiAlias(true);
-            paint.setColor(color);
-            paint.setAlpha(30);
-            canvas.drawRoundRect(canvas.getRectF(), 20, 20, paint);
+        Paint paint = new Paint();
 
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setAlpha(70);
-            paint.setStrokeWidth(4);
-            canvas.drawRoundRect(canvas.getRectF(),20,20,paint);
-        }else{
-            drawRoundRect(canvas,color,alpha);
-        }
 
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setColor(0X000000);
+        paint.setStrokeWidth(3);
+        canvas.drawRoundRect(canvas.getRectF(),20,20,paint);
 
     }
 

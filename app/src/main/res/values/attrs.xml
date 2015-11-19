@@ -18,10 +18,17 @@
     <declare-styleable name="SRoundRect_LinearLayout">
         <attr name="bgcolor" format="color"/>
     </declare-styleable>
-    <!-- Image_EditText 带图片的输入框-->
+    <!-- 空数据提示控件-->
     <declare-styleable name="NoDataTipsView">
         <attr name="android:text" />
         <attr name="android:src" />
+    </declare-styleable>
+    <!-- Image_EditText 带图片的输入框 -->
+    <declare-styleable name="ImageEditText">
+        <attr name="android:text" />
+        <attr name="android:src" />
+        <attr name="android:hint" />
+        <attr name="android:inputType"/>
     </declare-styleable>
 
 

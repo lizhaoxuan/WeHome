@@ -48,7 +48,7 @@ public class SRoundRect_LinearLayout extends LinearLayout {
 
         if(localDrawingCanvas==null){
             localDrawingCanvas = DrawingCanvas.instance(width,height);
-            PaintBox.drawRoundRect(localDrawingCanvas, backgroundColor, 40);
+            PaintBox.drawRoundRect(localDrawingCanvas, backgroundColor, 40,true);
         }
         canvas.drawBitmap(localDrawingCanvas.getOutput(),0,0,null);
     }

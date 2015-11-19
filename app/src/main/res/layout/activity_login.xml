@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/logoIcon"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/logo"/>
 
     </LinearLayout>
@@ -31,17 +31,17 @@
         android:paddingBottom="20dp"
         android:layout_marginBottom="10dp"
         android:orientation="vertical">
-        <com.zhaoxuan.wehome.view.widget.softwidget.SRoundRect_LinearLayout
+        <LinearLayout
             android:id="@+id/accountLayout"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="5dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:background="@drawable/bg_edittext"
             android:paddingLeft="6dp"
             android:paddingRight="6dp"
-            android:paddingTop="8dp"
-            app:bgcolor="#CFCFCF">
+            android:paddingTop="8dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -67,18 +67,18 @@
                 android:singleLine="true"
                 android:textColor="@color/black_tag_3"
                 android:textCursorDrawable="@null" />
-        </com.zhaoxuan.wehome.view.widget.softwidget.SRoundRect_LinearLayout>
+        </LinearLayout>
 
-        <com.zhaoxuan.wehome.view.widget.softwidget.SRoundRect_LinearLayout
+        <LinearLayout
             android:id="@+id/passwordLayout"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
             android:gravity="center_vertical"
+            android:background="@drawable/bg_edittext"
             android:paddingLeft="6dip"
             android:paddingRight="6dip"
-            android:paddingTop="8dip"
-            app:bgcolor="#CFCFCF">
+            android:paddingTop="8dip">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -105,7 +105,7 @@
                 android:textColor="@color/black_tag_3"
                 android:textCursorDrawable="@null"
                 android:inputType="textPassword"/>
-        </com.zhaoxuan.wehome.view.widget.softwidget.SRoundRect_LinearLayout>
+        </LinearLayout>
 
         <com.zhaoxuan.wehome.view.widget.softwidget.SRoundRect_Button
             android:id="@+id/loginBtn"
@@ -117,18 +117,14 @@
             android:textSize="20sp"
             app:backgroundColor="#af0308"/>
 
-
-        <View
-            android:id="@+id/concealView"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"/>
-
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="10dp"
         android:orientation="horizontal">
 
         <TextView
@@ -137,6 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
+            android:padding="10dp"
             android:textColor="#af0308"
             android:textSize="15sp"
             android:text="忘记密码"/>
@@ -147,6 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
+            android:padding="10dp"
             android:textColor="#af0308"
             android:textSize="15sp"
             android:text="注册"/>

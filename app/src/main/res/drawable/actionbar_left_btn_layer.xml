@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+      android:drawable="@drawable/actionbar_left_btn_selector"
+      android:right="10dip"
+      android:left="10dip"/>
+</layer-list>

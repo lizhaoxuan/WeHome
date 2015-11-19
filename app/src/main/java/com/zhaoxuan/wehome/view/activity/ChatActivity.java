@@ -2,7 +2,6 @@ package com.zhaoxuan.wehome.view.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.zhaoxuan.wehome.R;
@@ -19,5 +18,10 @@ public class ChatActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+    }
+
+    @Override
+    protected void initView() {
+
     }
 }

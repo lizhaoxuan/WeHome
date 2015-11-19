@@ -3,13 +3,7 @@ package com.zhaoxuan.wehome.view.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.baseclass.BaseActivity;
@@ -22,7 +16,7 @@ import com.zhaoxuan.wehome.view.widget.TopToast;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class RegisterActivity extends BaseActivity implements IRegisterView{
+public class RegisterActivity extends BaseActivity implements IRegisterView {
     private static final String TAG = RegisterActivity.class.getName();
 
     @Bind(R.id.accountEdit)
@@ -34,11 +28,11 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
     @Bind(R.id.registerBtn)
     protected Button registerBtn;
 
-    private IRegisterPresenter presenter ;
+    private IRegisterPresenter presenter;
 
-    public static void startActivity(Activity activity , int requestCode){
-        Intent intent = new Intent(activity,RegisterActivity.class);
-        activity.startActivityForResult(intent,requestCode);
+    public static void startActivity(Activity activity, int requestCode) {
+        Intent intent = new Intent(activity, RegisterActivity.class);
+        activity.startActivityForResult(intent, requestCode);
     }
 
     @Override
@@ -47,13 +41,18 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
         setContentView(R.layout.activity_register);
 
         presenter = new LoginPresenter(this);
+    }
 
+
+    @Override
+    protected void initView() {
+        actionBar.setTitle("注册");
     }
 
     @OnClick(R.id.registerBtn)
-    public void registerOnClick(){
-        presenter.register(accountEdit.getText().toString(), passwordEdit.getText().toString(),
-                passwordAgainEdit.getText().toString());
+    public void registerOnClick() {
+        presenter.register(accountEdit.getText(), passwordEdit.getText(),
+                passwordAgainEdit.getText());
     }
 
 
@@ -64,7 +63,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
 
     @Override
     public void showToast(String tips) {
-        TopToast.makeText(this,tips).showPopupWindow(accountEdit);
+        TopToast.makeText(this, tips).showPopupWindow(accountEdit);
     }
 
     @Override

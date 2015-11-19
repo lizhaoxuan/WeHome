@@ -1,0 +1,172 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_default"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/anniversaryLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:descendantFocusability="blocksDescendants"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/anniversaryBut"
+                android:layout_width="90dip"
+                android:layout_height="90dip"
+                android:background="@drawable/more_memoryday" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/anniversaryBut"
+                android:layout_alignRight="@id/anniversaryBut"
+                android:layout_below="@id/anniversaryBut"
+                android:gravity="center"
+                android:text="纪念日"
+                android:textColor="@color/blue_tag_28"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/wishLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:descendantFocusability="blocksDescendants"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/wishBut"
+                android:layout_width="90dip"
+                android:layout_height="90dip"
+                android:background="@drawable/more_wish" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/wishBut"
+                android:layout_alignRight="@id/wishBut"
+                android:layout_below="@id/wishBut"
+                android:gravity="center"
+                android:text="家庭计划"
+                android:textColor="@color/blue_tag_28"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/familyLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:descendantFocusability="blocksDescendants"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/familyBut"
+                android:layout_width="90dip"
+                android:layout_height="90dip"
+                android:background="@drawable/more_home" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/familyBut"
+                android:layout_alignRight="@id/familyBut"
+                android:layout_below="@id/familyBut"
+                android:gravity="center"
+                android:text="家人"
+                android:textColor="@color/blue_tag_28"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/inviteLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:descendantFocusability="blocksDescendants"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/InviteBut"
+                android:layout_width="90dip"
+                android:layout_height="90dip"
+                android:background="@drawable/more_invite" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/InviteBut"
+                android:layout_alignRight="@id/InviteBut"
+                android:layout_below="@id/InviteBut"
+                android:gravity="center"
+                android:text="邀请家人"
+                android:textColor="@color/blue_tag_28"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/zoneLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:descendantFocusability="blocksDescendants"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/zoneBut"
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/more_zone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/zoneBut"
+                android:layout_alignRight="@id/zoneBut"
+                android:layout_below="@id/zoneBut"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="社区"
+                android:textColor="@color/blue_tag_28"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

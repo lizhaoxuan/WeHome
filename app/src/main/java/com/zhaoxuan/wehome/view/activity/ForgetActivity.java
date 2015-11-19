@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.baseclass.BaseActivity;
@@ -39,16 +38,16 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
 
         presenter = new LoginPresenter(this);
 
-        initView();
     }
 
-    private void initView(){
-        getActionBar().setTitle("忘记密码");
+    @Override
+    protected void initView() {
+        actionBar.setTitle("忘记密码");
     }
 
     @OnClick(R.id.forgetBtn)
     public void forgetOnClick() {
-        presenter.forgetPassword(accountEdit.getText().toString());
+        presenter.forgetPassword(accountEdit.getText());
     }
 
 

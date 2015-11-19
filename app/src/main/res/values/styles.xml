@@ -15,31 +15,18 @@
 
     <!-- Widget Style（组件的风格样式) -->
     <!-- Widget:ActionBar Style（ActionBar组件的风格样式) -->
-    <style name="ActionBar.Tab.Style" parent="@android:style/Widget.Holo.ActionBar.TabView">
-        <item name="android:background">@color/actionbar_tab_default</item>
-        <item name="android:paddingLeft">5dp</item>
-        <item name="android:paddingRight">5dp</item>
-    </style>
-
-    <style name="ActionBar.TabBar.Style" parent="@android:style/Widget.Holo.Light.ActionBar.TabBar">
-        <item name="android:background">@color/actionbar_tab_default</item>
-        <item name="android:divider">@drawable/actionbar_tab_gradient_line</item>
-    </style>
 
     <style name="ActionBar.Solid.Style" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
-        <item name="android:background">@color/cl_actionbar_bg</item>
+        <item name="android:background">@color/red_tag_4</item>
         <item name="android:backgroundStacked">@color/white_tag_1</item>
         <item name="android:backgroundSplit">@color/white_tag_1</item>
         <item name="android:titleTextStyle">@style/ActionBar.Solid.Title.Text.Style</item>
     </style>
-
-    <style name="ActionBar.Text.Appearance" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">15sp</item>
-    </style>
-
+    
     <style name="ActionBar.Solid.Title.Text.Style" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
     <!-- Widget:ActionBar Style end -->
 </resources>

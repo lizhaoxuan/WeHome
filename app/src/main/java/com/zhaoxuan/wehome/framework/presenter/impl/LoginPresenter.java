@@ -13,6 +13,7 @@ import com.zhaoxuan.wehome.support.constants.Ints;
 import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
 import com.zhaoxuan.wehome.view.activity.JoinFamilyActivity;
+import com.zhaoxuan.wehome.view.activity.MoreActivity;
 
 /**
  * Created by lizhaoxuan on 15/11/12.
@@ -52,7 +53,7 @@ public class LoginPresenter implements ILoginPresenter, IForgetPresenter, IRegis
                 @Override
                 public <T> void callBackSuccess(T t) {
                     if (((UserDto) t).isHaveHome()) {
-                        loginView.loginSuccess(ChatActivity.class);
+                        loginView.loginSuccess(MoreActivity.class);
                     } else {
                         loginView.loginSuccess(JoinFamilyActivity.class);
                     }

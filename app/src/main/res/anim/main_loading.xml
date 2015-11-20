@@ -5,5 +5,5 @@
         android:fillAfter="true"
         android:fromAlpha="0.2"
         android:toAlpha="0.9" />
-    
+
 </set>

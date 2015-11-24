@@ -6,13 +6,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.zhaoxuan.wehome.MyApplication;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseFragment;
 import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
 import com.zhaoxuan.wehome.view.activity.InviteActivity;
 import com.zhaoxuan.wehome.view.widget.ImageTextLabel;
+
+import org.w3c.dom.Text;
 
 import butterknife.Bind;
 
@@ -35,6 +40,14 @@ public class DrawerMenuFragment extends BaseFragment implements ImageTextLabel.O
     protected ImageTextLabel zoneMenu;
     @Bind(R.id.setMenu)
     protected ImageTextLabel setMenu;
+    @Bind(R.id.headImg)
+    protected ImageView headImg;
+    @Bind(R.id.nameText)
+    protected TextView nameText;
+    @Bind(R.id.postText)
+    protected TextView postText;
+    @Bind(R.id.homeNameText)
+    protected TextView homeNameText;
 
     private View view;
 
@@ -53,13 +66,14 @@ public class DrawerMenuFragment extends BaseFragment implements ImageTextLabel.O
         initView();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.e("TAG","asdasd");
-    }
+
 
     private void initView(){
+        UserDto user = MyApplication.getInstance().getUserDto();
+        nameText.setText(user.getName());
+        postText.setText(user.getPost());
+        homeNameText.setText(user.getFamilyName());
+
 
         chatMenu.setListener(this);
         memorydatMenu.setListener(this);

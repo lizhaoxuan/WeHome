@@ -10,7 +10,7 @@
     </style>
 
     <!-- LoginActivity Theme -->
-    <style name="SplashTheme" parent="@android:style/Theme.NoTitleBar">
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/white_tag_1</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>

@@ -30,6 +30,11 @@
         <attr name="android:hint" />
         <attr name="android:inputType"/>
     </declare-styleable>
+    <!-- ImageText_Label 侧滑菜单标签-->
+    <declare-styleable name="ImageTextLabel">
+        <attr name="android:text" />
+        <attr name="android:src" />
+    </declare-styleable>
 
 
 </resources>

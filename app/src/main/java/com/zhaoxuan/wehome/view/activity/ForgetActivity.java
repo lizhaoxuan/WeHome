@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.zhaoxuan.wehome.R;
-import com.zhaoxuan.wehome.framework.baseclass.BaseActivity;
+import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.presenter.IForgetPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.LoginPresenter;
 import com.zhaoxuan.wehome.framework.view.IForgetView;

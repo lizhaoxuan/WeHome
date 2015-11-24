@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.zhaoxuan.wehome.R;
-import com.zhaoxuan.wehome.framework.baseclass.BaseActivity;
+import com.zhaoxuan.wehome.framework.base.BaseActivity;
 
 import butterknife.Bind;
 

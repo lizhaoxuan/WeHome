@@ -53,7 +53,7 @@ public class LoginPresenter implements ILoginPresenter, IForgetPresenter, IRegis
                 @Override
                 public <T> void callBackSuccess(T t) {
                     if (((UserDto) t).isHaveHome()) {
-                        loginView.loginSuccess(MoreActivity.class);
+                        loginView.loginSuccess(ChatActivity.class);
                     } else {
                         loginView.loginSuccess(JoinFamilyActivity.class);
                     }

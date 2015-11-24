@@ -3,7 +3,7 @@ package com.zhaoxuan.wehome.view.activity;
 import android.os.Bundle;
 
 import com.zhaoxuan.wehome.R;
-import com.zhaoxuan.wehome.framework.baseclass.BaseActivity;
+import com.zhaoxuan.wehome.framework.base.BaseActivity;
 
 public class JoinFamilyActivity extends BaseActivity {
 

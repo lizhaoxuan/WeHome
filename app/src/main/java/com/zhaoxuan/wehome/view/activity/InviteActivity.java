@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.zhaoxuan.wehome.R;
-import com.zhaoxuan.wehome.framework.baseclass.BaseActivity;
+import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.presenter.IInvitePresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.InvitePresenter;
 import com.zhaoxuan.wehome.framework.view.IInviteView;

@@ -13,7 +13,6 @@ import com.zhaoxuan.wehome.support.constants.Ints;
 import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
 import com.zhaoxuan.wehome.view.activity.JoinFamilyActivity;
-import com.zhaoxuan.wehome.view.activity.MoreActivity;
 
 /**
  * Created by lizhaoxuan on 15/11/12.

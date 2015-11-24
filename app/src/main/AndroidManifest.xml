@@ -26,7 +26,6 @@
         <activity android:name=".view.activity.ForgetActivity" />
         <activity android:name=".view.activity.ChatActivity" />
         <activity android:name=".view.activity.JoinFamilyActivity" />
-        <activity android:name=".view.activity.MoreActivity" />
         <activity android:name=".view.activity.InviteActivity" />
     </application>
 

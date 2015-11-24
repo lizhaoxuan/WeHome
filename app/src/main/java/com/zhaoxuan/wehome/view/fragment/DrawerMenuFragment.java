@@ -2,12 +2,14 @@ package com.zhaoxuan.wehome.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseFragment;
+import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
 import com.zhaoxuan.wehome.view.activity.InviteActivity;
 import com.zhaoxuan.wehome.view.widget.ImageTextLabel;
@@ -51,7 +53,14 @@ public class DrawerMenuFragment extends BaseFragment implements ImageTextLabel.O
         initView();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.e("TAG","asdasd");
+    }
+
     private void initView(){
+
         chatMenu.setListener(this);
         memorydatMenu.setListener(this);
         wishMenu.setListener(this);
@@ -61,6 +70,7 @@ public class DrawerMenuFragment extends BaseFragment implements ImageTextLabel.O
         setMenu.setListener(this);
 
     }
+
 
 
     @Override

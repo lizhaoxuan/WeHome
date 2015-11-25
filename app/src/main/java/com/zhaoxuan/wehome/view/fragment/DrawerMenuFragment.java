@@ -2,7 +2,6 @@ package com.zhaoxuan.wehome.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,6 @@ import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
 import com.zhaoxuan.wehome.view.activity.InviteActivity;
 import com.zhaoxuan.wehome.view.widget.ImageTextLabel;
-
-import org.w3c.dom.Text;
 
 import butterknife.Bind;
 
@@ -92,7 +89,7 @@ public class DrawerMenuFragment extends BaseFragment implements ImageTextLabel.O
         int viewId = v.getId();
         switch (viewId){
             case R.id.chatMenu:
-                ((ChatActivity)getActivity()).hideDrawerLayout();
+                ((ChatActivity)getActivity()).closeDrawerLayout();
                 return;
             case R.id.memorydatMenu:
                 return;

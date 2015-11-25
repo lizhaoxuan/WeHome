@@ -17,6 +17,7 @@ import com.zhaoxuan.wehome.R;
 import javax.microedition.khronos.egl.EGLDisplay;
 
 /**
+ * 带图片的输入框
  * Created by lizhaoxuan on 15/11/18.
  */
 public class ImageEditText extends LinearLayout {

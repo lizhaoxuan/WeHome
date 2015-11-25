@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.zhaoxuan.wehome.R;
 
 /**
+ * 侧滑菜单的item，图片加文字
  * Created by lizhaoxuan on 15/11/24.
  */
 public class ImageTextLabel extends LinearLayout implements View.OnClickListener{

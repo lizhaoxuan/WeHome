@@ -4,32 +4,39 @@ package com.zhaoxuan.wehome.support.dto;
  * Created by lizhaoxuan on 15/11/13.
  */
 public class UserDto {
+    public static final int KEY_NAME = 1;
+    public static final int KEY_POST = 2;
+    public static final int KEY_HOME_NAME = 3;
+    public static final int KEY_HOME_ID = 4;
+    public static final int KEY_ACCOUNT = 5;
+    public static final int KEY_CITY = 6;
 
     private String account;
     private String password;
     private String name;
-    private String familyAccount;
-    private String familyName;
+    private String homeId;
+    private String homeName;
     private String post;
     private boolean haveHome;
     private String headImageUri;
     private String headImagePath;
     private String familyBuild;
-
+    private String city;
     public UserDto() {
     }
 
-    public UserDto(String account, String password, String name, String familyAccount, String familyName, String post, boolean haveHome, String headImageUri, String familyBuild, String headImagePath) {
+    public UserDto(String account, String password, String name, String homeId, String homeName, String post, boolean haveHome, String headImageUri, String familyBuild, String headImagePath,String city) {
         this.account = account;
         this.password = password;
         this.name = name;
-        this.familyAccount = familyAccount;
-        this.familyName = familyName;
+        this.homeId = homeId;
+        this.homeName = homeName;
         this.post = post;
         this.haveHome = haveHome;
         this.headImageUri = headImageUri;
         this.familyBuild = familyBuild;
         this.headImagePath = headImagePath;
+        this.city = city;
     }
 
     public String getPassword() {
@@ -56,20 +63,20 @@ public class UserDto {
         this.name = name;
     }
 
-    public String getFamilyAccount() {
-        return familyAccount;
+    public String getHomeId() {
+        return homeId;
     }
 
-    public void setFamilyAccount(String familyAccount) {
-        this.familyAccount = familyAccount;
+    public void setHomeId(String homeId) {
+        this.homeId = homeId;
     }
 
-    public String getFamilyName() {
-        return familyName;
+    public String getHomeName() {
+        return homeName;
     }
 
-    public void setFamilyName(String familyName) {
-        this.familyName = familyName;
+    public void setHomeName(String homeName) {
+        this.homeName = homeName;
     }
 
     public String getPost() {
@@ -81,6 +88,7 @@ public class UserDto {
     }
 
     public boolean isHaveHome() {
+        haveHome = !homeId.equals("");
         return haveHome;
     }
 
@@ -103,4 +111,40 @@ public class UserDto {
     public void setFamilyBuild(String familyBuild) {
         this.familyBuild = familyBuild;
     }
+
+    public String getHeadImagePath() {
+        return headImagePath;
+    }
+
+    public void setHeadImagePath(String headImagePath) {
+        this.headImagePath = headImagePath;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setValue(int key, String value) {
+        switch (key) {
+            case KEY_NAME:
+                name = value;
+                return;
+            case KEY_POST:
+                post = value;
+                return;
+            case KEY_HOME_NAME:
+                return;
+            case KEY_HOME_ID:
+                return;
+            case KEY_ACCOUNT:
+                return;
+            case KEY_CITY:
+                return;
+        }
+    }
+
 }

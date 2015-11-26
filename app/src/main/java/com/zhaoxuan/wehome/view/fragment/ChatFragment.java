@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseFragment;
+import com.zhaoxuan.wehome.framework.view.IMenuView;
+import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
 
 import butterknife.Bind;
@@ -19,7 +21,7 @@ import butterknife.Bind;
 /**
  * Created by lizhaoxuan on 15/11/24.
  */
-public class ChatFragment extends BaseFragment {
+public class ChatFragment extends BaseFragment{
 
     @Bind(R.id.toolbar)
     protected Toolbar toolbar;
@@ -55,8 +57,6 @@ public class ChatFragment extends BaseFragment {
             }
         });
     }
-
-
 
 
 }

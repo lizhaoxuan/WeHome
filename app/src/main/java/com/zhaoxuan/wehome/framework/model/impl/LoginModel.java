@@ -15,7 +15,7 @@ public class LoginModel implements ILoginModel {
         //模拟网络请求
 
         UserDto userDto = new UserDto("690770333@qq.com", "1234567", "卡卡",
-                "690770333@qq.com", "吉祥三宝", "爸爸", true, "", "2014-10-10", "");
+                "690770333@qq.com", "吉祥三宝", "爸爸", true, "", "2014-10-10", "","");
 
         MyApplication.getInstance().setUserDto(userDto);
         //保存到 share 中
@@ -34,7 +34,7 @@ public class LoginModel implements ILoginModel {
     @Override
     public void register(String account, String password, ICallBack callBack) {
         UserDto userDto = new UserDto("1005454329@qq.com", "1234567", "newUser",
-                "", "", "", false, "", "", "");
+                "", "", "", false, "", "", "","");
 
         MyApplication.getInstance().setUserDto(userDto);
 

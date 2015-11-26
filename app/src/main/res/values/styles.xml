@@ -13,7 +13,7 @@
     <!-- Widget:ActionBar Style（ActionBar组件的风格样式) -->
 
     <style name="ActionBar.Solid.Style" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
-        <item name="android:background">@color/red_tag_4</item>
+        <item name="android:background">@color/red_tag_6</item>
         <item name="android:backgroundStacked">@color/white_tag_1</item>
         <item name="android:backgroundSplit">@color/white_tag_1</item>
         <item name="android:titleTextStyle">@style/ActionBar.Solid.Title.Text.Style</item>
@@ -37,4 +37,13 @@
         <item name="android:paddingBottom">24dp</item>
         <item name="android:orientation">vertical</item>
     </style>
+    
+    <!-- widget: 设置界面 属性设置item样式 -->
+    <style name="CustomWeight"/>
+    <style name="CustomWeight.ValueSetLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    
 </resources>

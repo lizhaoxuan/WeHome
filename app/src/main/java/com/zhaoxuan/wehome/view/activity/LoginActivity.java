@@ -138,6 +138,7 @@ public class LoginActivity extends Activity implements ILoginView {
     @Override
     public void loginSuccess(Class clazz) {
         startActivity(new Intent(this, clazz));
+        this.finish();
     }
 
     @Override

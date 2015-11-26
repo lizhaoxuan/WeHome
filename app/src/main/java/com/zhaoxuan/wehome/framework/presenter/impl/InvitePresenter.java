@@ -22,7 +22,7 @@ public class InvitePresenter implements IInvitePresenter {
             view.showToast("电话号码不可以为空哦~");
         }else{
             String message = "集合啦！我已经在爱+创建了一个小微家，超有爱的应用哦。。。满满的都是爱！微家的账号是"+
-                    MyApplication.getInstance().getUserDto().getFamilyAccount()+
+                    MyApplication.getInstance().getUserDto().getHomeId()+
                     "  这是下载链接。快来哦！"+
                     Strs.DOWNLOAD_URL;    //编辑短信内容
             view.sendMessage(phone,message);

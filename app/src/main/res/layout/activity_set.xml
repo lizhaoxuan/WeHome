@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    tools:context="com.zhaoxuan.wehome.view.activity.SetActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/topLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red_tag_2"
+            android:padding="20dp">
+
+            <com.zhaoxuan.wehome.view.widget.Round_ImageView
+                android:id="@+id/headImg"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/t_head" />
+
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/headImg"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="暴打小女孩"
+                android:textColor="@color/black_tag_3"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/nameImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/nameText"
+                android:layout_alignTop="@id/nameText"
+                android:layout_toEndOf="@id/nameText"
+                android:src="@drawable/ic_change" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="vertical">
+
+            <com.zhaoxuan.wehome.view.widget.ValueSetLabel
+                android:id="@+id/postLabel"
+                style="@style/CustomWeight.ValueSetLabel"
+                app:SetValueKeyText="家庭关系"/>
+
+            <com.zhaoxuan.wehome.view.widget.ValueSetLabel
+                android:id="@+id/homeNameLabel"
+                style="@style/CustomWeight.ValueSetLabel"
+                app:SetValueKeyText="微家名"/>
+
+            <com.zhaoxuan.wehome.view.widget.ValueSetLabel
+                android:id="@+id/homeIdLabel"
+                style="@style/CustomWeight.ValueSetLabel"
+                app:SetValueKeyText="微家账号"/>
+
+            <com.zhaoxuan.wehome.view.widget.ValueSetLabel
+                android:id="@+id/accountLabel"
+                style="@style/CustomWeight.ValueSetLabel"
+                app:SetValueKeyText="账号"/>
+
+            <com.zhaoxuan.wehome.view.widget.ValueSetLabel
+                android:id="@+id/cityLabel"
+                style="@style/CustomWeight.ValueSetLabel"
+                app:SetValueKeyText="城市"/>
+            <com.zhaoxuan.wehome.view.widget.ValueSetLabel
+                android:id="@+id/passwordLabel"
+                style="@style/CustomWeight.ValueSetLabel"
+                app:SetValueKeyText="密码"
+                app:SetValueValueText="修改"/>
+
+            <com.zhaoxuan.wehome.view.widget.softwidget.SRoundRect_Button
+                android:id="@+id/logoutBtn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:text="退出"
+                android:textColor="@color/white_tag_1"
+                android:textSize="20sp"
+                app:backgroundColor="#af0308"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

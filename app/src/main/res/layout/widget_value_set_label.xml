@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingEnd="10dp"
+    android:background="@drawable/selector_set_value">
+
+    <ImageView
+        android:id="@+id/keyIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_alignTop="@+id/valueText"
+        android:layout_alignBottom="@+id/valueText"
+        android:src="@drawable/more_home"/>
+
+    <TextView
+        android:id="@+id/keyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_tag_3"
+        android:layout_toRightOf="@id/keyIcon"
+        android:layout_centerVertical="true"
+        android:textSize="15sp"
+        android:text="家庭关系"/>
+
+    <ImageView
+        android:id="@+id/valueIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/keyText"
+        android:layout_alignBottom="@id/keyText"
+        android:src="@drawable/ic_change"/>
+
+    <TextView
+        android:id="@+id/valueText"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_tag_3"
+        android:layout_toLeftOf="@id/valueIcon"
+        android:layout_centerVertical="true"
+        android:gravity="end"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textSize="15sp"
+        android:text="690770333@qq.com"/>
+</RelativeLayout>

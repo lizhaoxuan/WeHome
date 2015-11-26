@@ -8,12 +8,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zhaoxuan.wehome.MyApplication;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseFragment;
+import com.zhaoxuan.wehome.framework.presenter.IMenuPresenter;
+import com.zhaoxuan.wehome.framework.presenter.impl.MenuPresenter;
+import com.zhaoxuan.wehome.framework.view.IMenuView;
 import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
 import com.zhaoxuan.wehome.view.activity.InviteActivity;
+import com.zhaoxuan.wehome.view.activity.SetActivity;
 import com.zhaoxuan.wehome.view.widget.ImageTextLabel;
 
 import butterknife.Bind;
@@ -21,7 +24,7 @@ import butterknife.Bind;
 /**
  * Created by lizhaoxuan on 15/11/24.
  */
-public class DrawerMenuFragment extends BaseFragment implements ImageTextLabel.OnLabelClickListener{
+public class DrawerMenuFragment extends BaseFragment implements IMenuView,ImageTextLabel.OnLabelClickListener{
 
     @Bind(R.id.chatMenu)
     protected ImageTextLabel chatMenu;
@@ -47,6 +50,7 @@ public class DrawerMenuFragment extends BaseFragment implements ImageTextLabel.O
     protected TextView homeNameText;
 
     private View view;
+    private IMenuPresenter presenter;
 
     @Nullable
     @Override
@@ -60,17 +64,18 @@ public class DrawerMenuFragment extends BaseFragment implements ImageTextLabel.O
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        presenter = new MenuPresenter(this);
         initView();
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        //刷新界面
+        presenter.updateView();
+    }
 
     private void initView(){
-        UserDto user = MyApplication.getInstance().getUserDto();
-        nameText.setText(user.getName());
-        postText.setText(user.getPost());
-        homeNameText.setText(user.getFamilyName());
-
 
         chatMenu.setListener(this);
         memorydatMenu.setListener(this);
@@ -81,8 +86,6 @@ public class DrawerMenuFragment extends BaseFragment implements ImageTextLabel.O
         setMenu.setListener(this);
 
     }
-
-
 
     @Override
     public void onClick(View v) {
@@ -103,7 +106,15 @@ public class DrawerMenuFragment extends BaseFragment implements ImageTextLabel.O
             case R.id.zoneMenu:
                 return;
             case R.id.setMenu:
+                SetActivity.startActivity(activity);
                 return;
         }
+    }
+
+    @Override
+    public void setUserData(UserDto user) {
+        nameText.setText(user.getName());
+        postText.setText(user.getPost());
+        homeNameText.setText(user.getHomeName());
     }
 }

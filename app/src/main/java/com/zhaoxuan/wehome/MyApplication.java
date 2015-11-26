@@ -2,12 +2,14 @@ package com.zhaoxuan.wehome;
 
 import android.app.Application;
 
+import com.zhaoxuan.wehome.module.log.WLog;
 import com.zhaoxuan.wehome.support.dto.UserDto;
 
 /**
  * Created by lizhaoxuan on 15/11/12.
  */
 public class MyApplication extends Application {
+    private static final String TAG = MyApplication.class.getName();
 
     private static MyApplication mInstance = null;
 
@@ -25,7 +27,13 @@ public class MyApplication extends Application {
 
 
     public UserDto getUserDto() {
-        return userDto;
+        if (userDto==null){
+            WLog.w(TAG,"userDto == null");
+            return new UserDto();
+        }else{
+            return userDto;
+        }
+
     }
 
     public void setUserDto(UserDto userDto) {

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_rounded_rect"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="修改姓名"
+        android:textColor="@color/black_tag_3"
+        android:textSize="20sp" />
+
+    <View
+        android:id="@+id/lineView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/titleText"
+        android:layout_marginTop="6dp"
+        android:background="@color/gray_tag_1" />
+
+    <com.zhaoxuan.wehome.view.widget.ImageEditText
+        android:id="@+id/oneEdit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/lineView"
+        android:layout_marginTop="10dp"
+        android:hint="邮箱" />
+
+    <com.zhaoxuan.wehome.view.widget.ImageEditText
+        android:id="@+id/twoEdit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/oneEdit"
+        android:layout_marginTop="5dp"
+        android:hint="请输入密码"
+        android:visibility="invisible" />
+
+    <com.zhaoxuan.wehome.view.widget.ImageEditText
+        android:id="@+id/threeEdit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/twoEdit"
+        android:layout_marginTop="5dp"
+        android:hint="请再次输入密码"
+        android:visibility="invisible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignEnd="@+id/threeEdit"
+        android:layout_alignStart="@+id/threeEdit"
+        android:layout_below="@id/threeEdit"
+        android:layout_marginTop="7dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_rounded_rect"
+            android:text="取消"
+            android:textColor="@color/black_tag_3"
+            android:textSize="18sp" />
+
+        <com.zhaoxuan.wehome.view.widget.softwidget.SRoundRect_Button
+            android:id="@+id/changeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:text="修改"
+            android:textColor="@color/white_tag_1"
+            android:textSize="20sp"
+            app:backgroundColor="@color/red_tag_6"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

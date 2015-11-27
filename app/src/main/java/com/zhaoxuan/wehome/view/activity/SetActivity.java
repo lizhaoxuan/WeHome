@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,12 +18,13 @@ import com.zhaoxuan.wehome.framework.presenter.ISetPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.SetPresenter;
 import com.zhaoxuan.wehome.framework.view.ISetView;
 import com.zhaoxuan.wehome.support.dto.UserDto;
+import com.zhaoxuan.wehome.view.widget.SetDialog;
 import com.zhaoxuan.wehome.view.widget.TopToast;
 import com.zhaoxuan.wehome.view.widget.ValueSetLabel;
 
 import butterknife.Bind;
 
-public class SetActivity extends BaseActivity implements ISetView,View.OnClickListener{
+public class SetActivity extends BaseActivity implements ISetView, View.OnClickListener, SetDialog.ISetDialogListener {
 
     @Bind(R.id.headImg)
     protected ImageView headImg;
@@ -45,10 +47,12 @@ public class SetActivity extends BaseActivity implements ISetView,View.OnClickLi
     @Bind(R.id.logoutBtn)
     protected Button logoutBtn;
 
+    private SetDialog setDialog;
+
     private ISetPresenter presenter;
 
-    public static void startActivity(Activity activity){
-        Intent intent = new Intent(activity,SetActivity.class);
+    public static void startActivity(Activity activity) {
+        Intent intent = new Intent(activity, SetActivity.class);
         activity.startActivity(intent);
     }
 
@@ -71,6 +75,8 @@ public class SetActivity extends BaseActivity implements ISetView,View.OnClickLi
         passwrodLabel.setOnClickListener(this);
         cityLabel.setOnClickListener(this);
         logoutBtn.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -81,25 +87,40 @@ public class SetActivity extends BaseActivity implements ISetView,View.OnClickLi
 
     @Override
     public void onClick(View v) {
+        //不可重复使用
+        setDialog = SetDialog.makeDialog(this, this);
         int viewId = v.getId();
-        switch (viewId){
+        switch (viewId) {
             case R.id.headImg:
                 return;
             case R.id.nameText:
+                setDialog.show(UserDto.KEY_NAME, "修改昵称", nameText.getText().toString());
                 return;
             case R.id.nameImg:
+                setDialog.show(UserDto.KEY_NAME, "修改昵称", nameText.getText().toString());
                 return;
             case R.id.postLabel:
+                setDialog.show(UserDto.KEY_POST, "修改" + postLabel.getKeyText()
+                        , postLabel.getText());
                 return;
             case R.id.homeIdLabel:
+                setDialog.show(UserDto.KEY_HOME_ID, homeIdLabel.getKeyText()
+                        , homeIdLabel.getText());
                 return;
             case R.id.homeNameLabel:
+                setDialog.show(UserDto.KEY_HOME_NAME, "修改" + homeNameLabel.getKeyText()
+                        , homeNameLabel.getText());
                 return;
             case R.id.accountLabel:
+                setDialog.show(UserDto.KEY_ACCOUNT, accountLabel.getKeyText()
+                        , accountLabel.getText());
                 return;
             case R.id.cityLabel:
+                setDialog.show(UserDto.KEY_CITY, "修改" + cityLabel.getKeyText()
+                        , cityLabel.getText());
                 return;
             case R.id.passwordLabel:
+                setDialog.show(UserDto.KEY_PASSWORD, "修改密码", "");
                 return;
             case R.id.logoutBtn:
                 return;
@@ -127,5 +148,25 @@ public class SetActivity extends BaseActivity implements ISetView,View.OnClickLi
     @Override
     public void updateHeadImg(Bitmap bitmap) {
         headImg.setImageBitmap(bitmap);
+    }
+
+    @Override
+    public void hideDialog() {
+        if (setDialog != null && setDialog.isShowing()) {
+            setDialog.dismiss();
+        }
+    }
+
+    /**
+     * Set Dialog 事件方法
+     **/
+    @Override
+    public void enterClick(int key, String args1, String args2, String args3) {
+        presenter.changePassword(args1, args2, args3);
+    }
+
+    @Override
+    public void enterClick(int key, String args1) {
+        presenter.setValue(key, args1);
     }
 }

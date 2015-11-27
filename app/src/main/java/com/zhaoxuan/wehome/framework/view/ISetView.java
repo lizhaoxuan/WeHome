@@ -1,7 +1,6 @@
 package com.zhaoxuan.wehome.framework.view;
 
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 
 import com.zhaoxuan.wehome.support.dto.UserDto;
 
@@ -15,5 +14,7 @@ public interface ISetView {
     void showToast(String msg);
 
     void updateHeadImg(Bitmap bitmap);
+
+    void hideDialog();
 
 }

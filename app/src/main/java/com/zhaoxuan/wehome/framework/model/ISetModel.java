@@ -9,6 +9,8 @@ public interface ISetModel {
 
     void setValue(int key,String value,ICallBack callBack);
 
+    void changePassword(String oldPassword,String newPassword,ICallBack callBack);
+
     void setHeadImg(String path,ICallBack callBack);
 
     UserDto getUserDto();

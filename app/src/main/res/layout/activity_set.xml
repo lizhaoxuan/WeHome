@@ -95,7 +95,7 @@
                 android:text="退出"
                 android:textColor="@color/white_tag_1"
                 android:textSize="20sp"
-                app:backgroundColor="#af0308"/>
+                app:backgroundColor="@color/red_tag_6"/>
         </LinearLayout>
 
 

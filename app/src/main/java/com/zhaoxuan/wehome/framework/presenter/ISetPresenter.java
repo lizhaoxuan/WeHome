@@ -12,6 +12,8 @@ public interface ISetPresenter {
 
     void setValue(int key , String value);
 
+    void changePassword(String args1,String args2,String args3);
+
     void setHeadImg(String path);
 
     void updateView();

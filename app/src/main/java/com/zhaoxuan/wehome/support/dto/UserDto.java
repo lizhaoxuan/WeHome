@@ -10,6 +10,7 @@ public class UserDto {
     public static final int KEY_HOME_ID = 4;
     public static final int KEY_ACCOUNT = 5;
     public static final int KEY_CITY = 6;
+    public static final int KEY_PASSWORD = 7;
 
     private String account;
     private String password;
@@ -137,12 +138,19 @@ public class UserDto {
                 post = value;
                 return;
             case KEY_HOME_NAME:
+                homeName = value;
                 return;
             case KEY_HOME_ID:
+                homeId = value;
                 return;
             case KEY_ACCOUNT:
+                account = value;
                 return;
             case KEY_CITY:
+                city = value;
+                return;
+            case KEY_PASSWORD:
+                password = value;
                 return;
         }
     }

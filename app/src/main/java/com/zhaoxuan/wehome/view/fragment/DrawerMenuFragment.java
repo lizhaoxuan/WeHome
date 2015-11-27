@@ -17,6 +17,7 @@ import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
 import com.zhaoxuan.wehome.view.activity.InviteActivity;
 import com.zhaoxuan.wehome.view.activity.SetActivity;
+import com.zhaoxuan.wehome.view.activity.WishActivity;
 import com.zhaoxuan.wehome.view.widget.ImageTextLabel;
 
 import butterknife.Bind;
@@ -97,6 +98,7 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView,ImageT
             case R.id.memorydatMenu:
                 return;
             case R.id.wishMenu:
+                WishActivity.stratActivity(getActivity());
                 return;
             case R.id.homeMenu:
                 return;

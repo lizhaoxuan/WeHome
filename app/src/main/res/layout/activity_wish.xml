@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/refreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.zhaoxuan.wehome.view.activity.WishActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/line1Text"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignLeft="@+id/tabLayout"
+            android:layout_alignRight="@+id/tabLayout"
+            android:layout_alignTop="@+id/tabLayout"
+            android:layout_centerHorizontal="true"
+            android:background="@color/gray_tag_9" />
+
+        <RelativeLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/titleText"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp">
+
+            <View
+                android:id="@+id/line2View"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@color/gray_tag_9" />
+
+            <LinearLayout
+                android:id="@+id/unFinishLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/line2View"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/unFinishImg"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/btn_un_finish" />
+
+
+                <TextView
+                    android:id="@+id/unFinishText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:text="目标"
+                    android:textColor="@color/black_tag_3"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/finishLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/line2View"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/finishImg"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/btn_finish" />
+
+
+                <TextView
+                    android:id="@+id/finishText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:text="完成"
+                    android:textColor="@color/black_tag_3"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line3View"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignBottom="@id/line2View"
+                android:layout_alignLeft="@id/unFinishLayout"
+                android:layout_alignRight="@id/finishLayout"
+                android:layout_centerHorizontal="true"
+                android:background="@color/gray_tag_9" />
+
+
+            <!-- 事先放两个View当做光标的办法好笨啊，有没有更好的办法？ -->
+            <View
+                android:id="@+id/unFinishCursor"
+                android:layout_width="wrap_content"
+                android:layout_height="3dp"
+                android:layout_alignBottom="@id/line2View"
+                android:layout_alignLeft="@id/unFinishLayout"
+                android:layout_alignRight="@id/unFinishLayout"
+                android:background="@color/red_tag_4" />
+
+            <View
+                android:id="@+id/finishCursor"
+                android:layout_width="wrap_content"
+                android:layout_height="3dp"
+                android:layout_alignBottom="@id/line2View"
+                android:layout_alignLeft="@id/finishLayout"
+                android:layout_alignRight="@id/finishLayout"
+                android:background="@color/red_tag_4"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/tabLayout" />
+
+
+    </RelativeLayout>
+
+</android.support.v4.widget.SwipeRefreshLayout>

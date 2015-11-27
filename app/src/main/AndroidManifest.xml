@@ -31,6 +31,8 @@
         <activity android:name=".view.activity.InviteActivity" />
         <activity android:name=".view.activity.SetActivity" >
         </activity>
+        <activity android:name=".view.activity.WishActivity" >
+        </activity>
     </application>
 
 </manifest>

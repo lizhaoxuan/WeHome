@@ -1,9 +1,11 @@
 package com.zhaoxuan.wehome.support.dto;
 
+import java.io.Serializable;
+
 /**
  * Created by lizhaoxuan on 15/11/27.
  */
-public class WishDto {
+public class WishDto implements Serializable {
 
     private int id;
     private String title;
@@ -111,4 +113,17 @@ public class WishDto {
     public void setIsFinish(boolean isFinish) {
         this.isFinish = isFinish;
     }
+
+    public String getFinsih() {
+        if (isFinish) {
+            return "已完成";
+        } else {
+            return "未完成";
+        }
+    }
+
+    public String getBuildOf(){
+        return buildName+" | "+buildPost;
+    }
+
 }

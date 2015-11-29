@@ -3,7 +3,6 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-
     <!--
     color 命名规则：
     1.无透明度——六位，命名规则为颜色_tag_序号，例:black_tag_1

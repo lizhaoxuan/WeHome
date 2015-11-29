@@ -59,6 +59,10 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.MyView
         return myDatas.get(position).getId();
     }
 
+    public WishDto getItemData(int position){
+        return myDatas.get(position);
+    }
+
     public void setItemClickListener(ItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }

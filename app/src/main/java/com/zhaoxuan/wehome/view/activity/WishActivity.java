@@ -11,11 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.framework.presenter.IWishDetailPresenter;
 import com.zhaoxuan.wehome.framework.presenter.IWishPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.WishPresenter;
 import com.zhaoxuan.wehome.framework.view.IWishView;
@@ -82,12 +82,12 @@ public class WishActivity extends BaseActivity implements IWishView {
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.getData();
+        updateData();
     }
 
     @Override
     protected void initView() {
-        actionBar.setTitle("家庭愿望");
+        actionBar.setTitle("家庭计划");
 
         LayoutInflater inflater = getLayoutInflater();
         finishView = inflater.inflate(R.layout.layout_wish_list, null);
@@ -116,12 +116,16 @@ public class WishActivity extends BaseActivity implements IWishView {
             }
         });
 
+
+
         unFinishlistAdapter = new WishListAdapter(this);
         finishlistAdapter = new WishListAdapter(this);
         finishListView.setLayoutManager(new LinearLayoutManager(this));
         finishListView.setAdapter(finishlistAdapter);
         unFinishListView.setLayoutManager(new LinearLayoutManager(this));
         unFinishListView.setAdapter(unFinishlistAdapter);
+
+        presenter.initData();
     }
 
 

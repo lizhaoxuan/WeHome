@@ -5,6 +5,6 @@ package com.zhaoxuan.wehome.framework.presenter;
  */
 public interface IWishPresenter {
 
-    void getData();
+    void initData();
 
 }

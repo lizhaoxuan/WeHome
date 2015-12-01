@@ -15,6 +15,6 @@ public class JoinFamilyActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        actionBar.setTitle("创建家庭");
+        setTitle("创建家庭");
     }
 }

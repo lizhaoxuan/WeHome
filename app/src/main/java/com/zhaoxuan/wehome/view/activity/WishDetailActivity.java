@@ -20,7 +20,7 @@ import com.zhaoxuan.wehome.support.dto.WishDto;
 
 import butterknife.Bind;
 
-public class WishDetailActivity extends BaseActivity,IWishDetailView {
+public class WishDetailActivity extends BaseActivity implements IWishDetailView {
     @Bind(R.id.wishImg)
     protected ImageView wishImg;
     @Bind(R.id.timeText)
@@ -57,7 +57,7 @@ public class WishDetailActivity extends BaseActivity,IWishDetailView {
 
     @Override
     protected void initView() {
-        actionBar.setTitle("计划详情");
+        setTitle("计划详情");
         initIntent();
     }
 
@@ -104,4 +104,6 @@ public class WishDetailActivity extends BaseActivity,IWishDetailView {
             unFinsihBtn.setVisibility(View.GONE);
         }
     }
+
+
 }

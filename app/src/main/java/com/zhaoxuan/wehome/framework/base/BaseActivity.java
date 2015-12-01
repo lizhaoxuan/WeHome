@@ -1,18 +1,21 @@
 package com.zhaoxuan.wehome.framework.base;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
+import com.zhaoxuan.wehome.view.widget.ToolBarHelper;
 
 import butterknife.ButterKnife;
 
 /**
  * Created by lizhaoxuan on 15/11/13.
  */
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends AppCompatActivity {
 
-    protected ActionBar actionBar;
+    private ToolBarHelper toolBarHelper ;
+    protected Toolbar toolbar ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +27,27 @@ public abstract class BaseActivity extends Activity {
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
         ButterKnife.bind(this);
-        actionBar = getActionBar();
-        setActionBarView();
+        toolBarHelper = new ToolBarHelper(this,layoutResID) ;
+        toolbar = toolBarHelper.getToolBar() ;
+
+        setContentView(toolBarHelper.getContentView());
+        /*把 toolbar 设置到Activity 中*/
+        setSupportActionBar(toolbar);
+        /*自定义的一些操作*/
+        onCreateCustomToolBar(toolbar) ;
 
         initView();
     }
 
+    public void onCreateCustomToolBar(Toolbar toolbar){
+        toolbar.setContentInsetsRelative(0,0);
+    }
 
     protected abstract void initView();
+
+    protected  void setTitle(String title){
+        getSupportActionBar().setTitle(title);
+    }
 
 
     @Override
@@ -45,8 +61,4 @@ public abstract class BaseActivity extends Activity {
         }
     }
 
-    public void setActionBarView(){
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(false);
-    }
 }

@@ -42,7 +42,7 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
 
     @Override
     protected void initView() {
-        actionBar.setTitle("忘记密码");
+        setTitle("忘记密码");
     }
 
     @OnClick(R.id.forgetBtn)

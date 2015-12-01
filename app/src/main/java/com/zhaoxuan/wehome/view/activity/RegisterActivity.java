@@ -46,7 +46,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
 
     @Override
     protected void initView() {
-        actionBar.setTitle("注册");
+        setTitle("注册");
     }
 
     @OnClick(R.id.registerBtn)

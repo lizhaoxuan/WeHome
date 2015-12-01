@@ -39,7 +39,7 @@ public class InviteActivity extends BaseActivity implements IInviteView{
 
     @Override
     protected void initView() {
-        actionBar.setTitle("邀请家人");
+        setTitle("邀请家人");
     }
 
 

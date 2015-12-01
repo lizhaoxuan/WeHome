@@ -65,6 +65,8 @@ public class SetActivity extends BaseActivity implements ISetView, View.OnClickL
 
     @Override
     protected void initView() {
+        setTitle("设置");
+
         nameImg.setOnClickListener(this);
         nameText.setOnClickListener(this);
         headImg.setOnClickListener(this);

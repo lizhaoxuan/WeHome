@@ -43,7 +43,6 @@ public class ChatFragment extends BaseFragment{
         activity = (ChatActivity)getActivity();
         toolbar = (Toolbar)view.findViewById(R.id.toolbar);
         activity.setSupportActionBar(toolbar);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(R.drawable.ic_menu);
 
         CollapsingToolbarLayout collapsingToolbar =

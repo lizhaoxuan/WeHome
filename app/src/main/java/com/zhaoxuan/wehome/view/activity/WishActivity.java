@@ -8,6 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -87,7 +88,7 @@ public class WishActivity extends BaseActivity implements IWishView {
 
     @Override
     protected void initView() {
-        actionBar.setTitle("家庭计划");
+        setTitle("家庭计划");
 
         LayoutInflater inflater = getLayoutInflater();
         finishView = inflater.inflate(R.layout.layout_wish_list, null);
@@ -125,7 +126,7 @@ public class WishActivity extends BaseActivity implements IWishView {
         unFinishListView.setLayoutManager(new LinearLayoutManager(this));
         unFinishListView.setAdapter(unFinishlistAdapter);
 
-        presenter.initData();
+        //presenter.initData();
     }
 
 
@@ -212,5 +213,11 @@ public class WishActivity extends BaseActivity implements IWishView {
             setViewPagerCursor(viewPager.getCurrentItem());
             Toast.makeText(WishActivity.this, "第" + arg0 + "页", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_wish, menu);
+        return true;
     }
 }

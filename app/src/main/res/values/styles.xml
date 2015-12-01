@@ -10,25 +10,6 @@
     </style>
 
     <!-- Widget Style（组件的风格样式) -->
-    <!-- Widget:ActionBar Style（ActionBar组件的风格样式) -->
-
-    <style name="ActionBar.Solid.Style" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
-        <item name="android:background">@color/red_tag_6</item>
-        <item name="android:backgroundStacked">@color/white_tag_1</item>
-        <item name="android:backgroundSplit">@color/white_tag_1</item>
-        <item name="android:titleTextStyle">@style/ActionBar.Solid.Title.Text.Style</item>
-    </style>
-    
-    <style name="ActionBar.Solid.Title.Text.Style" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <!--ToolBar 风格-->
-
-
-    <!-- Widget:ActionBar Style end -->
 
     <style name="Widget.CardContent" parent="android:Widget">
         <item name="android:paddingLeft">16dp</item>

@@ -1,6 +1,7 @@
 package com.zhaoxuan.wehome.framework.presenter.impl;
 
 import android.graphics.drawable.Drawable;
+import android.util.SparseBooleanArray;
 
 import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.IWishModel;
@@ -23,7 +24,7 @@ public class WishPresenter implements IWishPresenter,IWishDetailPresenter,Serial
     private IWishView view;
     private IWishModel model;
     private IWishDetailView detailView;
-    private ArrayList<WishDto> wishList;
+    private <Boolean,WishDto> wishList;
     private ArrayList<WishDto> finishWishList = new ArrayList<>();
     private ArrayList<WishDto> unFinishWishList = new ArrayList<>();
 
@@ -39,7 +40,8 @@ public class WishPresenter implements IWishPresenter,IWishDetailPresenter,Serial
         model.getData(new ICallBack() {
             @Override
             public <T> void callBackSuccess(T t) {
-                wishList = (ArrayList<WishDto>)t;
+                wishList = (SparseBooleanArray)t;
+                Sparse
                 for (WishDto dto:wishList) {
                     if(dto.isFinish()){
                         finishWishList.add(dto);

@@ -3,10 +3,7 @@ package com.zhaoxuan.wehome.view.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -133,13 +130,13 @@ public class SetActivity extends BaseActivity implements ISetView, View.OnClickL
      * -------------- View方法 ----------------
      **/
     @Override
-    public void updateView(UserDto user) {
-        nameText.setText(user.getName());
-        postLabel.setText(user.getPost());
-        homeIdLabel.setText(user.getHomeId());
-        homeNameLabel.setText(user.getHomeName());
-        cityLabel.setText(user.getCity());
-        accountLabel.setText(user.getAccount());
+    public void updateView(String name, String post, String homeId, String homeName, String city, String account) {
+        nameText.setText(name);
+        postLabel.setText(post);
+        homeIdLabel.setText(homeId);
+        homeNameLabel.setText(homeName);
+        cityLabel.setText(city);
+        accountLabel.setText(account);
     }
 
     @Override

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zhaoxuan.wehome">
+    package="com.zhaoxuan.wehome" >
 
     <application
         android:name=".MyApplication"
@@ -9,8 +9,8 @@
         android:label="@string/app_name"
         android:launchMode="singleTask"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.MainActivity">
+        android:theme="@style/AppTheme" >
+        <activity android:name=".view.activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,9 +23,9 @@
         <activity android:name=".view.activity.ChatActivity" />
         <activity android:name=".view.activity.JoinFamilyActivity" />
         <activity android:name=".view.activity.InviteActivity" />
-        <activity android:name=".view.activity.SetActivity"/>
-        <activity android:name=".view.activity.WishActivity"/>
-        <activity android:name=".view.activity.WishDetailActivity"/>
+        <activity android:name=".view.activity.SetActivity" />
+        <activity android:name=".view.activity.WishActivity" />
+        <activity android:name=".view.activity.WishDetailActivity" />
     </application>
 
 </manifest>

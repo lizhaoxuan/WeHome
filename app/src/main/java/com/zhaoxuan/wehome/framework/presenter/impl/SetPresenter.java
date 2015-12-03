@@ -11,6 +11,7 @@ import com.zhaoxuan.wehome.framework.view.ISetView;
 import com.zhaoxuan.wehome.support.dto.UserDto;
 
 /**
+ * 设置 presenter
  * Created by lizhaoxuan on 15/11/26.
  */
 public class SetPresenter implements ISetPresenter {
@@ -55,7 +56,7 @@ public class SetPresenter implements ISetPresenter {
             model.changePassword(args1, args2, new ICallBack() {
                 @Override
                 public <T> void callBackSuccess(T t) {
-                    view.showToast((String)t);
+                    view.showToast((String) t);
                 }
 
                 @Override
@@ -88,6 +89,7 @@ public class SetPresenter implements ISetPresenter {
             Bitmap bitmap = BitmapFactory.decodeFile(user.getHeadImagePath());
             view.updateHeadImg(bitmap);
         }
-        view.updateView(user);
+        view.updateView(user.getName(), user.getPost(), user.getHomeId(),
+                user.getHomeName(), user.getCity(), user.getAccount());
     }
 }

@@ -13,7 +13,6 @@ import com.zhaoxuan.wehome.framework.base.BaseFragment;
 import com.zhaoxuan.wehome.framework.presenter.IMenuPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.MenuPresenter;
 import com.zhaoxuan.wehome.framework.view.IMenuView;
-import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
 import com.zhaoxuan.wehome.view.activity.InviteActivity;
 import com.zhaoxuan.wehome.view.activity.SetActivity;
@@ -23,9 +22,10 @@ import com.zhaoxuan.wehome.view.widget.ImageTextLabel;
 import butterknife.Bind;
 
 /**
+ * 侧滑菜单
  * Created by lizhaoxuan on 15/11/24.
  */
-public class DrawerMenuFragment extends BaseFragment implements IMenuView,ImageTextLabel.OnLabelClickListener{
+public class DrawerMenuFragment extends BaseFragment implements IMenuView, ImageTextLabel.OnLabelClickListener {
 
     @Bind(R.id.chatMenu)
     protected ImageTextLabel chatMenu;
@@ -76,7 +76,7 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView,ImageT
         presenter.updateView();
     }
 
-    private void initView(){
+    private void initView() {
 
         chatMenu.setListener(this);
         memorydatMenu.setListener(this);
@@ -91,9 +91,9 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView,ImageT
     @Override
     public void onClick(View v) {
         int viewId = v.getId();
-        switch (viewId){
+        switch (viewId) {
             case R.id.chatMenu:
-                ((ChatActivity)getActivity()).closeDrawerLayout();
+                ((ChatActivity) getActivity()).closeDrawerLayout();
                 return;
             case R.id.memorydatMenu:
                 return;
@@ -114,9 +114,9 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView,ImageT
     }
 
     @Override
-    public void setUserData(UserDto user) {
-        nameText.setText(user.getName());
-        postText.setText(user.getPost());
-        homeNameText.setText(user.getHomeName());
+    public void setUserData(String name, String post, String homeName) {
+        nameText.setText(name);
+        postText.setText(post);
+        homeNameText.setText(homeName);
     }
 }

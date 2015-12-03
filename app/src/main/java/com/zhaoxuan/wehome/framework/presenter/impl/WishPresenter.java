@@ -1,6 +1,7 @@
 package com.zhaoxuan.wehome.framework.presenter.impl;
 
 import android.graphics.drawable.Drawable;
+import android.util.ArrayMap;
 import android.util.SparseBooleanArray;
 
 import com.zhaoxuan.wehome.framework.model.ICallBack;
@@ -24,9 +25,9 @@ public class WishPresenter implements IWishPresenter,IWishDetailPresenter,Serial
     private IWishView view;
     private IWishModel model;
     private IWishDetailView detailView;
-    private <Boolean,WishDto> wishList;
-    private ArrayList<WishDto> finishWishList = new ArrayList<>();
-    private ArrayList<WishDto> unFinishWishList = new ArrayList<>();
+    private ArrayMap<Integer,WishDto> wishList;
+    private int detailPosition;
+    private boolean isChanged = false;
 
     public WishPresenter(IWishView view) {
         this.view = view;
@@ -40,12 +41,13 @@ public class WishPresenter implements IWishPresenter,IWishDetailPresenter,Serial
         model.getData(new ICallBack() {
             @Override
             public <T> void callBackSuccess(T t) {
-                wishList = (SparseBooleanArray)t;
-                Sparse
-                for (WishDto dto:wishList) {
-                    if(dto.isFinish()){
+                ArrayList<WishDto> finishWishList = new ArrayList<>();
+                ArrayList<WishDto> unFinishWishList = new ArrayList<>();
+                wishList = (ArrayMap<Integer,WishDto>) t;
+                for (WishDto dto : wishList.values()) {
+                    if (dto.isFinish()) {
                         finishWishList.add(dto);
-                    }else{
+                    } else {
                         unFinishWishList.add(dto);
                     }
                 }
@@ -80,32 +82,38 @@ public class WishPresenter implements IWishPresenter,IWishDetailPresenter,Serial
     /*--------- 计划详情P方法 ------------*/
 
     @Override
-    public void setDetailView(IWishDetailView detailView){
+    public void setDetailView(IWishDetailView detailView,int detailPosition){
         this.detailView = detailView;
+        this.detailPosition = detailPosition;
+        isChanged = false;
     }
 
     @Override
-    public void initView(int itemId) {
-        if(detailView == null){
-            throw new NoClassDefFoundError("not fount detailView");
+    public void initView() {
+        if(detailView == null || detailPosition == -1){
+            throw new NoClassDefFoundError("not fount detailView or detailPosition");
         }else{
-
+            WishDto wishDto = wishList.get(detailPosition);
+            detailView.updateView(wishDto.getTime(),
+                    wishDto.getBuildOf(),
+                    wishDto.getFinsih(),
+                    wishDto.isFinish(),
+                    wishDto.getTitle(),
+                    wishDto.getWishContent());
         }
     }
 
     @Override
-    public void deleteWish(int position) {
-
+    public void deleteWish() {
+        wishList.remove(detailPosition);
+        detailView.finishActivity(true);
     }
 
     @Override
-    public void changeTitle(String title) {
-
-    }
-
-    @Override
-    public void changeContent(String str) {
-
+    public void changeContent(String title,String str) {
+        wishList.get(detailPosition).setTitle(title);
+        wishList.get(detailPosition).setWishContent(str);
+        isChanged = true;
     }
 
     @Override
@@ -114,7 +122,19 @@ public class WishPresenter implements IWishPresenter,IWishDetailPresenter,Serial
     }
 
     @Override
-    public void setIsFinish(boolean isFinish) {
+    public void setIsFinish() {
+        wishList.get(detailPosition).setIsFinish(!wishList.get(detailPosition).isFinish());
+        isChanged = true;
+    }
+
+    @Override
+    public void addWish(Drawable drawable, String time, String buildOf, String title, String content) {
 
     }
+
+    @Override
+    public void finishActivity() {
+        detailView.finishActivity(isChanged);
+    }
 }
+

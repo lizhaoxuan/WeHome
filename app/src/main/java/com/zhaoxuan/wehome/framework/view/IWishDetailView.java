@@ -12,4 +12,6 @@ public interface IWishDetailView {
     void updateImg(Drawable drawable);
 
     void updateFinishBtn(boolean isFinish);
+
+    void finishActivity(boolean isChange);
 }

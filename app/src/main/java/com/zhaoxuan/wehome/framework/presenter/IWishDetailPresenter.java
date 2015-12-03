@@ -10,18 +10,19 @@ import com.zhaoxuan.wehome.support.dto.WishDto;
  */
 public interface IWishDetailPresenter {
 
-    void setDetailView(IWishDetailView view);
+    void setDetailView(IWishDetailView view, int detailPosition);
 
-    void initView(int itemId);
+    void initView();
 
-    void setIsFinish(boolean isFinish);
+    void setIsFinish();
 
-    void deleteWish(int position);
+    void deleteWish();
 
-    void changeTitle(String title);
-
-    void changeContent(String str);
+    void changeContent(String title, String str);
 
     void ChangeImg(Drawable drawable);
 
+    void finishActivity();
+
+    void addWish(Drawable drawable,String time,String buildOf,String title,String content);
 }

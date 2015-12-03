@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.support.dto.WishDto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.MyViewHolder>{
     private Context context;
-    private List<WishDto> myDatas;
+    private List<WishDto> myDatas = new ArrayList<>();
     private ItemClickListener itemClickListener;
 
     public WishListAdapter(Context context){
@@ -59,10 +60,6 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.MyView
         return myDatas.get(position).getId();
     }
 
-    public WishDto getItemData(int position){
-        return myDatas.get(position);
-    }
-
     public void setItemClickListener(ItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
@@ -85,7 +82,7 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.MyView
         @Override
         public void onClick(View v) {
             if (itemClickListener != null)
-                itemClickListener.onItemClick(v, getAdapterPosition());
+                itemClickListener.onItemClick(v, (int)getItemId());
         }
     }
 

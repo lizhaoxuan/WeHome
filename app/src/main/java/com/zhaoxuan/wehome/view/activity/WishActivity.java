@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -126,7 +127,20 @@ public class WishActivity extends BaseActivity implements IWishView {
         unFinishListView.setLayoutManager(new LinearLayoutManager(this));
         unFinishListView.setAdapter(unFinishlistAdapter);
 
-        //presenter.initData();
+        finishlistAdapter.setItemClickListener(new WishListAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                WishDetailActivity.startActivity(WishActivity.this,position,(WishPresenter)presenter);
+            }
+        });
+        finishlistAdapter.setItemClickListener(new WishListAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                WishDetailActivity.startActivity(WishActivity.this,position,(WishPresenter)presenter);
+            }
+        });
+
+        presenter.initData();
     }
 
 
@@ -218,6 +232,16 @@ public class WishActivity extends BaseActivity implements IWishView {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_wish, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home){
+
+        }else if(item.getItemId() == R.id.wishAdd){
+            WishDetailActivity.startActivity(this,(WishPresenter)presenter);
+        }
         return true;
     }
 }

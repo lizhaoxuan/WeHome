@@ -26,6 +26,8 @@
         <activity android:name=".view.activity.SetActivity" />
         <activity android:name=".view.activity.WishActivity" />
         <activity android:name=".view.activity.WishDetailActivity" />
+        <activity android:name=".view.activity.MemorialDayActivity" >
+        </activity>
     </application>
 
 </manifest>

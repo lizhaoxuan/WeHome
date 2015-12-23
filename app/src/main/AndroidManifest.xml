@@ -28,6 +28,10 @@
         <activity android:name=".view.activity.WishDetailActivity" />
         <activity android:name=".view.activity.MemorialDayActivity" >
         </activity>
+        <activity android:name=".view.activity.FamilyActivity" >
+        </activity>
+        <activity android:name=".view.activity.WZoneActivity" >
+        </activity>
     </application>
 
 </manifest>

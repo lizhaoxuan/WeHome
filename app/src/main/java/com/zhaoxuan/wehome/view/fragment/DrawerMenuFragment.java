@@ -1,5 +1,6 @@
 package com.zhaoxuan.wehome.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import com.zhaoxuan.wehome.framework.presenter.impl.MenuPresenter;
 import com.zhaoxuan.wehome.framework.view.IMenuView;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
 import com.zhaoxuan.wehome.view.activity.InviteActivity;
+import com.zhaoxuan.wehome.view.activity.MemorialDayActivity;
 import com.zhaoxuan.wehome.view.activity.SetActivity;
 import com.zhaoxuan.wehome.view.activity.WishActivity;
 import com.zhaoxuan.wehome.view.widget.ImageTextLabel;
@@ -96,6 +98,7 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView, Image
                 ((ChatActivity) getActivity()).closeDrawerLayout();
                 return;
             case R.id.memorydatMenu:
+                startActivity(new Intent(getActivity(), MemorialDayActivity.class));
                 return;
             case R.id.wishMenu:
                 WishActivity.stratActivity(getActivity());

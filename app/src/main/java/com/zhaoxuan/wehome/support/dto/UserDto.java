@@ -1,9 +1,13 @@
 package com.zhaoxuan.wehome.support.dto;
 
+import com.zhaoxuan.wehome.support.entity.UserEntity;
+
+import java.io.Serializable;
+
 /**
  * Created by lizhaoxuan on 15/11/13.
  */
-public class UserDto {
+public class UserDto extends UserEntity implements Serializable{
     public static final int KEY_NAME = 1;
     public static final int KEY_POST = 2;
     public static final int KEY_HOME_NAME = 3;
@@ -12,32 +16,9 @@ public class UserDto {
     public static final int KEY_CITY = 6;
     public static final int KEY_PASSWORD = 7;
 
-    private String account;
-    private String password;
-    private String name;
-    private String homeId;
-    private String homeName;
-    private String post;
-    private boolean haveHome;
-    private String headImageUri;
-    private String headImagePath;
-    private String familyBuild;
-    private String city;
-    public UserDto() {
-    }
 
-    public UserDto(String account, String password, String name, String homeId, String homeName, String post, boolean haveHome, String headImageUri, String familyBuild, String headImagePath,String city) {
-        this.account = account;
-        this.password = password;
-        this.name = name;
-        this.homeId = homeId;
-        this.homeName = homeName;
-        this.post = post;
-        this.haveHome = haveHome;
-        this.headImageUri = headImageUri;
-        this.familyBuild = familyBuild;
-        this.headImagePath = headImagePath;
-        this.city = city;
+    public UserDto(String account, String city, String familyBuild, boolean haveHome, String headImagePath, String headImageUri, String homeId, String homeName, String name, String password, String post) {
+        super(account, city, familyBuild, haveHome, headImagePath, headImageUri, homeId, homeName, name, password, post);
     }
 
     public String getPassword() {

@@ -1,37 +1,16 @@
 package com.zhaoxuan.wehome.support.dto;
 
+import com.zhaoxuan.wehome.support.entity.WishEntity;
+
 import java.io.Serializable;
 
 /**
  * Created by lizhaoxuan on 15/11/27.
  */
-public class WishDto implements Serializable {
+public class WishDto extends WishEntity implements Serializable {
 
-    private int id;
-    private String title;
-    private String time;
-    private String wishContent;
-    private String buildName;
-    private String buildPost;
-    private String buildAccount;
-    private String imgPath;
-    private String imgUrl;
-    private boolean isFinish;
-
-    public WishDto() {
-    }
-
-    public WishDto(int id, String title, String time, String wishContent, String buildName, String buildPost, String buildAccount, String imgPath, String imgUrl, boolean isFinish) {
-        this.id = id;
-        this.title = title;
-        this.time = time;
-        this.wishContent = wishContent;
-        this.buildName = buildName;
-        this.buildPost = buildPost;
-        this.buildAccount = buildAccount;
-        this.imgPath = imgPath;
-        this.imgUrl = imgUrl;
-        this.isFinish = isFinish;
+    public WishDto(String buildAccount, String buildName, String buildPost, int id, String imgPath, String imgUrl, boolean isFinish, String time, String title, String wishContent, WishEntity data) {
+        super(buildAccount, buildName, buildPost, id, imgPath, imgUrl, isFinish, time, title, wishContent);
     }
 
     public String getImgPath() {

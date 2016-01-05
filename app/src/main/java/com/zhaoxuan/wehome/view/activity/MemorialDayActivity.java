@@ -10,6 +10,7 @@ import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -38,6 +39,8 @@ public class MemorialDayActivity extends BaseActivity {
     protected TextView wehomeDayText;
     @Bind(R.id.wehomeLabelText)
     protected TextView wehomeLabelText;
+    @Bind(R.id.recyclerView)
+    protected RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

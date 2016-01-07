@@ -11,18 +11,14 @@ public class UserEntity {
     protected String homeId;
     protected String homeName;
     protected String post;
-    protected boolean haveHome;
     protected String headImageUri;
-    protected String headImagePath;
     protected String familyBuild;
     protected String city;
 
-    public UserEntity(String account, String city, String familyBuild, boolean haveHome, String headImagePath, String headImageUri, String homeId, String homeName, String name, String password, String post) {
+    public UserEntity(String account, String city, String familyBuild, String headImageUri, String homeId, String homeName, String name, String password, String post) {
         this.account = account;
         this.city = city;
         this.familyBuild = familyBuild;
-        this.haveHome = haveHome;
-        this.headImagePath = headImagePath;
         this.headImageUri = headImageUri;
         this.homeId = homeId;
         this.homeName = homeName;
@@ -53,22 +49,6 @@ public class UserEntity {
 
     public void setFamilyBuild(String familyBuild) {
         this.familyBuild = familyBuild;
-    }
-
-    public boolean isHaveHome() {
-        return haveHome;
-    }
-
-    public void setHaveHome(boolean haveHome) {
-        this.haveHome = haveHome;
-    }
-
-    public String getHeadImagePath() {
-        return headImagePath;
-    }
-
-    public void setHeadImagePath(String headImagePath) {
-        this.headImagePath = headImagePath;
     }
 
     public String getHeadImageUri() {

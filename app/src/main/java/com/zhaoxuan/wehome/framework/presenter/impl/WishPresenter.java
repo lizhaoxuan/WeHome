@@ -2,7 +2,6 @@ package com.zhaoxuan.wehome.framework.presenter.impl;
 
 import android.graphics.drawable.Drawable;
 import android.util.ArrayMap;
-import android.util.SparseBooleanArray;
 
 import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.IWishModel;
@@ -15,7 +14,6 @@ import com.zhaoxuan.wehome.support.dto.WishDto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by lizhaoxuan on 15/11/27.
@@ -95,7 +93,7 @@ public class WishPresenter implements IWishPresenter,IWishDetailPresenter,Serial
         }else{
             WishDto wishDto = wishList.get(detailPosition);
             detailView.updateView(wishDto.getTime(),
-                    wishDto.getBuildOf(),
+                    wishDto.getFullName(),
                     wishDto.getFinsih(),
                     wishDto.isFinish(),
                     wishDto.getTitle(),

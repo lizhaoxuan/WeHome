@@ -12,16 +12,14 @@ public class WishEntity {
     protected String buildName;
     protected String buildPost;
     protected String buildAccount;
-    protected String imgPath;
     protected String imgUrl;
     protected boolean isFinish;
 
-    public WishEntity(String buildAccount, String buildName, String buildPost, int id, String imgPath, String imgUrl, boolean isFinish, String time, String title, String wishContent) {
+    public WishEntity(String buildAccount, String buildName, String buildPost, int id, String imgUrl, boolean isFinish, String time, String title, String wishContent) {
         this.buildAccount = buildAccount;
         this.buildName = buildName;
         this.buildPost = buildPost;
         this.id = id;
-        this.imgPath = imgPath;
         this.imgUrl = imgUrl;
         this.isFinish = isFinish;
         this.time = time;
@@ -59,14 +57,6 @@ public class WishEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getImgPath() {
-        return imgPath;
-    }
-
-    public void setImgPath(String imgPath) {
-        this.imgPath = imgPath;
     }
 
     public String getImgUrl() {

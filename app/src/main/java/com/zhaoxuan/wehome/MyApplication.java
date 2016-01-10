@@ -29,7 +29,7 @@ public class MyApplication extends Application {
     public UserDto getUserDto() {
         if (userDto==null){
             WLog.w(TAG,"userDto == null");
-            return new UserDto();
+            return null;
         }else{
             return userDto;
         }

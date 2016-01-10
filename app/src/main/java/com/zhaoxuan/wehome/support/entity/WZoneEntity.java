@@ -1,5 +1,7 @@
 package com.zhaoxuan.wehome.support.entity;
 
+import java.util.List;
+
 /**
  * Created by lizhaoxuan on 16/1/7.
  */

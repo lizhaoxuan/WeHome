@@ -5,6 +5,8 @@ import com.zhaoxuan.wehome.framework.presenter.IMenuPresenter;
 import com.zhaoxuan.wehome.framework.view.IMenuView;
 import com.zhaoxuan.wehome.support.dto.UserDto;
 
+import java.util.Observable;
+
 /**
  * 侧滑菜单Presenter
  * Created by lizhaoxuan on 15/11/26.

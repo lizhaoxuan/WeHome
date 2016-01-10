@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.module.log.WLog;
+import com.zhaoxuan.wehome.support.utils.ViewUtils;
 
 import butterknife.Bind;
 
@@ -46,8 +48,6 @@ public class MemorialDayActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memorial_day);
-
-
     }
 
 
@@ -73,49 +73,13 @@ public class MemorialDayActivity extends BaseActivity {
                 contentLayout.buildDrawingCache();
 
                 Bitmap bmp = contentLayout.getDrawingCache();
-                blur(bmp, titleLayout);
+                ViewUtils.CreateBlurView(bmp, titleLayout);
+                updateView();
                 return true;
             }
         });
     }
 
-    private void blur(Bitmap bkg, ViewGroup view) {
-        long startMs = System.currentTimeMillis();
-        float scaleFactor = 1;
-        float radius = 15;
-
-        Bitmap overlay = Bitmap.createBitmap((int) (view.getMeasuredWidth() / scaleFactor),
-                (int) (view.getMeasuredHeight() / scaleFactor), Bitmap.Config.ARGB_8888);
-
-        Canvas canvas = new Canvas(overlay);
-        canvas.translate(-view.getLeft() / scaleFactor, -view.getTop() / scaleFactor);
-        canvas.scale(1 / scaleFactor, 1 / scaleFactor);
-        Paint paint = new Paint();
-        paint.setFlags(Paint.FILTER_BITMAP_FLAG);
-        canvas.drawBitmap(bkg, 0, 0, paint);
-
-        paint.setColor(Color.WHITE);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(5);
-        canvas.drawRect(view.getLeft(), view.getTop(), view.getRight(), view.getBottom(), paint);
-
-
-        RenderScript rs = RenderScript.create(this);
-        Allocation overlayAlloc = Allocation.createFromBitmap(
-                rs, overlay);
-        ScriptIntrinsicBlur blur = ScriptIntrinsicBlur.create(
-                rs, Element.U8_4(rs));
-        blur.setInput(overlayAlloc);
-        blur.setRadius(radius);
-        blur.forEach(overlayAlloc);
-        overlayAlloc.copyTo(overlay);
-        rs.destroy();
-
-        view.setBackground(new BitmapDrawable(getResources(), overlay));
-        //模糊化结束后，才可以初始化布局
-        updateView();
-        Log.i("TAG", System.currentTimeMillis() - startMs + "ms");
-    }
 
 
 }

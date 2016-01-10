@@ -85,6 +85,7 @@ public class WishActivity extends BaseActivity implements IWishView {
     protected void onResume() {
         super.onResume();
         updateData();
+
     }
 
     @Override

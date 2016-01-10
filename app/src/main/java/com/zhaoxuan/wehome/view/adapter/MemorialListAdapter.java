@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zhaoxuan.wehome.R;
+import com.zhaoxuan.wehome.support.dto.MemorialDayDto;
 import com.zhaoxuan.wehome.support.dto.WishDto;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import java.util.List;
 public class MemorialListAdapter extends RecyclerView.Adapter<MemorialListAdapter.MyViewHolder>{
 
     private Context context;
-    private List<WishDto> myDatas = new ArrayList<>();
+    private List<MemorialDayDto> myDatas = new ArrayList<>();
     private ItemClickListener itemClickListener;
 
     public MemorialListAdapter(Context context){
@@ -44,10 +45,8 @@ public class MemorialListAdapter extends RecyclerView.Adapter<MemorialListAdapte
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position)
     {
-        holder.titleText.setText(myDatas.get(position).getTitle());
-        holder.dayText.setText(myDatas.get(position).getTime());
-        //图片加载暂缺
-
+        holder.titleText.setText(myDatas.get(position).getNameStr());
+        holder.dayText.setText(myDatas.get(position).getDayStr());
     }
 
     @Override

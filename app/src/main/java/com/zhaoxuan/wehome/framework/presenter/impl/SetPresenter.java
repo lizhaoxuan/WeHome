@@ -85,10 +85,10 @@ public class SetPresenter implements ISetPresenter {
     @Override
     public void updateView() {
         UserDto user = model.getUserDto();
-        if (!user.getHeadImagePath().equals("")) {
-            Bitmap bitmap = BitmapFactory.decodeFile(user.getHeadImagePath());
-            view.updateHeadImg(bitmap);
-        }
+//        if (!user.getHeadImagePath().equals("")) {
+//            Bitmap bitmap = BitmapFactory.decodeFile(user.getHeadImagePath());
+//            view.updateHeadImg(bitmap);
+//        }
         view.updateView(user.getName(), user.getPost(), user.getHomeId(),
                 user.getHomeName(), user.getCity(), user.getAccount());
     }

@@ -5,12 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.support.dto.MemorialDayDto;
-import com.zhaoxuan.wehome.support.dto.WishDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,46 +16,44 @@ import java.util.List;
 /**
  * Created by lizhaoxuan on 16/1/5.
  */
-public class MemorialListAdapter extends RecyclerView.Adapter<MemorialListAdapter.MyViewHolder>{
+public class MemorialListAdapter extends RecyclerView.Adapter<MemorialListAdapter.MyViewHolder> {
 
     private Context context;
     private List<MemorialDayDto> myDatas = new ArrayList<>();
     private ItemClickListener itemClickListener;
 
-    public MemorialListAdapter(Context context){
+    public MemorialListAdapter(Context context) {
         this.context = context;
 
     }
 
-    public void setDatas(List myDatas){
+    public void setDatas(List myDatas) {
         this.myDatas = myDatas;
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-    {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
                 context).inflate(R.layout.item_memorial, parent,
-                false),itemClickListener);
+                false), itemClickListener);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position)
-    {
+    public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.titleText.setText(myDatas.get(position).getNameStr());
         holder.dayText.setText(myDatas.get(position).getDayStr());
     }
 
     @Override
-    public int getItemCount()
-    {
-        return myDatas.size();
+    public int getItemCount() {
+
+        return myDatas == null ? 0 : myDatas.size();
     }
 
     @Override
     public long getItemId(int position) {
-        return myDatas.get(position).getId();
+        return myDatas == null ? 0 : myDatas.get(position).getId();
     }
 
     public void setItemClickListener(ItemClickListener itemClickListener) {
@@ -80,7 +76,7 @@ public class MemorialListAdapter extends RecyclerView.Adapter<MemorialListAdapte
         @Override
         public void onClick(View v) {
             if (itemClickListener != null)
-                itemClickListener.onItemClick(v, (int)getItemId());
+                itemClickListener.onItemClick(v, (int) getItemId());
         }
     }
 

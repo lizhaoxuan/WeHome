@@ -1,6 +1,6 @@
 package com.zhaoxuan.wehome.framework.view;
 
-import com.zhaoxuan.wehome.support.dto.WishDto;
+import com.zhaoxuan.wehome.support.dto.MemorialDayDto;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface IMemorialDayView {
 
-    void initData(List<WishDto> unFinishList,List<WishDto> finishList);
+    void initData(List<MemorialDayDto> topList, List<MemorialDayDto> dataList);
 
     void updateData();
 

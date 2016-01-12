@@ -11,7 +11,7 @@
         <item name="colorPrimary">@color/red_tag_6</item>
         <item name="colorPrimaryDark">@color/red_tag_4</item>
         <item name="android:textColorPrimary">@color/white_tag_1</item>
-        <item name="android:colorControlNormal">@color/white_tag_1</item>
     </style>
+
 
 </resources>

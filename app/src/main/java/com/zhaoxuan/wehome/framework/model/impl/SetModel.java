@@ -11,13 +11,13 @@ import com.zhaoxuan.wehome.support.dto.UserDto;
 public class SetModel implements ISetModel{
 
     @Override
-    public void setValue(int key, String value, ICallBack callBack) {
+    public void setValue(int key, String value, ICallBack<String> callBack) {
         MyApplication.getInstance().getUserDto().setValue(key,value);
         callBack.callBackSuccess("修改成功啦~");
     }
 
     @Override
-    public void changePassword(String oldPassword, String newPassword,ICallBack callBack) {
+    public void changePassword(String oldPassword, String newPassword,ICallBack<String> callBack) {
         if (!MyApplication.getInstance().getUserDto().getPassword().equals(oldPassword)){
             callBack.callBackError("旧密码不对哦~请重新输入");
         }else{
@@ -27,8 +27,7 @@ public class SetModel implements ISetModel{
     }
 
     @Override
-    public void setHeadImg(String path, ICallBack callBack) {
-        MyApplication.getInstance().getUserDto().setHeadImagePath(path);
+    public void setHeadImg(String path, ICallBack<String> callBack) {
         callBack.callBackSuccess("修改成功啦~");
     }
 

@@ -11,11 +11,11 @@ import com.zhaoxuan.wehome.support.dto.UserDto;
 public class LoginModel implements ILoginModel {
 
     @Override
-    public void login(String account ,String password,ICallBack callBack) {
+    public void login(String account, String password, ICallBack<UserDto> callBack) {
         //模拟网络请求
 
-        UserDto userDto = new UserDto("690770333@qq.com", "1234567", "卡卡",
-                "690770333@qq.com", "吉祥三宝", "爸爸", true, "", "2014-10-10", "","");
+        UserDto userDto = new UserDto("690770333@qq.com", "上海", "2016-1-1", "",
+                "690770333@qq.com", "吉祥三宝", "卡卡", "123456", "爸爸");
 
         MyApplication.getInstance().setUserDto(userDto);
         //保存到 share 中
@@ -25,16 +25,16 @@ public class LoginModel implements ILoginModel {
     }
 
     @Override
-    public void forgetPassword(String account, ICallBack callBack) {
+    public void forgetPassword(String account, ICallBack<String> callBack) {
 
         callBack.callBackError("这个账号不存在");
 
     }
 
     @Override
-    public void register(String account, String password, ICallBack callBack) {
-        UserDto userDto = new UserDto("1005454329@qq.com", "1234567", "newUser",
-                "", "", "", false, "", "", "","");
+    public void register(String account, String password, ICallBack<UserDto> callBack) {
+        UserDto userDto = new UserDto("690770333@qq.com", "上海", "", "",
+                "", "", "卡卡", "123456", "爸爸");
 
         MyApplication.getInstance().setUserDto(userDto);
 

@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                startActivity(new Intent(MainActivity.this, MemorialDayDetailActivity.class));
                 MainActivity.this.finish();
                 overridePendingTransition(R.anim.activity_enter,R.anim.activity_exit);
             }

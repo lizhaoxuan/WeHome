@@ -48,10 +48,10 @@ public class LoginPresenter implements ILoginPresenter, IForgetPresenter, IRegis
         if (account.equals("") || password.equals("")) {
             loginView.showToast("账号或密码不能为空哦~");
         } else {
-            model.login(account, password, new ICallBack() {
+            model.login(account, password, new ICallBack<UserDto>() {
                 @Override
-                public <T> void callBackSuccess(T t) {
-                    if (((UserDto) t).isHaveHome()) {
+                public void callBackSuccess(UserDto t) {
+                    if (t.isHaveHome()) {
                         loginView.loginSuccess(ChatActivity.class);
                     } else {
                         loginView.loginSuccess(JoinFamilyActivity.class);
@@ -86,10 +86,10 @@ public class LoginPresenter implements ILoginPresenter, IForgetPresenter, IRegis
         if(account.equals("")){
             forgetView.showToast("邮箱不能为空哦~");
         }else{
-            model.forgetPassword(account, new ICallBack() {
+            model.forgetPassword(account, new ICallBack<String>() {
                 @Override
-                public <T> void callBackSuccess(T t) {
-                    forgetView.sendSuccess((String)t);
+                public void callBackSuccess(String t) {
+                    forgetView.sendSuccess(t);
                 }
 
                 @Override
@@ -108,9 +108,9 @@ public class LoginPresenter implements ILoginPresenter, IForgetPresenter, IRegis
         }else if(password.equals(passwordAgain)){
             registerView.showToast("两次密码要相同哦~");
         }else{
-            model.register(account, password, new ICallBack() {
+            model.register(account, password, new ICallBack<UserDto>() {
                 @Override
-                public <T> void callBackSuccess(T t) {
+                public void callBackSuccess(UserDto t) {
                     registerView.sendSuccess();
                 }
 

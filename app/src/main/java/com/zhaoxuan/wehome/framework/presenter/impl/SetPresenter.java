@@ -29,10 +29,10 @@ public class SetPresenter implements ISetPresenter {
             view.showToast("值不能为空哦~");
         } else {
             view.hideDialog();
-            model.setValue(key, value, new ICallBack() {
+            model.setValue(key, value, new ICallBack<String>() {
                 @Override
-                public <T> void callBackSuccess(T t) {
-                    view.showToast((String) t);
+                public void callBackSuccess(String t) {
+                    view.showToast(t);
                     updateView();
                 }
 
@@ -53,10 +53,10 @@ public class SetPresenter implements ISetPresenter {
             view.showToast("两次密码输入不一样，再检查一下吧");
         } else {
             view.hideDialog();
-            model.changePassword(args1, args2, new ICallBack() {
+            model.changePassword(args1, args2, new ICallBack<String>() {
                 @Override
-                public <T> void callBackSuccess(T t) {
-                    view.showToast((String) t);
+                public void callBackSuccess(String t) {
+                    view.showToast(t);
                 }
 
                 @Override
@@ -69,10 +69,10 @@ public class SetPresenter implements ISetPresenter {
 
     @Override
     public void setHeadImg(String path) {
-        model.setHeadImg(path, new ICallBack() {
+        model.setHeadImg(path, new ICallBack<String>() {
             @Override
-            public <T> void callBackSuccess(T t) {
-                view.showToast((String) t);
+            public void callBackSuccess(String t) {
+                view.showToast(t);
             }
 
             @Override

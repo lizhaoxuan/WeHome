@@ -7,11 +7,11 @@ import com.zhaoxuan.wehome.support.dto.UserDto;
  */
 public interface ISetModel {
 
-    void setValue(int key,String value,ICallBack callBack);
+    void setValue(int key,String value,ICallBack<String> callBack);
 
-    void changePassword(String oldPassword,String newPassword,ICallBack callBack);
+    void changePassword(String oldPassword,String newPassword,ICallBack<String> callBack);
 
-    void setHeadImg(String path,ICallBack callBack);
+    void setHeadImg(String path,ICallBack<String> callBack);
 
     UserDto getUserDto();
 

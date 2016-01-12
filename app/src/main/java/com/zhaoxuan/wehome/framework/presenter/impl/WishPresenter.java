@@ -36,12 +36,12 @@ public class WishPresenter implements IWishPresenter,IWishDetailPresenter,Serial
     @Override
     public void initData() {
         view.showLoading();
-        model.getData(new ICallBack() {
+        model.getData(new ICallBack<ArrayMap<Integer,WishDto>>() {
             @Override
-            public <T> void callBackSuccess(T t) {
+            public void callBackSuccess(ArrayMap<Integer,WishDto> t) {
                 ArrayList<WishDto> finishWishList = new ArrayList<>();
                 ArrayList<WishDto> unFinishWishList = new ArrayList<>();
-                wishList = (ArrayMap<Integer,WishDto>) t;
+                wishList = t;
                 for (WishDto dto : wishList.values()) {
                     if (dto.isFinish()) {
                         finishWishList.add(dto);

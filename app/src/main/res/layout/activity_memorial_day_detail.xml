@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/contentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_memorial"
     android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
     tools:context="com.zhaoxuan.wehome.view.activity.MemorialDayDetailActivity">
 
     <LinearLayout
@@ -13,9 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:orientation="vertical"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp">
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -129,45 +130,28 @@
                     android:layout_height="wrap_content"
                     android:checked="true"
 
-                    android:text="是"/>
+                    android:text="是" />
 
                 <RadioButton
                     android:id="@+id/falseBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="否"/>
+                    android:text="否" />
 
             </RadioGroup>
-
-
-            <!--<com.rey.material.widget.RadioButton-->
-            <!--android:id="@+id/switches_rb1"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="是"-->
-            <!--android:checked="true"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:shadowColor="@color/red_tag_6"-->
-            <!--android:textColor="@color/black_tag_3"-->
-            <!--android:layout_marginRight="10dp"-->
-            <!--android:layout_toLeftOf="@+id/switches_rb2"/>-->
-
-            <!--<com.rey.material.widget.RadioButton-->
-            <!--android:id="@+id/switches_rb2"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="否"-->
-            <!--android:checked="false"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:textColor="@color/black_tag_3"-->
-            <!--android:layout_marginRight="15dp"-->
-            <!--android:layout_alignParentRight="true"/>-->
         </RelativeLayout>
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <com.zhaoxuan.wehome.view.widget.softwidget.SRoundRect_Button
+        android:id="@+id/enterBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:text="确定"
+        android:textColor="@color/white_tag_1"
+        android:textSize="20sp"
+        app:backgroundColor="@color/red_tag_6" />
 
-</LinearLayout>
+</RelativeLayout>

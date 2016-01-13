@@ -17,27 +17,30 @@ import com.zhaoxuan.wehome.view.widget.softwidget.PaintBox.PaintBox;
 public class SRoundRect_LinearLayout extends LinearLayout {
     private int backgroundColor;
     private DrawingCanvas localDrawingCanvas;
+
     public SRoundRect_LinearLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init(context,attrs,defStyle);
+        init(context, attrs, defStyle);
     }
 
     public SRoundRect_LinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context,attrs,0);
+        init(context, attrs, 0);
     }
 
     public SRoundRect_LinearLayout(Context context) {
         super(context);
-        init(context,null,0);
+        init(context, null, 0);
     }
-    private void init(Context context, AttributeSet attrs, int defStyle){
-        if(null == attrs)
-            return ;
+
+    private void init(Context context, AttributeSet attrs, int defStyle) {
+        if (null == attrs)
+            return;
         setWillNotDraw(false);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SRoundRect_LinearLayout);
-        backgroundColor = a.getColor(R.styleable.SRoundRect_LinearLayout_bgcolor,0X3f000000);
+        backgroundColor = a.getColor(R.styleable.SRoundRect_LinearLayout_bgcolor, 0X3f000000);
 
+        a.recycle();
         //backgroundColor = getResources().getColor(R.color.white);
     }
 
@@ -46,11 +49,11 @@ public class SRoundRect_LinearLayout extends LinearLayout {
         float width = this.getWidth();
         float height = this.getHeight();
 
-        if(localDrawingCanvas==null){
-            localDrawingCanvas = DrawingCanvas.instance(width,height);
-            PaintBox.drawRoundRect(localDrawingCanvas, backgroundColor, 40,true);
+        if (localDrawingCanvas == null) {
+            localDrawingCanvas = DrawingCanvas.instance(width, height);
+            PaintBox.drawRoundRect(localDrawingCanvas, backgroundColor, 40, true);
         }
-        canvas.drawBitmap(localDrawingCanvas.getOutput(),0,0,null);
+        canvas.drawBitmap(localDrawingCanvas.getOutput(), 0, 0, null);
     }
 }
 

@@ -3,7 +3,9 @@ package com.zhaoxuan.wehome.view.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.text.InputType;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -78,5 +80,10 @@ public class ImageEditText extends LinearLayout {
         return editText.getText().toString();
     }
 
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+    }
 }
 

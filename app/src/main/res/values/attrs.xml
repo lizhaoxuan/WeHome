@@ -9,6 +9,7 @@
         <attr name="android:textColor" />
         <attr name="android:textSize" />
         <attr name="android:alpha"/>
+        <attr name="android:background"/>
         <attr name="backgroundPic" format="reference"/>
         <attr name="backgroundColor" format="color"/>
         <attr name="border" format="boolean"/>

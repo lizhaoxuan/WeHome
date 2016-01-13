@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.Button;
 
@@ -65,7 +66,8 @@ public class SRoundRect_Button extends Button {
         textColor = a.getColor(R.styleable.SRoundRect_Button_android_textColor, resources.getColor(R.color.white_tag_1));
         textSize = a.getDimensionPixelSize(R.styleable.SRoundRect_Button_android_textSize, 20);
         backgroundColor = a.getColor(R.styleable.SRoundRect_Button_backgroundColor, 0Xaf0308);
-
+        
+        a.recycle();
 
     }
 

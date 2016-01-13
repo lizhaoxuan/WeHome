@@ -44,7 +44,7 @@
                 android:layout_alignBottom="@id/nameText"
                 android:layout_alignTop="@id/nameText"
                 android:layout_toEndOf="@id/nameText"
-                android:src="@drawable/ic_change" />
+                android:src="@drawable/ico_action_change" />
 
         </RelativeLayout>
 
@@ -60,32 +60,38 @@
             <com.zhaoxuan.wehome.view.widget.ValueSetLabel
                 android:id="@+id/postLabel"
                 style="@style/CustomWeight.ValueSetLabel"
-                app:SetValueKeyText="家庭关系"/>
+                app:setValueKeyIcon="@drawable/ico_action_post"
+                app:setValueKeyText="家庭关系"/>
 
             <com.zhaoxuan.wehome.view.widget.ValueSetLabel
                 android:id="@+id/homeNameLabel"
                 style="@style/CustomWeight.ValueSetLabel"
-                app:SetValueKeyText="微家名"/>
+                app:setValueKeyIcon="@drawable/ico_action_home"
+                app:setValueKeyText="微家名"/>
 
             <com.zhaoxuan.wehome.view.widget.ValueSetLabel
                 android:id="@+id/homeIdLabel"
                 style="@style/CustomWeight.ValueSetLabel"
-                app:SetValueKeyText="微家账号"/>
+                app:setValueKeyIcon="@drawable/ico_action_home"
+                app:setValueKeyText="微家账号"/>
 
             <com.zhaoxuan.wehome.view.widget.ValueSetLabel
                 android:id="@+id/accountLabel"
                 style="@style/CustomWeight.ValueSetLabel"
-                app:SetValueKeyText="账号"/>
+                app:setValueKeyIcon="@drawable/ico_action_user"
+                app:setValueKeyText="账号"/>
 
             <com.zhaoxuan.wehome.view.widget.ValueSetLabel
                 android:id="@+id/cityLabel"
                 style="@style/CustomWeight.ValueSetLabel"
-                app:SetValueKeyText="城市"/>
+                app:setValueKeyIcon="@drawable/ico_action_city"
+                app:setValueKeyText="城市"/>
             <com.zhaoxuan.wehome.view.widget.ValueSetLabel
                 android:id="@+id/passwordLabel"
                 style="@style/CustomWeight.ValueSetLabel"
-                app:SetValueKeyText="密码"
-                app:SetValueValueText="修改"/>
+                app:setValueKeyIcon="@drawable/ico_action_passwd"
+                app:setValueKeyText="密码"
+                app:setValueValueText="修改"/>
 
             <com.zhaoxuan.wehome.view.widget.softwidget.SRoundRect_Button
                 android:id="@+id/logoutBtn"

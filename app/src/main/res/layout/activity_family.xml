@@ -14,9 +14,9 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_action_group" />
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ico_action_group" />
 
         <TextView
             android:layout_width="wrap_content"

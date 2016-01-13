@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_rounded_rect_translucent"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/blue_tag_30"
+        android:textSize="16sp"
+        android:text="咔咔 | 爸爸" />
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/gray_tag_7"
+        android:textSize="14sp"
+        android:text="5分钟前"/>
+
+    <TextView
+        android:id="@+id/msgText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameText"
+        android:textColor="@color/black_tag_3"
+        android:textSize="15sp"
+        android:text="今天天气不错哦，我们出去玩啦!!"
+        android:layout_marginTop="10dp"/>
+
+    <GridView
+        android:id="@+id/picLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/msgText"
+        android:layout_marginTop="10dp">
+
+        
+
+    </GridView>
+    
+    <View
+        android:id="@+id/lineView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/picLayout"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray_tag_7"/>
+
+    <ImageView
+        android:id="@+id/holdImg"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_below="@id/lineView"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/ico_action_hold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lineView"
+        android:layout_toRightOf="@id/holdImg"
+        android:layout_alignTop="@id/holdImg"
+        android:layout_alignBaseline="@id/holdImg"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/black_tag_3"
+        android:text="抱抱"/>
+    
+    <TextView
+        android:id="@+id/commentText"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lineView"
+        android:textColor="@color/black_tag_3"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="20dp"
+        android:text="评论"/>
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_below="@id/lineView"
+        android:layout_toLeftOf="@id/commentText"
+        android:layout_marginRight="5dp"
+        android:layout_alignTop="@id/holdImg"
+        android:background="@drawable/ico_action_comment"/>
+
+</RelativeLayout>

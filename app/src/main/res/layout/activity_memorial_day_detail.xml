@@ -23,20 +23,21 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_rounded_border_rect"
             android:gravity="center_vertical"
-            android:padding="5dp">
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/titleImg"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/ic_action_view_as_list" />
+                android:background="@drawable/ic_action_title" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
                 android:layout_toEndOf="@id/titleImg"
                 android:text="名称"
                 android:textColor="@color/black_tag_3"
@@ -60,20 +61,21 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_rounded_border_rect"
             android:gravity="center_vertical"
-            android:padding="5dp">
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/timeImg"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/ic_action_go_to_today" />
+                android:background="@drawable/ico_action_date" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
                 android:layout_toEndOf="@id/timeImg"
                 android:text="日期"
                 android:textColor="@color/black_tag_3"
@@ -96,21 +98,22 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_rounded_border_rect"
             android:gravity="center_vertical"
-            android:padding="5dp">
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/loopImg"
-                android:layout_width="40dp"
-                android:layout_height="35dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/ic_action_replay" />
+                android:background="@drawable/ico_action_loop" />
 
             <TextView
                 android:id="@+id/loopText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
                 android:layout_toEndOf="@id/loopImg"
                 android:text="重复"
                 android:textColor="@color/black_tag_3"

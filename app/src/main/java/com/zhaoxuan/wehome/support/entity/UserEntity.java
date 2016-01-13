@@ -5,6 +5,7 @@ package com.zhaoxuan.wehome.support.entity;
  */
 public class UserEntity {
 
+    protected int id;
     protected String account;
     protected String password;
     protected String name;
@@ -15,16 +16,25 @@ public class UserEntity {
     protected String familyBuild;
     protected String city;
 
-    public UserEntity(String account, String city, String familyBuild, String headImageUri, String homeId, String homeName, String name, String password, String post) {
+    public UserEntity(String account, String city, String familyBuild, String headImageUri, String homeId, String homeName, int id, String name, String password, String post) {
         this.account = account;
         this.city = city;
         this.familyBuild = familyBuild;
         this.headImageUri = headImageUri;
         this.homeId = homeId;
         this.homeName = homeName;
+        this.id = id;
         this.name = name;
         this.password = password;
         this.post = post;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getAccount() {

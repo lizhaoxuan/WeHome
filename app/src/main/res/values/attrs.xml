@@ -37,10 +37,10 @@
     </declare-styleable>
     <!-- ValueSetLabel 设置界面属性设置item-->
     <declare-styleable name="ValueSetLabel">
-        <attr name="SetValueKeyIcon" format="reference"/>
-        <attr name="SetValueKeyText" format="string"/>
-        <attr name="SetValueValueIcon" format="reference"/>
-        <attr name="SetValueValueText" format="string"/>
+        <attr name="setValueKeyIcon" format="reference"/>
+        <attr name="setValueKeyText" format="string"/>
+        <attr name="setValueValueIcon" format="reference"/>
+        <attr name="setValueValueText" format="string"/>
     </declare-styleable>
 
 

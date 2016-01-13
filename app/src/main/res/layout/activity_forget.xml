@@ -15,6 +15,7 @@
             android:id="@+id/accountEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:src="@drawable/ico_action_forgot_passwd"
             android:hint="邮箱" />
 
     </RelativeLayout>

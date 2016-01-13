@@ -17,8 +17,8 @@ public class UserDto extends UserEntity implements Serializable{
     public static final int KEY_PASSWORD = 7;
 
 
-    public UserDto(String account, String city, String familyBuild, String headImageUri, String homeId, String homeName, String name, String password, String post) {
-        super(account, city, familyBuild, headImageUri, homeId, homeName, name, password, post);
+    public UserDto(String account, String city, String familyBuild, String headImageUri, String homeId, String homeName, int id, String name, String password, String post) {
+        super(account, city, familyBuild, headImageUri, homeId, homeName, id, name, password, post);
     }
 
     public boolean isHaveHome() {

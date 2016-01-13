@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -47,13 +46,13 @@ public class ValueSetLabel extends RelativeLayout {
         valueText = (TextView) findViewById(R.id.valueText);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ValueSetLabel);
-        CharSequence keyStr = a.getText(R.styleable.ValueSetLabel_SetValueKeyText);
+        CharSequence keyStr = a.getText(R.styleable.ValueSetLabel_setValueKeyText);
         if (keyStr != null) keyText.setText(keyStr);
-        Drawable keyDrawable = a.getDrawable(R.styleable.ValueSetLabel_SetValueKeyIcon);
+        Drawable keyDrawable = a.getDrawable(R.styleable.ValueSetLabel_setValueKeyIcon);
         if (keyDrawable != null) keyIcon.setImageDrawable(keyDrawable);
-        CharSequence valueStr = a.getText(R.styleable.ValueSetLabel_SetValueValueText);
+        CharSequence valueStr = a.getText(R.styleable.ValueSetLabel_setValueValueText);
         if (valueStr != null) valueText.setText(valueStr);
-        Drawable valueDrawable = a.getDrawable(R.styleable.ValueSetLabel_SetValueValueIcon);
+        Drawable valueDrawable = a.getDrawable(R.styleable.ValueSetLabel_setValueValueIcon);
         if (valueDrawable != null) valueIcon.setImageDrawable(valueDrawable);
 
         a.recycle();

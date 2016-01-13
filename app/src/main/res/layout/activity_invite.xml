@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="您家人的电话号码"
+            android:src="@drawable/ico_action_phone"
             android:paddingBottom="25dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"

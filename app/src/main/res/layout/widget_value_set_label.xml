@@ -33,7 +33,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@id/keyText"
         android:layout_alignBottom="@id/keyText"
-        android:src="@drawable/ic_change"/>
+        android:src="@drawable/ico_action_change"/>
 
     <TextView
         android:id="@+id/valueText"

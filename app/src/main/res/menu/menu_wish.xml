@@ -7,7 +7,7 @@
     <item android:id="@+id/wishAdd"
         android:title="action_edit"
         android:orderInCategory="80"
-        android:icon="@drawable/ic_add"
+        android:icon="@drawable/ico_action_add"
         app:showAsAction="always" />
 
 </menu>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_rounded_rect_translucent"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="咔咔 | 爸爸"
+        android:textColor="@color/blue_tag_30"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="5分钟前"
+        android:textColor="@color/gray_tag_7"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/msgText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameText"
+        android:layout_marginTop="10dp"
+        android:text="今天天气不错哦，我们出去玩啦!!"
+        android:textColor="@color/black_tag_3"
+        android:textSize="15sp" />
+
+    <GridView
+        android:id="@+id/picLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/msgText"
+        android:layout_marginTop="10dp">
+
+
+    </GridView>
+
+    <View
+        android:id="@+id/lineView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/picLayout"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray_tag_7" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/commentEdit"
+        android:layout_below="@id/lineView"
+        android:layout_marginTop="10dp"
+        android:dividerHeight="10dp" />
+
+    <EditText
+        android:id="@+id/commentEdit"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/sendBtn"
+        android:background="@drawable/bg_rounded_border_rect"
+        android:hint="点击这里评论"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="15sp" />
+
+    <com.zhaoxuan.wehome.view.widget.softwidget.SRoundRect_Button
+        android:id="@+id/sendBtn"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="登录"
+        android:textColor="@color/white_tag_1"
+        android:textSize="15sp"
+        app:backgroundColor="@color/red_tag_6" />
+
+
+</RelativeLayout>

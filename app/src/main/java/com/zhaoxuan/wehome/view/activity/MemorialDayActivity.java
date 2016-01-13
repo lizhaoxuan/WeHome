@@ -51,6 +51,7 @@ public class MemorialDayActivity extends BaseActivity implements IMemorialDayVie
 
     @Override
     protected void initView() {
+        setTitle("纪念日");
         applyBlur();
         listAdapter = new MemorialListAdapter(this);
     }

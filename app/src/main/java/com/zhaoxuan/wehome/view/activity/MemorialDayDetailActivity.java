@@ -26,7 +26,7 @@ public class MemorialDayDetailActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        setTitle("纪念日详情");
     }
 
     protected void onClick() {

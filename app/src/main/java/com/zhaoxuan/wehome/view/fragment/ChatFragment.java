@@ -1,5 +1,6 @@
 package com.zhaoxuan.wehome.view.fragment;
 
+import android.app.usage.NetworkStatsManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -43,12 +44,11 @@ public class ChatFragment extends BaseFragment{
         activity = (ChatActivity)getActivity();
         toolbar = (Toolbar)view.findViewById(R.id.toolbar);
         activity.setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_menu);
+        toolbar.setNavigationIcon(R.drawable.ico_action_menu);
 
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout)view.findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle("Love+");
-
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -4,5 +4,5 @@
     <item android:drawable="@drawable/bg_rounded_rect" />
 
     <!-- 触摸模式下单击时的背景图片-->
-    <item android:state_pressed="true"   android:drawable="@drawable/bg_rounded_rect_press" />
+    <item android:drawable="@drawable/bg_rounded_rect_press" android:state_pressed="true" />
 </selector>

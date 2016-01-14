@@ -5,7 +5,7 @@ package com.zhaoxuan.wehome.framework.view;
  */
 public interface IMenuView {
 
-    void setUserData(String name, String post, String homeName);
+    void setUserData(String name, String homeName);
 
 
 }

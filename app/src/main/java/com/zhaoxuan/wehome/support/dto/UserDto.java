@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Created by lizhaoxuan on 15/11/13.
  */
-public class UserDto extends UserEntity implements Serializable{
+public class UserDto extends UserEntity implements Serializable {
     public static final int KEY_NAME = 1;
     public static final int KEY_POST = 2;
     public static final int KEY_HOME_NAME = 3;
@@ -19,6 +19,10 @@ public class UserDto extends UserEntity implements Serializable{
 
     public UserDto(String account, String city, String familyBuild, String headImageUri, String homeId, String homeName, int id, String name, String password, String post) {
         super(account, city, familyBuild, headImageUri, homeId, homeName, id, name, password, post);
+    }
+
+    public String getFullName() {
+        return name + " | " + post;
     }
 
     public boolean isHaveHome() {

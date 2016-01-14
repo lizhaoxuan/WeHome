@@ -47,8 +47,6 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView, Image
     protected ImageView headImg;
     @Bind(R.id.nameText)
     protected TextView nameText;
-    @Bind(R.id.postText)
-    protected TextView postText;
     @Bind(R.id.homeNameText)
     protected TextView homeNameText;
 
@@ -117,9 +115,8 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView, Image
     }
 
     @Override
-    public void setUserData(String name, String post, String homeName) {
+    public void setUserData(String name, String homeName) {
         nameText.setText(name);
-        postText.setText(post);
         homeNameText.setText(homeName);
     }
 }

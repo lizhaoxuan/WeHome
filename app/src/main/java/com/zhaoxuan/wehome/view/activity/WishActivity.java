@@ -77,7 +77,6 @@ public class WishActivity extends BaseActivity implements IWishView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wish);
-
         presenter = new WishPresenter(this);
     }
 

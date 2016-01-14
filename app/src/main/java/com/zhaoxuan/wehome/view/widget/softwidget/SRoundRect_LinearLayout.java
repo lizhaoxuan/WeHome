@@ -39,9 +39,7 @@ public class SRoundRect_LinearLayout extends LinearLayout {
         setWillNotDraw(false);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SRoundRect_LinearLayout);
         backgroundColor = a.getColor(R.styleable.SRoundRect_LinearLayout_bgcolor, 0X3f000000);
-
         a.recycle();
-        //backgroundColor = getResources().getColor(R.color.white);
     }
 
     @Override

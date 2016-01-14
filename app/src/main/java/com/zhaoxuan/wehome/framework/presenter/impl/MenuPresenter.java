@@ -21,6 +21,6 @@ public class MenuPresenter implements IMenuPresenter {
     @Override
     public void updateView() {
         UserDto user = MyApplication.getInstance().getUserDto();
-        view.setUserData(user.getName(), user.getPost(), user.getHomeName());
+        view.setUserData(user.getFullName(), user.getHomeName());
     }
 }

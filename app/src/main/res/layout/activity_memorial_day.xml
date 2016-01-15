@@ -1,102 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/contentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/bg_memorial"
     android:padding="16dp">
 
-    <RelativeLayout
-        android:id="@+id/titleLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="20dp">
-
-        <TextView
-            android:id="@+id/familyTitleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
-            tools:text="我们的家已经:"
-            android:textColor="@color/black_tag_3"
-            android:textSize="21sp" />
-
-        <TextView
-            android:id="@+id/familyDayText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toStartOf="@+id/familyLabelText"
-            android:layout_alignBaseline="@id/familyTitleText"
-            android:layout_marginRight="10dp"
-            tools:text="156"
-            android:textStyle="bold"
-            android:textColor="@color/black_tag_3"
-            android:textSize="33sp" />
-
-        <TextView
-            android:id="@+id/familyLabelText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@id/familyTitleText"
-            android:layout_alignBottom="@id/familyTitleText"
-            android:layout_marginEnd="15dp"
-            tools:text="天"
-            android:textColor="@color/black_tag_3"
-            android:textSize="21sp" />
-
-        <TextView
-            android:id="@+id/wehomeTitleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/familyTitleText"
-            android:layout_alignStart="@id/familyTitleText"
-            android:layout_marginTop="20dp"
-            tools:text="微家创建已经:"
-            android:textColor="@color/black_tag_3"
-            android:textSize="21sp" />
-
-        <TextView
-            android:id="@+id/wehomeDayText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/familyDayText"
-            android:layout_alignBaseline="@id/wehomeTitleText"
-            android:layout_alignEnd="@id/familyDayText"
-            tools:text="234"
-            android:textColor="@color/black_tag_3"
-            android:textSize="21sp" />
-
-        <TextView
-            android:id="@+id/wehomeLabelText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignBottom="@id/wehomeTitleText"
-            android:layout_marginEnd="15dp"
-            tools:text="天"
-            android:textColor="@color/black_tag_3"
-            android:textSize="21sp" />
-    </RelativeLayout>
-
     <LinearLayout
+        android:id="@+id/contentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:background="@color/white_tag_5">
+        android:background="@drawable/bg_memorial"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:dividerHeight="10dp"
+
+        <RelativeLayout
+            android:id="@+id/titleLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/familyTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black_tag_3"
+                android:textSize="21sp"
+                tools:text="我们的家已经:" />
+
+            <TextView
+                android:id="@+id/familyDayText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/familyTitleText"
+                android:layout_marginRight="10dp"
+                android:layout_toStartOf="@+id/familyLabelText"
+                android:textColor="@color/black_tag_3"
+                android:textSize="33sp"
+                android:textStyle="bold"
+                tools:text="156" />
+
+            <TextView
+                android:id="@+id/familyLabelText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/familyTitleText"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/familyTitleText"
+                android:layout_marginEnd="15dp"
+                android:textColor="@color/black_tag_3"
+                android:textSize="21sp"
+                tools:text="天" />
+
+            <TextView
+                android:id="@+id/wehomeTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/familyTitleText"
+                android:layout_below="@id/familyTitleText"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black_tag_3"
+                android:textSize="21sp"
+                tools:text="微家创建已经:" />
+
+            <TextView
+                android:id="@+id/wehomeDayText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/wehomeTitleText"
+                android:layout_alignEnd="@id/familyDayText"
+                android:layout_below="@id/familyDayText"
+                android:textColor="@color/black_tag_3"
+                android:textSize="21sp"
+                tools:text="234" />
+
+            <TextView
+                android:id="@+id/wehomeLabelText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/wehomeTitleText"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp"
+                android:textColor="@color/black_tag_3"
+                android:textSize="21sp"
+                tools:text="天" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white_tag_5"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:dividerHeight="10dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
-</LinearLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

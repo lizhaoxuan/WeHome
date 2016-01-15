@@ -1,7 +1,6 @@
 package com.zhaoxuan.wehome.view.activity;
 
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.rey.material.app.DatePickerDialog;
@@ -12,9 +11,6 @@ import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
 
 import java.text.SimpleDateFormat;
-
-import butterknife.Bind;
-import butterknife.OnClick;
 
 public class MemorialDayDetailActivity extends BaseActivity {
 

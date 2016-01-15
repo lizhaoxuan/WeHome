@@ -5,12 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import com.zhaoxuan.wehome.R;
-import com.zhaoxuan.wehome.framework.base.BaseActivity;
-import com.zhaoxuan.wehome.view.fragment.DrawerMenuFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -18,9 +17,11 @@ import butterknife.ButterKnife;
 public class ChatActivity extends AppCompatActivity {
     @Bind(R.id.drawer_layout)
     protected DrawerLayout drawerLayout;
+    @Bind(R.id.refreshLayout)
+    protected SwipeRefreshLayout refreshLayout;
 
 
-    public static void startActivity(Activity activity){
+    public static void startActivity(Activity activity) {
         activity.startActivity(new Intent(activity, ChatActivity.class));
     }
 
@@ -38,10 +39,11 @@ public class ChatActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    public void closeDrawerLayout(){
+    public void closeDrawerLayout() {
         drawerLayout.closeDrawers();
     }
-    public void openDrawerLayout(){
+
+    public void openDrawerLayout() {
         drawerLayout.openDrawer(GravityCompat.START);
     }
 }

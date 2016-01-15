@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/drawer_layout"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment
-        android:id="@+id/chatFragment"
-        android:name="com.zhaoxuan.wehome.view.fragment.ChatFragment"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
 
-    <fragment
-        android:id="@+id/menuFragment"
-        android:name="com.zhaoxuan.wehome.view.fragment.DrawerMenuFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start" />
+        <fragment
+            android:id="@+id/chatFragment"
+            android:name="com.zhaoxuan.wehome.view.fragment.ChatFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-</android.support.v4.widget.DrawerLayout>
+        <fragment
+            android:id="@+id/menuFragment"
+            android:name="com.zhaoxuan.wehome.view.fragment.DrawerMenuFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start" />
+
+    </android.support.v4.widget.DrawerLayout>
+
+</android.support.v4.widget.SwipeRefreshLayout>

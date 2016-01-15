@@ -2,6 +2,7 @@ package com.zhaoxuan.wehome.view.activity;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -21,6 +22,8 @@ import butterknife.Bind;
 
 public class MemorialDayActivity extends BaseActivity implements IMemorialDayView {
 
+    @Bind(R.id.refreshLayout)
+    protected SwipeRefreshLayout refreshLayout;
     @Bind(R.id.contentLayout)
     protected ViewGroup contentLayout;
     @Bind(R.id.titleLayout)

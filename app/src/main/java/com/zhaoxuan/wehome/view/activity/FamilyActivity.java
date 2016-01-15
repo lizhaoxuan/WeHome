@@ -1,6 +1,7 @@
 package com.zhaoxuan.wehome.view.activity;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 
 import com.zhaoxuan.wehome.R;
@@ -10,8 +11,8 @@ import butterknife.Bind;
 
 public class FamilyActivity extends BaseActivity {
 
-    @Bind(R.id.recyclerView)
-    protected RecyclerView recyclerView;
+    @Bind(R.id.refreshLayout)
+    protected SwipeRefreshLayout refreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

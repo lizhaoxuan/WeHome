@@ -72,6 +72,10 @@ public class MemorialDayDto extends MemorialDayEntity {
         }
     }
 
+    public String getDateStr() {
+        return dateYear + "年" + dateMonth + "月" + dateDay + "日";
+    }
+
     /**
      * 计算与给定日期之间的天数
      * <p>

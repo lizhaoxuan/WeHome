@@ -1,6 +1,6 @@
 package com.zhaoxuan.wehome.view.activity;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -16,7 +16,6 @@ import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.presenter.IWishDetailPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.WishPresenter;
 import com.zhaoxuan.wehome.framework.view.IWishDetailView;
-
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -47,16 +46,16 @@ public class WishDetailActivity extends BaseActivity implements IWishDetailView 
 
     private IWishDetailPresenter presenter;
 
-    public static void startActivity(Activity activity,int position,WishPresenter presenter){
-        Intent intent = new Intent(activity,WishDetailActivity.class);
-        intent.putExtra("position",position);
-        intent.putExtra("presenter",presenter);
+    public static void startActivity(Context activity, int position, WishPresenter presenter) {
+        Intent intent = new Intent(activity, WishDetailActivity.class);
+        intent.putExtra("position", position);
+        intent.putExtra("presenter", presenter);
         activity.startActivity(intent);
     }
 
-    public static void startActivity(Activity activity,WishPresenter presenter){
-        Intent intent = new Intent(activity,WishDetailActivity.class);
-        intent.putExtra("presenter",presenter);
+    public static void startActivity(Context activity, WishPresenter presenter) {
+        Intent intent = new Intent(activity, WishDetailActivity.class);
+        intent.putExtra("presenter", presenter);
         activity.startActivity(intent);
     }
 
@@ -81,23 +80,23 @@ public class WishDetailActivity extends BaseActivity implements IWishDetailView 
 
     }
 
-    private void initIntent(){
+    private void initIntent() {
         Intent intent = getIntent();
-        presenter = (IWishDetailPresenter)intent.getSerializableExtra("presenter");
-        int position = intent.getIntExtra("position",-1);
-        presenter.setDetailView(this,position);
-        if(position == -1){
+        presenter = (IWishDetailPresenter) intent.getSerializableExtra("presenter");
+        int position = intent.getIntExtra("position", -1);
+        presenter.setDetailView(this, position);
+        if (position == -1) {
             initViewForAdd();
-        }else{
+        } else {
             presenter.initView();
         }
     }
 
-    private void initViewForAdd(){
+    private void initViewForAdd() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String time = dateFormat.format(new Date());
         timeText.setText(time);
-        String buildOf = MyApplication.getInstance().getUserDto().getName()+" | "
+        String buildOf = MyApplication.getInstance().getUserDto().getName() + " | "
                 + MyApplication.getInstance().getUserDto().getPost();
         buildOfText.setText(buildOf);
         statesText.setText("未完成");
@@ -120,17 +119,17 @@ public class WishDetailActivity extends BaseActivity implements IWishDetailView 
 
     @Override
     public void updateImg(Drawable drawable) {
-        if(drawable!=null){
+        if (drawable != null) {
             wishImg.setImageDrawable(drawable);
         }
     }
 
     @Override
     public void updateFinishBtn(boolean isFinish) {
-        if (isFinish){
+        if (isFinish) {
             finishBtn.setVisibility(View.GONE);
             unFinsihBtn.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             finishBtn.setVisibility(View.VISIBLE);
             unFinsihBtn.setVisibility(View.GONE);
         }

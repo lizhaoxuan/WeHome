@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/contentLayout"
     android:layout_width="match_parent"
@@ -51,15 +52,18 @@
                 android:layout_marginEnd="15dp"
                 android:background="@null"
                 android:hint="点击这里输入..."
+                android:textColor="@color/black_tag_3"
                 android:textSize="15sp" />
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/timeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_rounded_border_rect"
             android:gravity="center_vertical"
+            android:descendantFocusability="blocksDescendants"
             android:padding="10dp">
 
             <ImageView
@@ -88,6 +92,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="15dp"
                 android:hint="2016年1月11日"
+                android:textColor="@color/black_tag_3"
                 android:textSize="17sp" />
         </RelativeLayout>
 
@@ -119,6 +124,7 @@
                 android:textSize="15sp" />
 
             <RadioGroup
+                android:id="@+id/loopRadio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -138,6 +144,7 @@
                     android:id="@+id/falseBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:text="否" />
 
             </RadioGroup>
@@ -145,26 +152,15 @@
 
     </LinearLayout>
 
-    <!--<com.zhaoxuan.wehome.view.widget.softwidget.SRoundRect_Button-->
-    <!--android:id="@+id/enterBtn"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="50dp"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:layout_marginBottom="10dp"-->
-    <!--android:text="确定"-->
-    <!--android:textColor="@color/white_tag_1"-->
-    <!--android:textSize="20sp"-->
-    <!--app:backgroundColor="@color/red_tag_6" />-->
-
-
     <com.zhaoxuan.wehome.view.widget.softwidget.SRoundRect_Button
-        android:id="@+id/testBtn"
+        android:id="@+id/enterBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:alpha="100"
-        android:background="@color/red_tag_1"
-        android:text="测试按钮adas"
-        android:textColor="@color/black_tag_3" />
+        android:layout_marginBottom="10dp"
+        android:text="确定"
+        android:textColor="@color/white_tag_1"
+        android:textSize="20sp"
+        app:backgroundColor="@color/red_tag_6" />
 
 </RelativeLayout>

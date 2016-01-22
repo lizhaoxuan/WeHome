@@ -7,10 +7,14 @@ import java.util.Date;
  */
 public interface IMemorialDayDetailView {
 
-    void updateView(String title, Date time, boolean isLoop);
-
-    void updateFinishBtn(boolean isFinish);
+    void updateView(String title, String date, boolean isLoop);
 
     void finishActivity(boolean isChange);
+
+    void showToast(String msg);
+
+    void showLoading();
+
+    void hideLoading();
 
 }

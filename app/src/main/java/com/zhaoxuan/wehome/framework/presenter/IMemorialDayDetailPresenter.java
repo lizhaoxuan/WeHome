@@ -1,8 +1,6 @@
 package com.zhaoxuan.wehome.framework.presenter;
 
-import android.graphics.drawable.Drawable;
-
-import com.zhaoxuan.wehome.framework.view.IMemorialDayView;
+import com.zhaoxuan.wehome.framework.view.IMemorialDayDetailView;
 
 import java.util.Date;
 
@@ -11,17 +9,15 @@ import java.util.Date;
  */
 public interface IMemorialDayDetailPresenter {
 
-    void setDetailView(IMemorialDayView view, int detailPosition);
+    void setDetailView(IMemorialDayDetailView view, int detailPosition);
 
     void initView();
 
-    void setLoop();
+    int [] getDate();
+
+    void changeMemorialDay(String title ,long date , boolean isLoop);
 
     void deleteMemorialDay();
-
-    void changeTime(Date date);
-
-    void ChangeTitle(String title);
 
     void finishActivity();
 

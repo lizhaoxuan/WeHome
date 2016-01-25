@@ -40,6 +40,15 @@ public class MemorialDayDto extends MemorialDayEntity {
         }
     }
 
+    public MemorialDayDto(MemorialDayEntity entity){
+        super(entity.getBuildAccount(),
+                entity.getBuildName(),
+                entity.getDatetime(),
+                entity.getId(),
+                entity.isLoop(),
+                entity.getTitle());
+    }
+
     public int getDateYear() {
         return dateYear;
     }

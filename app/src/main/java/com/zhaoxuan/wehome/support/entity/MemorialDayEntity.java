@@ -22,6 +22,8 @@ public class MemorialDayEntity {
         this.title = title;
     }
 
+
+
     public String getBuildAccount() {
         return buildAccount;
     }

@@ -74,6 +74,6 @@ public class InviteActivity extends BaseActivity implements IInviteView{
     @Override
     public void showToast(String msg) {
         TopToast.makeText(InviteActivity.this,msg)
-                .showPopupWindow(phoneEdit);
+                .show(phoneEdit);
     }
 }

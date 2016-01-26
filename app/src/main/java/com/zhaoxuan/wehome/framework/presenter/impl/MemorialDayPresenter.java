@@ -70,11 +70,6 @@ public class MemorialDayPresenter implements IMemorialDayPresenter, IMemorialDay
     }
 
     @Override
-    public void finishActivity() {
-
-    }
-
-    @Override
     public void changeMemorialDay(String title, long date, boolean isLoop) {
         Log.d("TGA",title+date+isLoop);
     }

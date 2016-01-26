@@ -65,7 +65,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
 
     @Override
     public void showToast(String tips) {
-        TopToast.makeText(this, tips).showPopupWindow(accountEdit);
+        TopToast.makeText(this, tips).show(accountEdit);
     }
 
     @Override

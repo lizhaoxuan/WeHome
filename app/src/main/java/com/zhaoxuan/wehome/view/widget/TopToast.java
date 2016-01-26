@@ -79,7 +79,7 @@ public class TopToast implements Cloneable {
      * 默认现在在标题栏下方
      * @param view
      */
-    public  void showPopupWindow(View view){
+    public  void show(View view){
         if(popupWindow == null){
             initView(tips);
         }
@@ -91,7 +91,7 @@ public class TopToast implements Cloneable {
      * 默认现在在标题栏下方
      * @param view  需要View来对当前主页面定位
      */
-    public  void showPopupWindow(View view , int belowWhere){
+    public  void show(View view, int belowWhere){
         if(popupWindow == null){
             initView(tips);
         }

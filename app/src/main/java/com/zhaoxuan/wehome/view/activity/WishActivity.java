@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
-import com.zhaoxuan.wehome.framework.presenter.IWishDetailPresenter;
 import com.zhaoxuan.wehome.framework.presenter.IWishPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.WishPresenter;
 import com.zhaoxuan.wehome.framework.view.IWishView;
@@ -168,7 +167,7 @@ public class WishActivity extends BaseActivity implements IWishView {
 
     @Override
     public void showToast(String msg) {
-        TopToast.makeText(this, msg).showPopupWindow(viewPager);
+        TopToast.makeText(this, msg).show(viewPager);
     }
 
     @Override

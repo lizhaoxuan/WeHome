@@ -143,7 +143,7 @@ public class LoginActivity extends Activity implements ILoginView {
 
     @Override
     public void showToast(String tips) {
-        TopToast.makeText(this, tips).showPopupWindow(loginBtn, TopToast.StateHeight);
+        TopToast.makeText(this, tips).show(loginBtn, TopToast.StateHeight);
     }
 
     @Override

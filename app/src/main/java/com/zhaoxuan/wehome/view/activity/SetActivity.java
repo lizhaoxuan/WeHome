@@ -141,7 +141,7 @@ public class SetActivity extends BaseActivity implements ISetView, View.OnClickL
 
     @Override
     public void showToast(String msg) {
-        TopToast.makeText(this, msg).showPopupWindow(nameText);
+        TopToast.makeText(this, msg).show(nameText);
     }
 
     @Override

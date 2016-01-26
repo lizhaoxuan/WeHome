@@ -64,7 +64,7 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
 
     @Override
     public void showToast(String tips) {
-        TopToast.makeText(this, tips).showPopupWindow(accountEdit);
+        TopToast.makeText(this, tips).show(accountEdit);
     }
 
     @Override

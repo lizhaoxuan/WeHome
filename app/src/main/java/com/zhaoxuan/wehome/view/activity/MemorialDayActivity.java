@@ -109,7 +109,7 @@ public class MemorialDayActivity extends BaseActivity implements IMemorialDayVie
 
     @Override
     public void showToast(String msg) {
-        TopToast.makeText(this, msg).showPopupWindow(recyclerView);
+        TopToast.makeText(this, msg).show(recyclerView);
     }
 
 }

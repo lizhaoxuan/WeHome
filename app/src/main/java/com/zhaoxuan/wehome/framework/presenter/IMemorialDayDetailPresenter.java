@@ -19,8 +19,6 @@ public interface IMemorialDayDetailPresenter {
 
     void deleteMemorialDay();
 
-    void finishActivity();
-
     void addMemorialDay(String buildAccount, String buildName, String datetime, int id, boolean loop, String title);
 
 

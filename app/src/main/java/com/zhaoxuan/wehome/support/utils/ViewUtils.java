@@ -11,7 +11,7 @@ import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.view.ViewGroup;
 
-import com.zhaoxuan.wehome.MyApplication;
+import com.zhaoxuan.wehome.WeHomeApplication;
 import com.zhaoxuan.wehome.module.log.WLog;
 
 /**
@@ -43,7 +43,7 @@ public class ViewUtils {
         canvas.drawRect(view.getLeft(), view.getTop(), view.getRight(), view.getBottom(), paint);
 
 
-        RenderScript rs = RenderScript.create(MyApplication.getInstance());
+        RenderScript rs = RenderScript.create(WeHomeApplication.getInstance());
         Allocation overlayAlloc = Allocation.createFromBitmap(
                 rs, overlay);
         ScriptIntrinsicBlur blur = ScriptIntrinsicBlur.create(
@@ -54,7 +54,7 @@ public class ViewUtils {
         overlayAlloc.copyTo(overlay);
         rs.destroy();
 
-        view.setBackground(new BitmapDrawable(MyApplication.getInstance().getResources(), overlay));
+        view.setBackground(new BitmapDrawable(WeHomeApplication.getInstance().getResources(), overlay));
         //模糊化结束后，才可以初始化布局
         WLog.i("TAG", System.currentTimeMillis() - startMs + "ms");
     }

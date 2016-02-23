@@ -7,7 +7,7 @@ import android.os.Build;
 import android.util.Log;
 
 
-import com.zhaoxuan.wehome.MyApplication;
+import com.zhaoxuan.wehome.WeHomeApplication;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -172,7 +172,7 @@ public class LogPrint {
      */
     protected static void saveLogToFile(int flag, String explainString) {
 
-        Context context = MyApplication.getInstance();
+        Context context = WeHomeApplication.getInstance();
         StringBuilder message = new StringBuilder();
         message.append("time" + "=" + mSimpleDateFormat.format(new Date()) + "\r\n");
         message.append(LogConfig.getLogLevelName(flag)+"------"+explainString+"\n");
@@ -188,7 +188,7 @@ public class LogPrint {
      * @param explainString
      */
     protected static void saveLogToFile(int flag, String explainString, Throwable throwable) {
-        Context context = MyApplication.getInstance();
+        Context context = WeHomeApplication.getInstance();
         StringBuilder message = new StringBuilder();
         message.append("time" + "=" + mSimpleDateFormat.format(new Date()) + "\r\n");
         message.append(getDeviceInfo(context));
@@ -208,7 +208,7 @@ public class LogPrint {
      * @param explainString
      */
     protected static void uploadToServer(int flag, String explainString) {
-        Context context = MyApplication.getInstance();
+        Context context = WeHomeApplication.getInstance();
         StringBuilder message = new StringBuilder();
         message.append("time" + "=" + mSimpleDateFormat.format(new Date()) + "\r\n");
         message.append(getDeviceInfo(context));
@@ -225,7 +225,7 @@ public class LogPrint {
      * @param explainString
      */
     protected static void uploadToServer(int flag, String explainString, Throwable throwable) {
-        Context context = MyApplication.getInstance();
+        Context context = WeHomeApplication.getInstance();
         StringBuilder message = new StringBuilder();
         message.append("time" + "=" + mSimpleDateFormat.format(new Date()) + "\r\n");
         message.append(getDeviceInfo(context));

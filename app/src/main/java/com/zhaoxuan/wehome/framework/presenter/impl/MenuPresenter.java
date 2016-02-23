@@ -1,11 +1,9 @@
 package com.zhaoxuan.wehome.framework.presenter.impl;
 
-import com.zhaoxuan.wehome.MyApplication;
+import com.zhaoxuan.wehome.WeHomeApplication;
 import com.zhaoxuan.wehome.framework.presenter.IMenuPresenter;
 import com.zhaoxuan.wehome.framework.view.IMenuView;
 import com.zhaoxuan.wehome.support.dto.UserDto;
-
-import java.util.Observable;
 
 /**
  * 侧滑菜单Presenter
@@ -20,7 +18,7 @@ public class MenuPresenter implements IMenuPresenter {
 
     @Override
     public void updateView() {
-        UserDto user = MyApplication.getInstance().getUserDto();
+        UserDto user = WeHomeApplication.getInstance().getUserDto();
         view.setUserData(user.getFullName(), user.getHomeName());
     }
 }

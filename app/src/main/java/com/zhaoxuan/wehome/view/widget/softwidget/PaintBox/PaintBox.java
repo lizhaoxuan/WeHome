@@ -2,9 +2,6 @@ package com.zhaoxuan.wehome.view.widget.softwidget.PaintBox;
 
 import android.graphics.Paint;
 
-import com.zhaoxuan.wehome.MyApplication;
-import com.zhaoxuan.wehome.R;
-
 
 /**
  * Created by zhaoxuan.li on 2015/8/12.

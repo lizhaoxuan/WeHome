@@ -4,7 +4,7 @@ import com.zhaoxuan.wehome.framework.base.BasePresent;
 import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.IFamilyModel;
 import com.zhaoxuan.wehome.framework.model.impl.FamilyModel;
-import com.zhaoxuan.wehome.framework.presenter.IFamilyPresent;
+import com.zhaoxuan.wehome.framework.presenter.IFamilyPresenter;
 import com.zhaoxuan.wehome.framework.view.IFamilyView;
 import com.zhaoxuan.wehome.support.dto.FamilyDto;
 
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by lizhaoxuan on 16/2/23.
  */
-public class FamilyPresent extends BasePresent implements IFamilyPresent {
+public class FamilyPresent extends BasePresent implements IFamilyPresenter {
 
     private IFamilyView view;
     private IFamilyModel model;

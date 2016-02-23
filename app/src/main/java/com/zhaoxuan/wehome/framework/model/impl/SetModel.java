@@ -1,6 +1,6 @@
 package com.zhaoxuan.wehome.framework.model.impl;
 
-import com.zhaoxuan.wehome.MyApplication;
+import com.zhaoxuan.wehome.WeHomeApplication;
 import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.ISetModel;
 import com.zhaoxuan.wehome.support.dto.UserDto;
@@ -12,16 +12,16 @@ public class SetModel implements ISetModel{
 
     @Override
     public void setValue(int key, String value, ICallBack<String> callBack) {
-        MyApplication.getInstance().getUserDto().setValue(key,value);
+        WeHomeApplication.getInstance().getUserDto().setValue(key,value);
         callBack.callBackSuccess("修改成功啦~");
     }
 
     @Override
     public void changePassword(String oldPassword, String newPassword,ICallBack<String> callBack) {
-        if (!MyApplication.getInstance().getUserDto().getPassword().equals(oldPassword)){
+        if (!WeHomeApplication.getInstance().getUserDto().getPassword().equals(oldPassword)){
             callBack.callBackError("旧密码不对哦~请重新输入");
         }else{
-            MyApplication.getInstance().getUserDto().setPassword(newPassword);
+            WeHomeApplication.getInstance().getUserDto().setPassword(newPassword);
             callBack.callBackSuccess("密码修改成功啦~");
         }
     }
@@ -33,6 +33,6 @@ public class SetModel implements ISetModel{
 
     @Override
     public UserDto getUserDto() {
-        return MyApplication.getInstance().getUserDto();
+        return WeHomeApplication.getInstance().getUserDto();
     }
 }

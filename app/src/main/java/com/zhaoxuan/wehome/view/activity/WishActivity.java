@@ -76,7 +76,6 @@ public class WishActivity extends BaseActivity implements IWishView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wish);
-        presenter = new WishPresenter(this);
     }
 
     @Override
@@ -89,7 +88,7 @@ public class WishActivity extends BaseActivity implements IWishView {
     @Override
     protected void initView() {
         setTitle("家庭计划");
-
+        presenter = new WishPresenter(this);
         LayoutInflater inflater = getLayoutInflater();
         finishView = inflater.inflate(R.layout.layout_wish_list, null);
         unFinishView = inflater.inflate(R.layout.layout_wish_list, null);
@@ -139,6 +138,14 @@ public class WishActivity extends BaseActivity implements IWishView {
         });
 
         presenter.initData();
+
+        refreshLayout.setRefreshing(false);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                presenter.initData();
+            }
+        });
     }
 
 
@@ -152,6 +159,7 @@ public class WishActivity extends BaseActivity implements IWishView {
      */
     @Override
     public void initData(List<WishDto> unFinishList, List<WishDto> finishList) {
+        refreshLayout.setRefreshing(true);
         finishListAdapter.setDatas(finishList);
         unFinishListAdapter.setDatas(unFinishList);
     }

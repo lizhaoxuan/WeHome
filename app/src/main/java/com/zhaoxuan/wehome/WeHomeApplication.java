@@ -8,12 +8,12 @@ import com.zhaoxuan.wehome.support.dto.UserDto;
 /**
  * Created by lizhaoxuan on 15/11/12.
  */
-public class MyApplication extends Application {
-    private static final String TAG = MyApplication.class.getName();
+public class WeHomeApplication extends Application {
+    private static final String TAG = WeHomeApplication.class.getName();
 
-    private static MyApplication mInstance = null;
+    private static WeHomeApplication mInstance = null;
 
-    public static MyApplication getInstance(){
+    public static WeHomeApplication getInstance(){
         return mInstance;
     }
 

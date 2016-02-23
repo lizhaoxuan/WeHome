@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zhaoxuan.wehome.MyApplication;
+import com.zhaoxuan.wehome.WeHomeApplication;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.presenter.IWishDetailPresenter;
@@ -90,8 +90,8 @@ public class WishDetailActivity extends BaseActivity implements IWishDetailView 
         DateFormat dateFormat = SimpleDateFormat.getDateInstance();
         String time = dateFormat.format(new Date());
         timeText.setText(time);
-        String buildOf = MyApplication.getInstance().getUserDto().getName() + " | "
-                + MyApplication.getInstance().getUserDto().getPost();
+        String buildOf = WeHomeApplication.getInstance().getUserDto().getName() + " | "
+                + WeHomeApplication.getInstance().getUserDto().getPost();
         buildOfText.setText(buildOf);
         statesText.setText("未完成");
         finishBtn.setVisibility(View.GONE);

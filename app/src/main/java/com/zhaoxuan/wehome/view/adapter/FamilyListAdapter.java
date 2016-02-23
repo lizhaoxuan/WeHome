@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zhaoxuan.wehome.R;
+import com.zhaoxuan.wehome.module.weather.Weather;
 import com.zhaoxuan.wehome.support.dto.FamilyDto;
 
 import java.util.ArrayList;
@@ -46,9 +47,17 @@ public class FamilyListAdapter extends RecyclerView.Adapter<FamilyListAdapter.My
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.nameText.setText(myDatas.get(position).getFullName());
-        holder.cityText.setText(myDatas.get(position).getCity());
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
+        FamilyDto familyDto = myDatas.get(position);
+
+        holder.nameText.setText(familyDto.getFullName());
+        holder.cityText.setText(familyDto.getCity());
+        Weather.getWeather(familyDto.getCity(), new Weather.WeatherCallBack() {
+            @Override
+            public void onSuccess(String weather) {
+                holder.weatherText.setText(weather);
+            }
+        });
     }
 
     @Override
@@ -83,9 +92,9 @@ public class FamilyListAdapter extends RecyclerView.Adapter<FamilyListAdapter.My
             super(view);
             headImg = (ImageView) view.findViewById(R.id.headImg);
             electricImg = (ImageView) view.findViewById(R.id.electricImg);
-            nameText = (TextView) view.findViewById(R.id.titleText);
-            cityText = (TextView) view.findViewById(R.id.dayText);
-            weatherText = (TextView) view.findViewById(R.id.dayText);
+            nameText = (TextView) view.findViewById(R.id.nameText);
+            cityText = (TextView) view.findViewById(R.id.cityText);
+            weatherText = (TextView) view.findViewById(R.id.weatherText);
 
             this.itemClickListener = itemClickListener;
             view.setOnClickListener(this);

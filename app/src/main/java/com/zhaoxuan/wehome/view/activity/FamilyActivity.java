@@ -6,8 +6,12 @@ import android.support.v7.widget.RecyclerView;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.framework.presenter.IFamilyPresenter;
+import com.zhaoxuan.wehome.framework.presenter.impl.FamilyPresent;
 import com.zhaoxuan.wehome.framework.view.IFamilyView;
 import com.zhaoxuan.wehome.support.dto.FamilyDto;
+import com.zhaoxuan.wehome.view.adapter.FamilyListAdapter;
+import com.zhaoxuan.wehome.view.widget.TopToast;
 
 import java.util.List;
 
@@ -20,17 +24,29 @@ public class FamilyActivity extends BaseActivity implements IFamilyView{
     @Bind(R.id.recyclerView)
     protected RecyclerView recyclerView;
 
+    private FamilyListAdapter listAdapter;
+    private IFamilyPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family);
-
-
     }
 
     @Override
     protected void initView() {
         setTitle("我的家");
+        presenter = new FamilyPresent(this);
+        listAdapter = new FamilyListAdapter(this);
+        presenter.initData();
+
+        refreshLayout.setRefreshing(false);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                presenter.initData();
+            }
+        });
     }
 
 
@@ -38,7 +54,9 @@ public class FamilyActivity extends BaseActivity implements IFamilyView{
 
     @Override
     public void init(List<FamilyDto> familyDtos) {
-
+        refreshLayout.setRefreshing(true);
+        listAdapter.setDatas(familyDtos);
+        recyclerView.setAdapter(listAdapter);
     }
 
     @Override
@@ -58,7 +76,7 @@ public class FamilyActivity extends BaseActivity implements IFamilyView{
 
     @Override
     public void showToast(String msg) {
-
+        TopToast.makeText(this, msg).show(recyclerView);
     }
 
 

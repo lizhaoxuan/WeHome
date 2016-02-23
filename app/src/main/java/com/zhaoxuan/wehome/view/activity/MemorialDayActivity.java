@@ -69,6 +69,15 @@ public class MemorialDayActivity extends BaseActivity implements IMemorialDayVie
                 MemorialDayDetailActivity.startActivity(MemorialDayActivity.this, position, (MemorialDayPresenter) presenter);
             }
         });
+        presenter.initData();
+
+        refreshLayout.setRefreshing(false);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                presenter.initData();
+            }
+        });
     }
 
 
@@ -89,6 +98,7 @@ public class MemorialDayActivity extends BaseActivity implements IMemorialDayVie
 
     @Override
     public void initData(MemorialDayDto family, MemorialDayDto wehome, List<MemorialDayDto> dataList) {
+        refreshLayout.setRefreshing(true);
         familyTitleText.setText(family.getNameStr());
         familyDayText.setText(family.getDayStr());
         familyLabelText.setText("天");

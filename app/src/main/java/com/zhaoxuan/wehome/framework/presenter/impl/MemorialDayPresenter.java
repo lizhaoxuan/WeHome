@@ -3,6 +3,7 @@ package com.zhaoxuan.wehome.framework.presenter.impl;
 import android.util.Log;
 import android.util.SparseArray;
 
+import com.zhaoxuan.wehome.framework.base.BasePresent;
 import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.IMemorialDayModel;
 import com.zhaoxuan.wehome.framework.model.impl.MemorialDayModel;
@@ -23,7 +24,7 @@ import java.util.List;
 /**
  * Created by lizhaoxuan on 16/1/10.
  */
-public class MemorialDayPresenter implements IMemorialDayPresenter, IMemorialDayDetailPresenter, Serializable {
+public class MemorialDayPresenter extends BasePresent implements IMemorialDayPresenter, IMemorialDayDetailPresenter, Serializable {
 
     private IMemorialDayView view;
     private IMemorialDayModel model;
@@ -32,6 +33,7 @@ public class MemorialDayPresenter implements IMemorialDayPresenter, IMemorialDay
     private MemorialDayDto detailData;
 
     public MemorialDayPresenter(IMemorialDayView view) {
+        super(view);
         this.view = view;
         model = new MemorialDayModel();
     }
@@ -54,22 +56,6 @@ public class MemorialDayPresenter implements IMemorialDayPresenter, IMemorialDay
                 requestEnd(error);
             }
         });
-    }
-
-    /**
-     * 成功状态下，请求结束
-     */
-    private void requestEnd() {
-        view.hideLoading();
-        view.doNoDataTip();
-    }
-
-    /**
-     * 失败状态下，请求结束
-     */
-    private void requestEnd(String msg) {
-        view.showToast(msg);
-        requestEnd();
     }
 
     /* IMemorialDayDetailPresenter */

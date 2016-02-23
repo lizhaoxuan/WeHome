@@ -1,13 +1,11 @@
 package com.zhaoxuan.wehome.framework.presenter.impl;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
 import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.ISetModel;
 import com.zhaoxuan.wehome.framework.model.impl.SetModel;
 import com.zhaoxuan.wehome.framework.presenter.ISetPresenter;
 import com.zhaoxuan.wehome.framework.view.ISetView;
+import com.zhaoxuan.wehome.module.tool.StrUtils;
 import com.zhaoxuan.wehome.support.dto.UserDto;
 
 /**
@@ -25,7 +23,7 @@ public class SetPresenter implements ISetPresenter {
 
     @Override
     public void setValue(int key, String value) {
-        if (value.equals("")) {
+        if (StrUtils.isNullStr(value)) {
             view.showToast("值不能为空哦~");
         } else {
             view.hideDialog();
@@ -47,7 +45,7 @@ public class SetPresenter implements ISetPresenter {
 
     @Override
     public void changePassword(String args1, String args2, String args3) {
-        if (args1.equals("") || args2.equals("") || args3.equals("")) {
+        if (StrUtils.isNullStr(args1) || StrUtils.isNullStr(args2) || StrUtils.isNullStr(args3)) {
             view.showToast("值不能为空哦~");
         } else if (args2.equals(args3)) {
             view.showToast("两次密码输入不一样，再检查一下吧");

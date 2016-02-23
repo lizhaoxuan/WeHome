@@ -3,6 +3,7 @@ package com.zhaoxuan.wehome.framework.presenter.impl;
 import android.graphics.drawable.Drawable;
 import android.util.SparseArray;
 
+import com.zhaoxuan.wehome.framework.base.BasePresent;
 import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.IWishModel;
 import com.zhaoxuan.wehome.framework.model.impl.WishModel;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 /**
  * Created by lizhaoxuan on 15/11/27.
  */
-public class WishPresenter implements IWishPresenter, IWishDetailPresenter, Serializable {
+public class WishPresenter extends BasePresent implements IWishPresenter, IWishDetailPresenter, Serializable {
 
     private IWishView view;
     private IWishModel model;
@@ -30,10 +31,10 @@ public class WishPresenter implements IWishPresenter, IWishDetailPresenter, Seri
     private int detailPosition;
 
     public WishPresenter(IWishView view) {
+        super(view);
         this.view = view;
         model = new WishModel();
     }
-
 
     @Override
     public void initData() {
@@ -54,24 +55,6 @@ public class WishPresenter implements IWishPresenter, IWishDetailPresenter, Seri
                 requestEnd(error);
             }
         });
-    }
-
-    /**
-     * 成功状态下，请求结束
-     */
-    private void requestEnd() {
-        view.hideLoading();
-        view.doNoDataTip();
-    }
-
-    /**
-     * 失败状态下，请求结束
-     *
-     * @param msg
-     */
-    private void requestEnd(String msg) {
-        view.showToast(msg);
-        requestEnd();
     }
 
     /*--------- 计划详情P方法 ------------*/

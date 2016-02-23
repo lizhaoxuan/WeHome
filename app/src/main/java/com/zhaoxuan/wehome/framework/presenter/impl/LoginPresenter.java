@@ -9,6 +9,7 @@ import com.zhaoxuan.wehome.framework.presenter.IRegisterPresenter;
 import com.zhaoxuan.wehome.framework.view.IForgetView;
 import com.zhaoxuan.wehome.framework.view.ILoginView;
 import com.zhaoxuan.wehome.framework.view.IRegisterView;
+import com.zhaoxuan.wehome.module.tool.StrUtils;
 import com.zhaoxuan.wehome.support.constants.Ints;
 import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
@@ -45,7 +46,7 @@ public class LoginPresenter implements ILoginPresenter, IForgetPresenter, IRegis
 
     @Override
     public void login(String account, String password) {
-        if (account.equals("") || password.equals("")) {
+        if (StrUtils.isNullStr(account) || StrUtils.isNullStr(password)) {
             loginView.showToast("账号或密码不能为空哦~");
         } else {
             model.login(account, password, new ICallBack<UserDto>() {
@@ -83,9 +84,9 @@ public class LoginPresenter implements ILoginPresenter, IForgetPresenter, IRegis
 
     @Override
     public void forgetPassword(String account) {
-        if(account.equals("")){
+        if (account.equals("")) {
             forgetView.showToast("邮箱不能为空哦~");
-        }else{
+        } else {
             model.forgetPassword(account, new ICallBack<String>() {
                 @Override
                 public void callBackSuccess(String t) {
@@ -102,12 +103,12 @@ public class LoginPresenter implements ILoginPresenter, IForgetPresenter, IRegis
 
     @Override
     public void register(String account, String password, String passwordAgain) {
-        if(account.equals("")||password.equals("")||passwordAgain.equals("")){
+        if (account.equals("") || password.equals("") || passwordAgain.equals("")) {
             registerView.showToast("账号或密码不能为空哦~");
             return;
-        }else if(password.equals(passwordAgain)){
+        } else if (password.equals(passwordAgain)) {
             registerView.showToast("两次密码要相同哦~");
-        }else{
+        } else {
             model.register(account, password, new ICallBack<UserDto>() {
                 @Override
                 public void callBackSuccess(UserDto t) {

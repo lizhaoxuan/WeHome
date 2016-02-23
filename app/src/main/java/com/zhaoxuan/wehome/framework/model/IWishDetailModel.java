@@ -1,5 +1,7 @@
 package com.zhaoxuan.wehome.framework.model;
 
+import android.util.SparseArray;
+
 import com.zhaoxuan.wehome.support.dto.WishDto;
 
 /**
@@ -7,6 +9,6 @@ import com.zhaoxuan.wehome.support.dto.WishDto;
  */
 public interface IWishDetailModel {
 
-    void changeData(WishDto wishDto,ICallBack callBack);
+    void changeData(WishDto wishDto,ICallBack<SparseArray<WishDto>> callBack);
 
 }

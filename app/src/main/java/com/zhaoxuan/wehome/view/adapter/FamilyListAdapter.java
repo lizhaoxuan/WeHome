@@ -28,7 +28,7 @@ public class FamilyListAdapter extends RecyclerView.Adapter<FamilyListAdapter.My
 
     }
 
-    public void setDatas(List myDatas) {
+    public void setDatas(List<FamilyDto> myDatas) {
         this.myDatas = myDatas;
     }
 

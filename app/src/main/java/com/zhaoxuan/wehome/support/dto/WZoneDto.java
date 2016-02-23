@@ -16,18 +16,6 @@ public class WZoneDto extends WZoneEntity {
         praiseArray = praiseList.split(",");
     }
 
-    public WZoneDto(WZoneEntity entity) {
-        super(entity.getBuildName(),
-                entity.getBuildPost(),
-                entity.getFamilyAccount(),
-                entity.getFamilyName(),
-                entity.getId(),
-                entity.getMsg(),
-                entity.getPicUrlList(),
-                entity.getPraiseList(),
-                entity.getTime());
-    }
-
     public String getFullName() {
         return buildName + " | " + buildPost;
     }

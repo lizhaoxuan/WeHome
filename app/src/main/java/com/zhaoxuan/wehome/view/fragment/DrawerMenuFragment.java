@@ -99,7 +99,7 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView, Image
                 startActivity(new Intent(getActivity(), MemorialDayActivity.class));
                 return;
             case R.id.wishMenu:
-                WishActivity.stratActivity(getActivity());
+                WishActivity.startActivity(getActivity());
                 return;
             case R.id.homeMenu:
                 return;

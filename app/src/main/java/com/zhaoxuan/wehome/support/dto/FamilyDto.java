@@ -13,17 +13,6 @@ public class FamilyDto extends FamilyEntity {
         super(account, city, electric, headPath, headUrl, id, name, post);
     }
 
-    public FamilyDto(FamilyEntity entity) {
-        super(entity.getAccount(),
-                entity.getCity(),
-                entity.getElectric(),
-                entity.getHeadPath(),
-                entity.getHeadUrl(),
-                entity.getId(),
-                entity.getName(),
-                entity.getPost());
-    }
-
     public String getFullName() {
         return name + " | " + post;
     }

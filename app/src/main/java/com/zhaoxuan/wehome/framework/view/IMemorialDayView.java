@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface IMemorialDayView {
 
-    void initData(List<MemorialDayDto> topList, List<MemorialDayDto> dataList);
+    void initData(MemorialDayDto family, MemorialDayDto wehome, List<MemorialDayDto> dataList);
 
     void updateData();
 

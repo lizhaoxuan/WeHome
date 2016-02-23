@@ -16,12 +16,14 @@ import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.presenter.IWishDetailPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.WishPresenter;
 import com.zhaoxuan.wehome.framework.view.IWishDetailView;
+import com.zhaoxuan.wehome.support.dto.WishDto;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 public class WishDetailActivity extends BaseActivity implements IWishDetailView {
     protected static final int CHANGE_WISH = 100;
@@ -64,20 +66,12 @@ public class WishDetailActivity extends BaseActivity implements IWishDetailView 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wish_detail);
 
-
     }
 
     @Override
     protected void initView() {
         setTitle("计划详情");
         initIntent();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-
     }
 
     private void initIntent() {
@@ -93,7 +87,7 @@ public class WishDetailActivity extends BaseActivity implements IWishDetailView 
     }
 
     private void initViewForAdd() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat dateFormat = SimpleDateFormat.getDateInstance();
         String time = dateFormat.format(new Date());
         timeText.setText(time);
         String buildOf = MyApplication.getInstance().getUserDto().getName() + " | "
@@ -104,17 +98,30 @@ public class WishDetailActivity extends BaseActivity implements IWishDetailView 
         unFinsihBtn.setVisibility(View.GONE);
     }
 
-    /***
-     * View 方法
-     */
+    @OnClick(R.id.finishBtn)
+    protected void finishBtnClick() {
+        presenter.changeFinish(true);
+    }
+
+    @OnClick(R.id.unFinishBtn)
+    protected void unFinishBtnClick() {
+        presenter.changeFinish(false);
+    }
+
+    @OnClick(R.id.changeBtn)
+    protected void changeBtnClick() {
+        presenter.changeWish(titleEdit.getText().toString(), contentEdit.getText().toString());
+    }
+
+    /* ----- View 方法 ------ */
     @Override
-    public void updateView(String time, String buildOF, String isFinishStr, boolean isFinish, String title, String content) {
-        timeText.setText(time);
-        buildOfText.setText(buildOF);
-        statesText.setText(isFinishStr);
-        titleEdit.setText(title);
-        contentEdit.setText(content);
-        updateFinishBtn(isFinish);
+    public void updateView(WishDto wishDto) {
+        timeText.setText(wishDto.getTime());
+        buildOfText.setText(wishDto.getFullName());
+        statesText.setText(wishDto.getFinsih());
+        titleEdit.setText(wishDto.getTitle());
+        contentEdit.setText(wishDto.getWishContent());
+        updateFinishBtn(wishDto.isFinish());
     }
 
     @Override
@@ -136,7 +143,7 @@ public class WishDetailActivity extends BaseActivity implements IWishDetailView 
     }
 
     @Override
-    public void finishActivity(boolean isChange) {
+    public void finishActivity() {
         this.finish();
     }
 }

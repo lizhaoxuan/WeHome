@@ -1,5 +1,7 @@
 package com.zhaoxuan.wehome.framework.view;
 
+import com.zhaoxuan.wehome.support.dto.MemorialDayDto;
+
 import java.util.Date;
 
 /**
@@ -7,7 +9,7 @@ import java.util.Date;
  */
 public interface IMemorialDayDetailView {
 
-    void updateView(String title, String date, boolean isLoop);
+    void updateView(MemorialDayDto memorialDayDto);
 
     void finishActivity(boolean isChange);
 

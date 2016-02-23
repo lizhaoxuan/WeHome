@@ -21,19 +21,6 @@ public class UserDto extends UserEntity implements Serializable {
         super(account, city, familyBuild, headImageUri, homeId, homeName, id, name, password, post);
     }
 
-    public UserDto(UserEntity entity){
-        super(entity.getAccount(),
-                entity.getCity(),
-                entity.getFamilyBuild(),
-                entity.getHeadImageUri(),
-                entity.getHomeId(),
-                entity.getHomeName(),
-                entity.getId(),
-                entity.getName(),
-                entity.getPassword(),
-                entity.getPost());
-    }
-
     public String getFullName() {
         return name + " | " + post;
     }

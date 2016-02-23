@@ -14,15 +14,15 @@ public interface IWishDetailPresenter {
 
     void initView();
 
-    void setIsFinish();
+    void addWish(Drawable drawable, String time, String buildOf, String title, String content);
 
     void deleteWish();
 
-    void changeContent(String title, String str);
+    void changeFinish(boolean isFinish);
 
-    void ChangeImg(Drawable drawable);
+    void changeWish(String title, String content);
 
-    void finishActivity();
+    void changeWishImg(Drawable drawable);
 
-    void addWish(Drawable drawable,String time,String buildOf,String title,String content);
+
 }

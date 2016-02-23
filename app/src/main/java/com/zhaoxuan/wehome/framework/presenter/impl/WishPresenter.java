@@ -1,7 +1,7 @@
 package com.zhaoxuan.wehome.framework.presenter.impl;
 
 import android.graphics.drawable.Drawable;
-import android.util.ArrayMap;
+import android.util.SparseArray;
 
 import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.IWishModel;
@@ -10,6 +10,7 @@ import com.zhaoxuan.wehome.framework.presenter.IWishDetailPresenter;
 import com.zhaoxuan.wehome.framework.presenter.IWishPresenter;
 import com.zhaoxuan.wehome.framework.view.IWishDetailView;
 import com.zhaoxuan.wehome.framework.view.IWishView;
+import com.zhaoxuan.wehome.module.tool.StrUtils;
 import com.zhaoxuan.wehome.support.dto.WishDto;
 
 import java.io.Serializable;
@@ -18,14 +19,15 @@ import java.util.ArrayList;
 /**
  * Created by lizhaoxuan on 15/11/27.
  */
-public class WishPresenter implements IWishPresenter,IWishDetailPresenter,Serializable {
+public class WishPresenter implements IWishPresenter, IWishDetailPresenter, Serializable {
 
     private IWishView view;
     private IWishModel model;
     private IWishDetailView detailView;
-    private ArrayMap<Integer,WishDto> wishList;
+    private SparseArray<WishDto> wishList;
+    private ArrayList<WishDto> finishWishList;
+    private ArrayList<WishDto> unFinishWishList;
     private int detailPosition;
-    private boolean isChanged = false;
 
     public WishPresenter(IWishView view) {
         this.view = view;
@@ -36,19 +38,13 @@ public class WishPresenter implements IWishPresenter,IWishDetailPresenter,Serial
     @Override
     public void initData() {
         view.showLoading();
-        model.getData(new ICallBack<ArrayMap<Integer,WishDto>>() {
+        model.getData(new ICallBack<SparseArray<WishDto>>() {
             @Override
-            public void callBackSuccess(ArrayMap<Integer,WishDto> t) {
-                ArrayList<WishDto> finishWishList = new ArrayList<>();
-                ArrayList<WishDto> unFinishWishList = new ArrayList<>();
+            public void callBackSuccess(SparseArray<WishDto> t) {
+                finishWishList = new ArrayList<>();
+                unFinishWishList = new ArrayList<>();
                 wishList = t;
-                for (WishDto dto : wishList.values()) {
-                    if (dto.isFinish()) {
-                        finishWishList.add(dto);
-                    } else {
-                        unFinishWishList.add(dto);
-                    }
-                }
+                refreshDataList();
                 view.initData(finishWishList, unFinishWishList);
                 requestEnd();
             }
@@ -63,16 +59,17 @@ public class WishPresenter implements IWishPresenter,IWishDetailPresenter,Serial
     /**
      * 成功状态下，请求结束
      */
-    private void requestEnd(){
+    private void requestEnd() {
         view.hideLoading();
         view.doNoDataTip();
     }
 
     /**
      * 失败状态下，请求结束
+     *
      * @param msg
      */
-    private void requestEnd(String msg){
+    private void requestEnd(String msg) {
         view.showToast(msg);
         requestEnd();
     }
@@ -80,59 +77,76 @@ public class WishPresenter implements IWishPresenter,IWishDetailPresenter,Serial
     /*--------- 计划详情P方法 ------------*/
 
     @Override
-    public void setDetailView(IWishDetailView detailView,int detailPosition){
+    public void setDetailView(IWishDetailView detailView, int detailPosition) {
         this.detailView = detailView;
         this.detailPosition = detailPosition;
-        isChanged = false;
     }
 
     @Override
     public void initView() {
-        if(detailView == null || detailPosition == -1){
+        if (detailView == null || detailPosition == -1) {
             throw new NoClassDefFoundError("not fount detailView or detailPosition");
-        }else{
-            WishDto wishDto = wishList.get(detailPosition);
-            detailView.updateView(wishDto.getTime(),
-                    wishDto.getFullName(),
-                    wishDto.getFinsih(),
-                    wishDto.isFinish(),
-                    wishDto.getTitle(),
-                    wishDto.getWishContent());
+        } else {
+            detailView.updateView(wishList.get(detailPosition));
         }
-    }
-
-    @Override
-    public void deleteWish() {
-        wishList.remove(detailPosition);
-        detailView.finishActivity(true);
-    }
-
-    @Override
-    public void changeContent(String title,String str) {
-        wishList.get(detailPosition).setTitle(title);
-        wishList.get(detailPosition).setWishContent(str);
-        isChanged = true;
-    }
-
-    @Override
-    public void ChangeImg(Drawable drawable) {
-
-    }
-
-    @Override
-    public void setIsFinish() {
-        wishList.get(detailPosition).setIsFinish(!wishList.get(detailPosition).isFinish());
-        isChanged = true;
     }
 
     @Override
     public void addWish(Drawable drawable, String time, String buildOf, String title, String content) {
 
+
+        refreshDataList();
     }
 
     @Override
-    public void finishActivity() {
-        detailView.finishActivity(isChanged);
+    public void deleteWish() {
+        wishList.remove(detailPosition);
+        refreshDataList();
+        detailView.finishActivity();
+
     }
+
+    @Override
+    public void changeWish(String title, String content) {
+        if (StrUtils.isNullStr(title) || StrUtils.isNullStr(content)) {
+            view.showToast("标题或内容不能为空");
+            return;
+        }
+
+
+        wishList.get(detailPosition).setTitle(title);
+        wishList.get(detailPosition).setWishContent(content);
+    }
+
+    @Override
+    public void changeWishImg(Drawable drawable) {
+
+
+    }
+
+    @Override
+    public void changeFinish(boolean isFinish) {
+        if (isFinish != wishList.get(detailPosition).isFinish()) {
+            wishList.get(detailPosition).setIsFinish(isFinish);
+            refreshDataList();
+        }
+    }
+
+    /**
+     * 刷新已完成和未完成List
+     */
+    private void refreshDataList() {
+        finishWishList.clear();
+        unFinishWishList.clear();
+        for (int i = 0; i < wishList.size(); i++) {
+            if (wishList.get(i).isFinish()) {
+                finishWishList.add(wishList.valueAt(i));
+            } else {
+                unFinishWishList.add(wishList.valueAt(i));
+            }
+        }
+    }
+
+
 }
 

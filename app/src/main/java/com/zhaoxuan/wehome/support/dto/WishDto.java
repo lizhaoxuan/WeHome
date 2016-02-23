@@ -13,18 +13,6 @@ public class WishDto extends WishEntity implements Serializable {
         super(buildAccount, buildName, buildPost, id, imgUrl, isFinish, time, title, wishContent);
     }
 
-    public WishDto(WishEntity entity){
-        super(entity.getBuildAccount(),
-                entity.getBuildName(),
-                entity.getBuildPost(),
-                entity.getId(),
-                entity.getImgUrl(),
-                entity.isFinish(),
-                entity.getTime(),
-                entity.getTitle(),
-                entity.getWishContent());
-    }
-
     public String getFinsih() {
         if (isFinish) {
             return "已完成";

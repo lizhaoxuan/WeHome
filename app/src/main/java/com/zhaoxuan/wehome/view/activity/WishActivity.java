@@ -62,12 +62,12 @@ public class WishActivity extends BaseActivity implements IWishView {
     /*Tab页面列表  */
     private List<View> views = new ArrayList<>();
 
-    private WishListAdapter unFinishlistAdapter;
-    private WishListAdapter finishlistAdapter;
+    private WishListAdapter unFinishListAdapter;
+    private WishListAdapter finishListAdapter;
 
     private IWishPresenter presenter;
 
-    public static void stratActivity(Activity activity) {
+    public static void startActivity(Activity activity) {
         Intent intent = new Intent(activity, WishActivity.class);
         activity.startActivity(intent);
     }
@@ -118,24 +118,23 @@ public class WishActivity extends BaseActivity implements IWishView {
         });
 
 
-
-        unFinishlistAdapter = new WishListAdapter(this);
-        finishlistAdapter = new WishListAdapter(this);
+        unFinishListAdapter = new WishListAdapter(this);
+        finishListAdapter = new WishListAdapter(this);
         finishListView.setLayoutManager(new LinearLayoutManager(this));
-        finishListView.setAdapter(finishlistAdapter);
+        finishListView.setAdapter(finishListAdapter);
         unFinishListView.setLayoutManager(new LinearLayoutManager(this));
-        unFinishListView.setAdapter(unFinishlistAdapter);
+        unFinishListView.setAdapter(unFinishListAdapter);
 
-        finishlistAdapter.setItemClickListener(new WishListAdapter.ItemClickListener() {
+        finishListAdapter.setItemClickListener(new WishListAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                WishDetailActivity.startActivity(WishActivity.this,position,(WishPresenter)presenter);
+                WishDetailActivity.startActivity(WishActivity.this, position, (WishPresenter) presenter);
             }
         });
-        finishlistAdapter.setItemClickListener(new WishListAdapter.ItemClickListener() {
+        finishListAdapter.setItemClickListener(new WishListAdapter.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                WishDetailActivity.startActivity(WishActivity.this,position,(WishPresenter)presenter);
+                WishDetailActivity.startActivity(WishActivity.this, position, (WishPresenter) presenter);
             }
         });
 
@@ -144,25 +143,23 @@ public class WishActivity extends BaseActivity implements IWishView {
 
 
 
-    /***
-     * View 方法
-     */
+    /* -------View 方法 --------*/
 
     /**
-     * 数据源有P进行存储
+     * 数据源由P进行存储
      * 之前只有一个updateView  为了避免每一次小修改都导致整个ListView全部替换
      * 改为initData    updateData
      */
     @Override
     public void initData(List<WishDto> unFinishList, List<WishDto> finishList) {
-        finishlistAdapter.setDatas(finishList);
-        unFinishlistAdapter.setDatas(unFinishList);
+        finishListAdapter.setDatas(finishList);
+        unFinishListAdapter.setDatas(unFinishList);
     }
 
     @Override
     public void updateData() {
-        finishlistAdapter.notifyDataSetChanged();
-        unFinishlistAdapter.notifyDataSetChanged();
+        finishListAdapter.notifyDataSetChanged();
+        unFinishListAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -236,10 +233,10 @@ public class WishActivity extends BaseActivity implements IWishView {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
 
-        }else if(item.getItemId() == R.id.wishAdd){
-            WishDetailActivity.startActivity(this,(WishPresenter)presenter);
+        } else if (item.getItemId() == R.id.wishAdd) {
+            WishDetailActivity.startActivity(this, (WishPresenter) presenter);
         }
         return true;
     }

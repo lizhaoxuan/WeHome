@@ -4,12 +4,15 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.framework.presenter.IMemorialDayPresenter;
+import com.zhaoxuan.wehome.framework.presenter.impl.MemorialDayPresenter;
 import com.zhaoxuan.wehome.framework.view.IMemorialDayView;
 import com.zhaoxuan.wehome.support.dto.MemorialDayDto;
 import com.zhaoxuan.wehome.support.utils.ViewUtils;
@@ -45,6 +48,8 @@ public class MemorialDayActivity extends BaseActivity implements IMemorialDayVie
 
     private MemorialListAdapter listAdapter;
 
+    private IMemorialDayPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +61,14 @@ public class MemorialDayActivity extends BaseActivity implements IMemorialDayVie
     protected void initView() {
         setTitle("纪念日");
         applyBlur();
+        presenter = new MemorialDayPresenter(this);
         listAdapter = new MemorialListAdapter(this);
+        listAdapter.setItemClickListener(new MemorialListAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                MemorialDayDetailActivity.startActivity(MemorialDayActivity.this, position, (MemorialDayPresenter) presenter);
+            }
+        });
     }
 
 
@@ -76,12 +88,12 @@ public class MemorialDayActivity extends BaseActivity implements IMemorialDayVie
     }
 
     @Override
-    public void initData(List<MemorialDayDto> topList, List<MemorialDayDto> dataList) {
-        familyTitleText.setText(topList.get(0).getNameStr());
-        familyDayText.setText(topList.get(0).getDayStr());
+    public void initData(MemorialDayDto family, MemorialDayDto wehome, List<MemorialDayDto> dataList) {
+        familyTitleText.setText(family.getNameStr());
+        familyDayText.setText(family.getDayStr());
         familyLabelText.setText("天");
-        wehomeTitleText.setText(topList.get(1).getNameStr());
-        wehomeDayText.setText(topList.get(1).getDayStr());
+        wehomeTitleText.setText(wehome.getNameStr());
+        wehomeDayText.setText(wehome.getDayStr());
         wehomeLabelText.setText("天");
         listAdapter.setDatas(dataList);
         recyclerView.setAdapter(listAdapter);

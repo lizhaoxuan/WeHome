@@ -3,8 +3,6 @@ package com.zhaoxuan.wehome.view.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -19,6 +17,7 @@ import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.presenter.IMemorialDayDetailPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.MemorialDayPresenter;
 import com.zhaoxuan.wehome.framework.view.IMemorialDayDetailView;
+import com.zhaoxuan.wehome.support.dto.MemorialDayDto;
 import com.zhaoxuan.wehome.view.widget.TopToast;
 
 import butterknife.Bind;
@@ -49,9 +48,7 @@ public class MemorialDayDetailActivity extends BaseActivity implements IMemorial
     }
 
     public static void startActivity(Context activity, MemorialDayPresenter presenter) {
-        Intent intent = new Intent(activity, MemorialDayDetailActivity.class);
-        intent.putExtra("presenter", presenter);
-        activity.startActivity(intent);
+        startActivity(activity, -1, presenter);
     }
 
 
@@ -128,9 +125,10 @@ public class MemorialDayDetailActivity extends BaseActivity implements IMemorial
 
     /* -----------  View 方法  -----------*/
     @Override
-    public void updateView(String title, String date, boolean isLoop) {
-        titleEdit.setText(title);
-        timeText.setText(date);
+    public void updateView(MemorialDayDto memorialDayDto) {
+        titleEdit.setText(memorialDayDto.getTitle());
+        timeText.setText(memorialDayDto.getDateStr());
+        isLoop = memorialDayDto.isLoop();
         if (isLoop) {
             trueBtn.setSelected(true);
         } else {
@@ -155,7 +153,7 @@ public class MemorialDayDetailActivity extends BaseActivity implements IMemorial
 
     @Override
     public void showToast(String msg) {
-        TopToast.makeText(this,msg).show(titleEdit);
+        TopToast.makeText(this, msg).show(titleEdit);
     }
 
 

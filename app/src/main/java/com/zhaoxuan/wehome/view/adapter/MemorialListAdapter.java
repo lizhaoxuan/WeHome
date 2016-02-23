@@ -8,7 +8,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zhaoxuan.wehome.R;
+import com.zhaoxuan.wehome.framework.base.BaseAdapter;
+import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
 import com.zhaoxuan.wehome.support.dto.MemorialDayDto;
+import com.zhaoxuan.wehome.view.holder.MemorialDayHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,72 +19,21 @@ import java.util.List;
 /**
  * Created by lizhaoxuan on 16/1/5.
  */
-public class MemorialListAdapter extends RecyclerView.Adapter<MemorialListAdapter.MyViewHolder> {
-
-    private Context context;
-    private List<MemorialDayDto> myDatas = new ArrayList<>();
-    private ItemClickListener itemClickListener;
+public class MemorialListAdapter extends BaseAdapter<MemorialDayDto> {
 
     public MemorialListAdapter(Context context) {
-        this.context = context;
-
-    }
-
-    public void setDatas(List myDatas) {
-        this.myDatas = myDatas;
+        super(context);
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
-                context).inflate(R.layout.item_memorial, parent,
-                false), itemClickListener);
-        return holder;
-    }
-
-    @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.titleText.setText(myDatas.get(position).getNameStr());
-        holder.dayText.setText(myDatas.get(position).getDayStr());
-    }
-
-    @Override
-    public int getItemCount() {
-
-        return myDatas == null ? 0 : myDatas.size();
+    public BaseRecyclerHolder<MemorialDayDto> onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new MemorialDayHolder(context,R.layout.item_memorial,parent,itemClickListener);
     }
 
     @Override
     public long getItemId(int position) {
-        return myDatas == null ? 0 : myDatas.get(position).getId();
+        return datas == null ? 0 : datas.get(position).getId();
     }
 
-    public void setItemClickListener(ItemClickListener itemClickListener) {
-        this.itemClickListener = itemClickListener;
-    }
-
-    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        protected TextView titleText;
-        protected TextView dayText;
-        protected ItemClickListener itemClickListener;
-
-        public MyViewHolder(View view, ItemClickListener itemClickListener) {
-            super(view);
-            titleText = (TextView) view.findViewById(R.id.titleText);
-            dayText = (TextView) view.findViewById(R.id.dayText);
-            this.itemClickListener = itemClickListener;
-            view.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            if (itemClickListener != null)
-                itemClickListener.onItemClick(v, (int) getItemId());
-        }
-    }
-
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
-    }
 
 }

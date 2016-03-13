@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
 import com.zhaoxuan.wehome.framework.presenter.IWishPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.WishPresenter;
 import com.zhaoxuan.wehome.framework.view.IWishView;
@@ -124,13 +125,13 @@ public class WishActivity extends BaseActivity implements IWishView {
         unFinishListView.setLayoutManager(new LinearLayoutManager(this));
         unFinishListView.setAdapter(unFinishListAdapter);
 
-        finishListAdapter.setItemClickListener(new WishListAdapter.ItemClickListener() {
+        finishListAdapter.setItemClickListener(new BaseRecyclerHolder.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 WishDetailActivity.startActivity(WishActivity.this, position, (WishPresenter) presenter);
             }
         });
-        finishListAdapter.setItemClickListener(new WishListAdapter.ItemClickListener() {
+        finishListAdapter.setItemClickListener(new BaseRecyclerHolder.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 WishDetailActivity.startActivity(WishActivity.this, position, (WishPresenter) presenter);

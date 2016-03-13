@@ -135,14 +135,14 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-    
-    <!--<android.support.design.widget.FloatingActionButton-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--app:layout_anchor="@id/appbar"-->
-        <!--app:layout_anchorGravity="bottom|right|end"-->
-        <!--android:src="@drawable/t_head"-->
-        <!--android:layout_margin="@dimen/fab_margin"-->
-        <!--android:clickable="true"/>-->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/actionBtn"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_anchor="@id/main_content"
+        app:layout_anchorGravity="bottom|right|end"
+        android:src="@drawable/ico_action_add"
+        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"/>
 
 </android.support.design.widget.CoordinatorLayout>

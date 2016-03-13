@@ -1,20 +1,15 @@
 package com.zhaoxuan.wehome.view.fragment;
 
-import android.app.usage.NetworkStatsManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseFragment;
-import com.zhaoxuan.wehome.framework.view.IMenuView;
-import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
 
 import butterknife.Bind;
@@ -22,7 +17,7 @@ import butterknife.Bind;
 /**
  * Created by lizhaoxuan on 15/11/24.
  */
-public class ChatFragment extends BaseFragment{
+public class ChatFragment extends BaseFragment {
 
     @Bind(R.id.toolbar)
     protected Toolbar toolbar;
@@ -41,13 +36,13 @@ public class ChatFragment extends BaseFragment{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activity = (ChatActivity)getActivity();
-        toolbar = (Toolbar)view.findViewById(R.id.toolbar);
+        activity = (ChatActivity) getActivity();
+        toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         activity.setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ico_action_menu);
 
         CollapsingToolbarLayout collapsingToolbar =
-                (CollapsingToolbarLayout)view.findViewById(R.id.collapsing_toolbar);
+                (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle("Love+");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

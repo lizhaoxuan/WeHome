@@ -3,6 +3,7 @@ package com.zhaoxuan.wehome.view.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.Button;
 
 import com.zhaoxuan.wehome.R;
@@ -49,7 +50,6 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
     public void forgetOnClick() {
         presenter.forgetPassword(accountEdit.getText());
     }
-
 
     /**
      * -------------- View方法 ----------------

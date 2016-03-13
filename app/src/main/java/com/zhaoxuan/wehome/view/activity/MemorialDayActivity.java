@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
 import com.zhaoxuan.wehome.framework.presenter.IMemorialDayPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.MemorialDayPresenter;
 import com.zhaoxuan.wehome.framework.view.IMemorialDayView;
@@ -63,7 +64,7 @@ public class MemorialDayActivity extends BaseActivity implements IMemorialDayVie
         applyBlur();
         presenter = new MemorialDayPresenter(this);
         listAdapter = new MemorialListAdapter(this);
-        listAdapter.setItemClickListener(new MemorialListAdapter.ItemClickListener() {
+        listAdapter.setItemClickListener(new BaseRecyclerHolder.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 MemorialDayDetailActivity.startActivity(MemorialDayActivity.this, position, (MemorialDayPresenter) presenter);

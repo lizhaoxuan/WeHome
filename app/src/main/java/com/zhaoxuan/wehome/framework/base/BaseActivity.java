@@ -12,7 +12,7 @@ import butterknife.ButterKnife;
 /**
  * Created by lizhaoxuan on 15/11/13.
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity<T> extends AppCompatActivity {
 
     private ToolBarHelper toolBarHelper ;
     protected Toolbar toolbar ;
@@ -20,7 +20,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override

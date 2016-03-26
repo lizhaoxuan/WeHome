@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.framework.base.BasePresent;
 import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
 import com.zhaoxuan.wehome.framework.presenter.IWishPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.WishPresenter;
@@ -147,6 +148,8 @@ public class WishActivity extends BaseActivity implements IWishView {
                 presenter.initData();
             }
         });
+
+
     }
 
 

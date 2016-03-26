@@ -20,5 +20,4 @@ public class BasePresent {
         requestEnd();
         baseView.showToast(error);
     }
-
 }

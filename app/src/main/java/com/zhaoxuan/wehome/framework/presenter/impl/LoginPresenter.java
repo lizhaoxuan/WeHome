@@ -1,5 +1,6 @@
 package com.zhaoxuan.wehome.framework.presenter.impl;
 
+import com.zhaoxuan.wehome.framework.base.BasePresenter;
 import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.ILoginModel;
 import com.zhaoxuan.wehome.framework.model.impl.LoginModel;
@@ -18,7 +19,7 @@ import com.zhaoxuan.wehome.view.activity.JoinFamilyActivity;
 /**
  * Created by lizhaoxuan on 15/11/12.
  */
-public class LoginPresenter implements ILoginPresenter, IForgetPresenter, IRegisterPresenter {
+public class LoginPresenter extends BasePresenter implements ILoginPresenter, IForgetPresenter, IRegisterPresenter {
 
     private ILoginView loginView;
     private IForgetView forgetView;
@@ -29,19 +30,20 @@ public class LoginPresenter implements ILoginPresenter, IForgetPresenter, IRegis
         model = new LoginModel();
     }
 
-    public LoginPresenter(ILoginView view) {
+    public LoginPresenter() {
+        initModel();
+    }
+
+    public void setLoginView(ILoginView view) {
         this.loginView = view;
-        initModel();
     }
 
-    public LoginPresenter(IForgetView forgetView) {
-        this.forgetView = forgetView;
-        initModel();
+    public void setForgetView(IForgetView view){
+        this.forgetView = view;
     }
 
-    public LoginPresenter(IRegisterView registerView) {
+    public void setRegisterView(IRegisterView registerView) {
         this.registerView = registerView;
-        initModel();
     }
 
     @Override

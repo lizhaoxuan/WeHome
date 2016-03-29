@@ -1,5 +1,6 @@
 package com.zhaoxuan.wehome.framework.presenter.impl;
 
+import com.zhaoxuan.wehome.framework.base.BasePresenter;
 import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.ISetModel;
 import com.zhaoxuan.wehome.framework.model.impl.SetModel;
@@ -12,13 +13,17 @@ import com.zhaoxuan.wehome.support.dto.UserDto;
  * 设置 presenter
  * Created by lizhaoxuan on 15/11/26.
  */
-public class SetPresenter implements ISetPresenter {
+public class SetPresenter extends BasePresenter implements ISetPresenter {
     private ISetView view;
     private ISetModel model;
 
     public SetPresenter(ISetView view) {
         this.view = view;
         this.model = new SetModel();
+    }
+
+    public void setView(ISetView view) {
+        this.view = view;
     }
 
     @Override

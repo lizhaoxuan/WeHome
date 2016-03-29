@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
-import com.zhaoxuan.wehome.framework.base.BasePresent;
 import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
 import com.zhaoxuan.wehome.framework.presenter.IWishPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.WishPresenter;
@@ -32,7 +31,7 @@ import java.util.List;
 
 import butterknife.Bind;
 
-public class WishActivity extends BaseActivity implements IWishView {
+public class WishActivity extends BaseActivity<WishPresenter> implements IWishView {
 
     @Bind(R.id.refreshLayout)
     protected SwipeRefreshLayout refreshLayout;
@@ -90,7 +89,9 @@ public class WishActivity extends BaseActivity implements IWishView {
     @Override
     protected void initView() {
         setTitle("家庭计划");
-        presenter = new WishPresenter(this);
+        setPresenter(WishPresenter.class);
+        getPresenter().setView(this);
+
         LayoutInflater inflater = getLayoutInflater();
         finishView = inflater.inflate(R.layout.layout_wish_list, null);
         unFinishView = inflater.inflate(R.layout.layout_wish_list, null);
@@ -192,6 +193,11 @@ public class WishActivity extends BaseActivity implements IWishView {
     @Override
     public void doNoDataTip() {
 
+    }
+
+    @Override
+    public void requestEnd() {
+        doNoDataTip();
     }
 
     /**

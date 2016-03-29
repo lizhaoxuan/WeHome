@@ -1,6 +1,7 @@
 package com.zhaoxuan.wehome.framework.presenter.impl;
 
 import com.zhaoxuan.wehome.WeHomeApplication;
+import com.zhaoxuan.wehome.framework.base.BasePresenter;
 import com.zhaoxuan.wehome.framework.presenter.IInvitePresenter;
 import com.zhaoxuan.wehome.framework.view.IInviteView;
 import com.zhaoxuan.wehome.support.constants.Strs;
@@ -8,11 +9,15 @@ import com.zhaoxuan.wehome.support.constants.Strs;
 /**
  * Created by lizhaoxuan on 15/11/19.
  */
-public class InvitePresenter implements IInvitePresenter {
+public class InvitePresenter extends BasePresenter implements IInvitePresenter {
 
     private IInviteView view ;
 
-    public InvitePresenter(IInviteView view) {
+    public InvitePresenter() {
+
+    }
+
+    public void setView(IInviteView view) {
         this.view = view;
     }
 

@@ -1,9 +1,8 @@
 package com.zhaoxuan.wehome.framework.presenter.impl;
 
-import android.util.Log;
 import android.util.SparseArray;
 
-import com.zhaoxuan.wehome.framework.base.BasePresent;
+import com.zhaoxuan.wehome.framework.base.BasePresenter;
 import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.IMemorialDayModel;
 import com.zhaoxuan.wehome.framework.model.impl.MemorialDayModel;
@@ -24,7 +23,7 @@ import java.util.List;
 /**
  * Created by lizhaoxuan on 16/1/10.
  */
-public class MemorialDayPresenter extends BasePresent implements IMemorialDayPresenter, IMemorialDayDetailPresenter, Serializable {
+public class MemorialDayPresenter extends BasePresenter implements IMemorialDayPresenter, IMemorialDayDetailPresenter, Serializable {
 
     private IMemorialDayView view;
     private IMemorialDayModel model;
@@ -33,10 +32,18 @@ public class MemorialDayPresenter extends BasePresent implements IMemorialDayPre
     private MemorialDayDto detailData;
 
     public MemorialDayPresenter(IMemorialDayView view) {
-        super(view);
         this.view = view;
         model = new MemorialDayModel();
     }
+
+    public void setView(IMemorialDayView view) {
+        this.view = view;
+    }
+
+    public void setDetailView(IMemorialDayDetailView view) {
+        this.detailView = view;
+    }
+
 
     /* IMemorialDayPresenter */
     @Override
@@ -48,12 +55,13 @@ public class MemorialDayPresenter extends BasePresent implements IMemorialDayPre
                 memorialDataList = dto;
                 view.initData(memorialDataList.valueAt(0), memorialDataList.valueAt(1),
                         refreshDataList());
-                requestEnd();
+                view.requestEnd();
             }
 
             @Override
             public void callBackError(String error) {
-                requestEnd(error);
+                view.requestEnd();
+                view.showToast(error);
             }
         });
     }
@@ -94,7 +102,7 @@ public class MemorialDayPresenter extends BasePresent implements IMemorialDayPre
 
     @Override
     public void changeMemorialDay(String title, long date, boolean isLoop) {
-        if (StrUtils.isNullStr(title)){
+        if (StrUtils.isNullStr(title)) {
             detailView.showToast("标题不能为空");
         }
 

@@ -11,5 +11,5 @@ public interface IBaseView {
 
     void hideLoading();
 
-    void doNoDataTip();
+    void requestEnd();
 }

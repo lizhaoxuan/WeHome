@@ -1,6 +1,6 @@
 package com.zhaoxuan.wehome.framework.presenter.impl;
 
-import com.zhaoxuan.wehome.framework.base.BasePresent;
+import com.zhaoxuan.wehome.framework.base.BasePresenter;
 import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.IFamilyModel;
 import com.zhaoxuan.wehome.framework.model.impl.FamilyModel;
@@ -13,13 +13,12 @@ import java.util.List;
 /**
  * Created by lizhaoxuan on 16/2/23.
  */
-public class FamilyPresent extends BasePresent implements IFamilyPresenter {
+public class FamilyPresent extends BasePresenter implements IFamilyPresenter {
 
     private IFamilyView view;
     private IFamilyModel model;
 
     public FamilyPresent(IFamilyView view) {
-        super(view);
         this.view = view;
         model = new FamilyModel();
     }
@@ -31,12 +30,13 @@ public class FamilyPresent extends BasePresent implements IFamilyPresenter {
             @Override
             public void callBackSuccess(List<FamilyDto> familyDtos) {
                 view.init(familyDtos);
-                requestEnd();
+                view.requestEnd();
             }
 
             @Override
             public void callBackError(String error) {
-                requestEnd(error);
+                view.requestEnd();
+                view.showToast(error);
             }
         });
     }

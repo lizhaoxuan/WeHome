@@ -3,7 +3,7 @@ package com.zhaoxuan.wehome.framework.presenter.impl;
 import android.graphics.drawable.Drawable;
 import android.util.SparseArray;
 
-import com.zhaoxuan.wehome.framework.base.BasePresent;
+import com.zhaoxuan.wehome.framework.base.BasePresenter;
 import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.IWishModel;
 import com.zhaoxuan.wehome.framework.model.impl.WishModel;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 /**
  * Created by lizhaoxuan on 15/11/27.
  */
-public class WishPresenter extends BasePresent implements IWishPresenter, IWishDetailPresenter, Serializable {
+public class WishPresenter extends BasePresenter implements IWishPresenter, IWishDetailPresenter, Serializable {
 
     private IWishView view;
     private IWishModel model;
@@ -30,10 +30,12 @@ public class WishPresenter extends BasePresent implements IWishPresenter, IWishD
     private ArrayList<WishDto> unFinishWishList;
     private int detailPosition;
 
-    public WishPresenter(IWishView view) {
-        super(view);
-        this.view = view;
+    public WishPresenter() {
         model = new WishModel();
+    }
+
+    public void setView(IWishView view) {
+        this.view = view;
     }
 
     @Override
@@ -47,12 +49,12 @@ public class WishPresenter extends BasePresent implements IWishPresenter, IWishD
                 wishList = t;
                 refreshDataList();
                 view.initData(finishWishList, unFinishWishList);
-                requestEnd();
+                view.requestEnd();
             }
 
             @Override
             public void callBackError(String error) {
-                requestEnd(error);
+                view.requestEnd();
             }
         });
     }

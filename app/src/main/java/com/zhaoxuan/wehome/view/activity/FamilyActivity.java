@@ -1,11 +1,13 @@
 package com.zhaoxuan.wehome.view.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
 import com.zhaoxuan.wehome.framework.presenter.IFamilyPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.FamilyPresent;
 import com.zhaoxuan.wehome.framework.view.IFamilyView;
@@ -17,7 +19,7 @@ import java.util.List;
 
 import butterknife.Bind;
 
-public class FamilyActivity extends BaseActivity implements IFamilyView{
+public class FamilyActivity extends BaseViewActivity<FamilyPresent> implements IFamilyView{
 
     @Bind(R.id.refreshLayout)
     protected SwipeRefreshLayout refreshLayout;
@@ -31,6 +33,7 @@ public class FamilyActivity extends BaseActivity implements IFamilyView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family);
+        setPresenter(FamilyPresent.class);
     }
 
     @Override
@@ -66,6 +69,11 @@ public class FamilyActivity extends BaseActivity implements IFamilyView{
 
     @Override
     public void hideLoading() {
+
+    }
+
+    @Override
+    public void requestEnd() {
 
     }
 

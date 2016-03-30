@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
+import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
 import com.zhaoxuan.wehome.framework.presenter.IMemorialDayPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.MemorialDayPresenter;
 import com.zhaoxuan.wehome.framework.view.IMemorialDayView;
@@ -24,7 +25,7 @@ import java.util.List;
 
 import butterknife.Bind;
 
-public class MemorialDayActivity extends BaseActivity implements IMemorialDayView {
+public class MemorialDayActivity extends BaseViewActivity implements IMemorialDayView {
 
     @Bind(R.id.refreshLayout)
     protected SwipeRefreshLayout refreshLayout;
@@ -55,6 +56,9 @@ public class MemorialDayActivity extends BaseActivity implements IMemorialDayVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memorial_day);
+
+
+
     }
 
 
@@ -122,6 +126,11 @@ public class MemorialDayActivity extends BaseActivity implements IMemorialDayVie
 
     @Override
     public void hideLoading() {
+
+    }
+
+    @Override
+    public void requestEnd() {
 
     }
 

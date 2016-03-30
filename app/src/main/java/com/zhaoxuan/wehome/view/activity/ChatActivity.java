@@ -10,11 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import com.zhaoxuan.wehome.R;
+import com.zhaoxuan.wehome.framework.base.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends BaseActivity {
     @Bind(R.id.drawer_layout)
     protected DrawerLayout drawerLayout;
     @Bind(R.id.refreshLayout)

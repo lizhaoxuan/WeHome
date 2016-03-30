@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
 import com.zhaoxuan.wehome.framework.presenter.IForgetPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.LoginPresenter;
 import com.zhaoxuan.wehome.framework.view.IForgetView;
@@ -17,7 +18,7 @@ import com.zhaoxuan.wehome.view.widget.TopToast;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class ForgetActivity extends BaseActivity implements IForgetView {
+public class ForgetActivity extends BaseViewActivity implements IForgetView {
     private static final String TAG = ForgetActivity.class.getName();
 
     @Bind(R.id.accountEdit)
@@ -37,7 +38,7 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget);
 
-        presenter = new LoginPresenter(this);
+
 
     }
 
@@ -74,6 +75,11 @@ public class ForgetActivity extends BaseActivity implements IForgetView {
 
     @Override
     public void hideLoading() {
+
+    }
+
+    @Override
+    public void requestEnd() {
 
     }
 }

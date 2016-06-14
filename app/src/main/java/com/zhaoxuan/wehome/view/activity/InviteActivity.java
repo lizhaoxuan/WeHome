@@ -34,10 +34,9 @@ public class InviteActivity extends BaseActivity implements IInviteView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite);
 
-        mPresenter = new InvitePresenter(this);
+//        mPresenter = new InvitePresenter(this);
     }
 
-    @Override
     protected void initView() {
         setTitle("邀请家人");
     }
@@ -75,5 +74,20 @@ public class InviteActivity extends BaseActivity implements IInviteView{
     public void showToast(String msg) {
         TopToast.makeText(InviteActivity.this,msg)
                 .show(phoneEdit);
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void requestEnd() {
+
     }
 }

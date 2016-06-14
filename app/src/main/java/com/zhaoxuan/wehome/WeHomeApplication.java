@@ -2,8 +2,7 @@ package com.zhaoxuan.wehome;
 
 import android.app.Application;
 
-import com.zhaoxuan.wehome.module.log.WLog;
-import com.zhaoxuan.wehome.support.dto.UserDto;
+import com.zhaoxuan.cakedao.CakeDao;
 
 /**
  * Created by lizhaoxuan on 15/11/12.
@@ -11,32 +10,25 @@ import com.zhaoxuan.wehome.support.dto.UserDto;
 public class WeHomeApplication extends Application {
     private static final String TAG = WeHomeApplication.class.getName();
 
+
     private static WeHomeApplication mInstance = null;
 
-    public static WeHomeApplication getInstance(){
+    public static WeHomeApplication getInstance() {
         return mInstance;
     }
 
-    private UserDto userDto = null;
 
     @Override
     public void onCreate() {
         super.onCreate();
         mInstance = this;
+        initDB();
     }
 
-
-    public UserDto getUserDto() {
-        if (userDto==null){
-            WLog.w(TAG,"userDto == null");
-            return null;
-        }else{
-            return userDto;
-        }
-
+    protected void initDB() {
+        String dbName = "home_db";
+        int version = 1;
+        CakeDao.init(this, dbName, version, true);
     }
 
-    public void setUserDto(UserDto userDto) {
-        this.userDto = userDto;
-    }
 }

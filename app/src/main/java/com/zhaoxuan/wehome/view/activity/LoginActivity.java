@@ -56,7 +56,7 @@ public class LoginActivity extends Activity implements ILoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        mPresenter = new LoginPresenter(this);
+        mPresenter = new LoginPresenter();
 
         initView();
 
@@ -153,6 +153,11 @@ public class LoginActivity extends Activity implements ILoginView {
 
     @Override
     public void hideLoading() {
+
+    }
+
+    @Override
+    public void requestEnd() {
 
     }
 

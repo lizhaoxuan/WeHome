@@ -65,7 +65,7 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView, Image
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter = new MenuPresenter(this);
+        presenter = new MenuPresenter();
         initView();
     }
 

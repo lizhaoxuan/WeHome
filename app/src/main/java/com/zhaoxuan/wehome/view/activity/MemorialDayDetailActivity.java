@@ -58,7 +58,6 @@ public class MemorialDayDetailActivity extends BaseActivity implements IMemorial
         setContentView(R.layout.activity_memorial_day_detail);
     }
 
-    @Override
     protected void initView() {
         setTitle("纪念日详情");
         initIntent();
@@ -143,6 +142,11 @@ public class MemorialDayDetailActivity extends BaseActivity implements IMemorial
 
     @Override
     public void hideLoading() {
+
+    }
+
+    @Override
+    public void requestEnd() {
 
     }
 

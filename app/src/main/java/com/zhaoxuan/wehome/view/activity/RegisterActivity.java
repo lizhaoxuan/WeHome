@@ -40,11 +40,10 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        presenter = new LoginPresenter(this);
+        presenter = new LoginPresenter();
     }
 
 
-    @Override
     protected void initView() {
         setTitle("注册");
     }
@@ -75,6 +74,11 @@ public class RegisterActivity extends BaseActivity implements IRegisterView {
 
     @Override
     public void hideLoading() {
+
+    }
+
+    @Override
+    public void requestEnd() {
 
     }
 }

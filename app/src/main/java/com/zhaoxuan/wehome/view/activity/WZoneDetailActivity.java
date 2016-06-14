@@ -13,7 +13,6 @@ public class WZoneDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_wzone_detail);
     }
 
-    @Override
     protected void initView() {
         setTitle("评论");
     }

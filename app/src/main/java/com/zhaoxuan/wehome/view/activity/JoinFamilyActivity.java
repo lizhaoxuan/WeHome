@@ -13,7 +13,6 @@ public class JoinFamilyActivity extends BaseActivity {
         setContentView(R.layout.activity_join_family);
     }
 
-    @Override
     protected void initView() {
         setTitle("创建家庭");
     }

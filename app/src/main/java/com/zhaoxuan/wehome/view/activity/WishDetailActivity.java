@@ -68,7 +68,6 @@ public class WishDetailActivity extends BaseActivity implements IWishDetailView 
 
     }
 
-    @Override
     protected void initView() {
         setTitle("计划详情");
         initIntent();
@@ -145,5 +144,25 @@ public class WishDetailActivity extends BaseActivity implements IWishDetailView 
     @Override
     public void finishActivity() {
         this.finish();
+    }
+
+    @Override
+    public void showToast(String msg) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void requestEnd() {
+
     }
 }

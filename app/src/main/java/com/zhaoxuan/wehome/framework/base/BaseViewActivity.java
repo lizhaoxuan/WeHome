@@ -10,7 +10,7 @@ import butterknife.ButterKnife;
 /**
  * Created by lizhaoxuan on 16/3/30.
  */
-public abstract class BaseViewActivity extends BaseActivity {
+public abstract class BaseViewActivity<T extends BasePresenter> extends BaseActivity<T> {
 
     protected Toolbar toolbar;
 

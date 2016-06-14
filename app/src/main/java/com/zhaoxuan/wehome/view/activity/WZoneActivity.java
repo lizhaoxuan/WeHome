@@ -19,7 +19,6 @@ public class WZoneActivity extends BaseActivity {
         setContentView(R.layout.activity_wzone);
     }
 
-    @Override
     protected void initView() {
         setTitle("社区");
     }

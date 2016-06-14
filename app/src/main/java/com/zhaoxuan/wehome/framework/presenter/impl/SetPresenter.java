@@ -31,7 +31,7 @@ public class SetPresenter extends BasePresenter implements ISetPresenter {
         if (StrUtils.isNullStr(value)) {
             view.showToast("值不能为空哦~");
         } else {
-            view.hideDialog();
+//            view.hideDialog();
             model.setValue(key, value, new ICallBack<String>() {
                 @Override
                 public void callBackSuccess(String t) {
@@ -55,7 +55,7 @@ public class SetPresenter extends BasePresenter implements ISetPresenter {
         } else if (args2.equals(args3)) {
             view.showToast("两次密码输入不一样，再检查一下吧");
         } else {
-            view.hideDialog();
+//            view.hideDialog();
             model.changePassword(args1, args2, new ICallBack<String>() {
                 @Override
                 public void callBackSuccess(String t) {

@@ -11,7 +11,4 @@ public class Strs {
 
     public static final String BAIDU_API_KEY = "93aae2b925ea5b697a5bc09151838bcb";
 
-
-
-
 }

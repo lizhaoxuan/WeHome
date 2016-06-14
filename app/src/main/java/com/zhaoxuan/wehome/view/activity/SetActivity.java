@@ -60,7 +60,6 @@ public class SetActivity extends BaseActivity implements ISetView, View.OnClickL
         presenter = new SetPresenter(this);
     }
 
-    @Override
     protected void initView() {
         setTitle("设置");
 
@@ -145,11 +144,25 @@ public class SetActivity extends BaseActivity implements ISetView, View.OnClickL
     }
 
     @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void requestEnd() {
+
+    }
+
+    @Override
     public void updateHeadImg(Bitmap bitmap) {
         headImg.setImageBitmap(bitmap);
     }
 
-    @Override
     public void hideDialog() {
         if (setDialog != null && setDialog.isShowing()) {
             setDialog.dismiss();

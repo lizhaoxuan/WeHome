@@ -86,7 +86,6 @@ public class WishActivity extends BaseActivity<WishPresenter> implements IWishVi
 
     }
 
-    @Override
     protected void initView() {
         setTitle("家庭计划");
         setPresenter(WishPresenter.class);

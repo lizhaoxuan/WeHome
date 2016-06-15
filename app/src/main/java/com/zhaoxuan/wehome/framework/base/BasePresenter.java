@@ -3,20 +3,29 @@ package com.zhaoxuan.wehome.framework.base;
 /**
  * Created by lizhaoxuan on 16/2/23.
  */
-public class BasePresenter {
+public class BasePresenter{
 
-    protected void onStart() {
+    public void onCreate() {
+
     }
 
-    protected void onResume() {
+    public void onStart() {
+
     }
 
-    protected void onPause() {
+    public void onResume() {
+
     }
 
-    protected void onStop() {
+    public void onPause() {
+
     }
 
-    protected void onDestroy() {
+    public void onStop() {
+
+    }
+
+    public void onDestroy() {
+
     }
 }

@@ -1,6 +1,5 @@
 package com.zhaoxuan.wehome.view.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,12 +7,11 @@ import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.zhaoxuan.wehome.R;
+import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.presenter.ILoginPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.LoginPresenter;
 import com.zhaoxuan.wehome.framework.view.ILoginView;
@@ -26,13 +24,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class LoginActivity extends Activity implements ILoginView {
+public class LoginActivity extends BaseActivity<ILoginPresenter> implements ILoginView {
     private static final String TAG = LoginActivity.class.getName();
 
-    @Bind(R.id.forgetText)
-    protected TextView forgetText;
-    @Bind(R.id.registerText)
-    protected TextView registerText;
     @Bind(R.id.loginBtn)
     protected Button loginBtn;
     @Bind(R.id.accountEdit)
@@ -41,12 +35,8 @@ public class LoginActivity extends Activity implements ILoginView {
     protected EditText passwordEdit;
     @Bind(R.id.logoLayout)
     protected LinearLayout logoLayout;
-    @Bind(R.id.logoIcon)
-    protected ImageView logoIcon;
     @Bind(R.id.bottomLayout)
     protected RelativeLayout bottomLayout;
-
-    private ILoginPresenter mPresenter;
 
     // 用于计算logo布局的高度，从而监听软键盘的弹出与隐藏
     private int logoLayoutHeight = 0;
@@ -55,19 +45,16 @@ public class LoginActivity extends Activity implements ILoginView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
-        mPresenter = new LoginPresenter();
+
+        presenter = new LoginPresenter(this);
 
         initView();
-
-
     }
 
     private void initView() {
-
+        //临时
         accountEdit.setText("690770333@qq.com");
         passwordEdit.setText("123456");
-
 
         //透明状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -109,7 +96,7 @@ public class LoginActivity extends Activity implements ILoginView {
 
     @OnClick(R.id.loginBtn)
     public void loginClick() {
-        mPresenter.login(accountEdit.getText().toString(),
+        presenter.login(accountEdit.getText().toString(),
                 passwordEdit.getText().toString());
     }
 
@@ -123,13 +110,12 @@ public class LoginActivity extends Activity implements ILoginView {
         ForgetActivity.startActivity(this, Ints.INTENT_FORGET);
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK)
-            mPresenter.onActivityResult(requestCode, resultCode, data.getStringExtra("account"));
-
+        if (resultCode == RESULT_OK) {
+            presenter.onActivityResult(requestCode, resultCode, data.getStringExtra("account"));
+        }
     }
 
     /**

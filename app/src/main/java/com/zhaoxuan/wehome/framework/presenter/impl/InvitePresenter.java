@@ -14,13 +14,10 @@ public class InvitePresenter extends BasePresenter implements IInvitePresenter {
 
     private IInviteView view ;
 
-    public InvitePresenter() {
-
-    }
-
-    public void setView(IInviteView view) {
+    public InvitePresenter(IInviteView view) {
         this.view = view;
     }
+
 
     @Override
     public void send(String phone) {

@@ -1,55 +1,59 @@
 package com.zhaoxuan.wehome.framework.base;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
+
+import com.zhaoxuan.wehome.support.dispensebus.DispenseBus;
+import com.zhaoxuan.wehome.view.widget.TopToast;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by lizhaoxuan on 15/11/13.
  */
-public class BaseActivity<T extends BasePresenter> extends AppCompatActivity {
+public class BaseActivity<T> extends AppCompatActivity {
 
-    private T presenter;
+    protected T presenter;
 
-    public T setPresenter(Class<T> pClazz) {
-        try {
-            presenter = pClazz.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return presenter;
-    }
-
-    final public T getPresenter() {
-        return presenter;
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ((BasePresenter)presenter).onCreate();
+        DispenseBus.getInstance().register(this);
+        ButterKnife.bind(this);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        presenter.onStart();
+        ((BasePresenter)presenter).onStart();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.onResume();
+        ((BasePresenter)presenter).onResume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        presenter.onPause();
+        ((BasePresenter)presenter).onPause();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        presenter.onStop();
+        ((BasePresenter)presenter).onStop();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.onDestroy();
+        ((BasePresenter)presenter).onDestroy();
+        DispenseBus.getInstance().unRegister(this);
+        ButterKnife.unbind(this);
     }
-
 }

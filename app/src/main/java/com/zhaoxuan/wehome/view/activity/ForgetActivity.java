@@ -18,15 +18,11 @@ import com.zhaoxuan.wehome.view.widget.TopToast;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class ForgetActivity extends BaseViewActivity implements IForgetView {
+public class ForgetActivity extends BaseViewActivity<IForgetPresenter> implements IForgetView {
     private static final String TAG = ForgetActivity.class.getName();
 
     @Bind(R.id.accountEdit)
     protected ImageEditText accountEdit;
-    @Bind(R.id.forgetBtn)
-    protected Button forgetBtn;
-
-    private IForgetPresenter presenter;
 
     public static void startActivity(Activity activity, int requestCode) {
         Intent intent = new Intent(activity, ForgetActivity.class);
@@ -37,8 +33,7 @@ public class ForgetActivity extends BaseViewActivity implements IForgetView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget);
-
-
+        presenter = new LoginPresenter(this);
 
     }
 
@@ -66,16 +61,6 @@ public class ForgetActivity extends BaseViewActivity implements IForgetView {
     @Override
     public void showToast(String tips) {
         TopToast.makeText(this, tips).show(accountEdit);
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
     }
 
     @Override

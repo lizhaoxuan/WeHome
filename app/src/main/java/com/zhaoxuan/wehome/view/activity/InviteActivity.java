@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
 import com.zhaoxuan.wehome.framework.presenter.IInvitePresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.InvitePresenter;
 import com.zhaoxuan.wehome.framework.view.IInviteView;
@@ -16,13 +17,12 @@ import com.zhaoxuan.wehome.view.widget.TopToast;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class InviteActivity extends BaseActivity implements IInviteView{
+public class InviteActivity extends BaseViewActivity<IInvitePresenter> implements IInviteView{
     private static final int PICK_CONTACT_SUBACTIVITY = 1;
 
     @Bind(R.id.phoneEdit)
     protected ImageEditText phoneEdit;
 
-    private IInvitePresenter mPresenter;
 
     public static void startActivity(Activity activity) {
         Intent intent = new Intent(activity, InviteActivity.class);
@@ -34,7 +34,7 @@ public class InviteActivity extends BaseActivity implements IInviteView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite);
 
-//        mPresenter = new InvitePresenter(this);
+        presenter = new InvitePresenter(this);
     }
 
     protected void initView() {
@@ -51,7 +51,7 @@ public class InviteActivity extends BaseActivity implements IInviteView{
 
     @OnClick(R.id.sendBtn)
     protected void sendBtnOnClick() {
-        mPresenter.send(phoneEdit.getText());    // 取得输入信息
+        presenter.send(phoneEdit.getText());    // 取得输入信息
     }
 
 
@@ -74,16 +74,6 @@ public class InviteActivity extends BaseActivity implements IInviteView{
     public void showToast(String msg) {
         TopToast.makeText(InviteActivity.this,msg)
                 .show(phoneEdit);
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
     }
 
     @Override

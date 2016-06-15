@@ -44,5 +44,9 @@
         <attr name="setValueValueText" format="string"/>
     </declare-styleable>
 
+    <!-- NoDataTips 空数据提示控件-->
+    <declare-styleable name="NoDataTips">
+        <attr name="android:text" />
+    </declare-styleable>
 
 </resources>

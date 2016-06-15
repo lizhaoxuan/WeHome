@@ -26,24 +26,24 @@ public class LoginPresenter extends BasePresenter implements ILoginPresenter, IF
     private IRegisterView registerView;
     private ILoginModel model;
 
-    public void initModel() {
-        model = new LoginModel();
+
+    public LoginPresenter(ILoginView loginView) {
+        this.loginView = loginView;
+        init();
     }
 
-    public LoginPresenter() {
-        initModel();
-    }
-
-    public void setLoginView(ILoginView view) {
-        this.loginView = view;
-    }
-
-    public void setForgetView(IForgetView view){
-        this.forgetView = view;
-    }
-
-    public void setRegisterView(IRegisterView registerView) {
+    public LoginPresenter(IRegisterView registerView) {
         this.registerView = registerView;
+        init();
+    }
+
+    public LoginPresenter(IForgetView forgetView) {
+        this.forgetView = forgetView;
+        init();
+    }
+
+    private void init(){
+        model = new LoginModel();
     }
 
     @Override

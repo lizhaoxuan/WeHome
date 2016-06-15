@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.zhaoxuan.wehome.WeHomeApplication;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
 import com.zhaoxuan.wehome.framework.presenter.IWishDetailPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.WishPresenter;
 import com.zhaoxuan.wehome.framework.view.IWishDetailView;
@@ -26,7 +27,7 @@ import java.util.Date;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class WishDetailActivity extends BaseActivity implements IWishDetailView {
+public class WishDetailActivity extends BaseViewActivity<IWishDetailPresenter> implements IWishDetailView {
     protected static final int CHANGE_WISH = 100;
     protected static final int ADD_WISH = 101;
 

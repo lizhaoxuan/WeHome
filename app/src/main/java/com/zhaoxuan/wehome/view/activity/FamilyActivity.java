@@ -19,7 +19,7 @@ import java.util.List;
 
 import butterknife.Bind;
 
-public class FamilyActivity extends BaseViewActivity<FamilyPresent> implements IFamilyView{
+public class FamilyActivity extends BaseViewActivity<IFamilyPresenter> implements IFamilyView{
 
     @Bind(R.id.refreshLayout)
     protected SwipeRefreshLayout refreshLayout;
@@ -33,7 +33,7 @@ public class FamilyActivity extends BaseViewActivity<FamilyPresent> implements I
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family);
-        setPresenter(FamilyPresent.class);
+        presenter = new FamilyPresent(this);
     }
 
     @Override

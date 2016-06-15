@@ -30,13 +30,11 @@ public class WishPresenter extends BasePresenter implements IWishPresenter, IWis
     private ArrayList<WishDto> unFinishWishList;
     private int detailPosition;
 
-    public WishPresenter() {
+    public WishPresenter(IWishView view) {
+        this.view = view;
         model = new WishModel();
     }
 
-    public void setView(IWishView view) {
-        this.view = view;
-    }
 
     @Override
     public void initData() {

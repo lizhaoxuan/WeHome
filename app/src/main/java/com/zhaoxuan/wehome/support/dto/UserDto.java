@@ -41,7 +41,7 @@ public class UserDto implements Serializable {
     public UserDto() {
     }
 
-    public UserDto(String account, String city, String familyBuild, String headImageUri, String homeId, String homeName, int id, String name, String password, String post) {
+    public UserDto(String account, String password, String city, String familyBuild, String headImageUri, String homeId, String homeName, int id, String name, String post) {
         this.account = account;
         this.city = city;
         this.familyBuild = familyBuild;
@@ -51,7 +51,8 @@ public class UserDto implements Serializable {
         this.id = id;
         this.name = name;
         this.password = password;
-        this.post = post;    }
+        this.post = post;
+    }
 
     public String getFullName() {
         return name + " | " + post;

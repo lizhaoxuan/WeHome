@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.zhaoxuan.wehome.R;
+import com.zhaoxuan.wehome.module.manager.UserManager;
 import com.zhaoxuan.wehome.support.dto.UserDto;
 
 import butterknife.Bind;
@@ -29,18 +30,19 @@ public class MainActivity extends Activity {
     }
 
     private void init(){
-
-        initView();
+        if (UserManager.getInstance().getUserDto() == null){
+            initView(LoginActivity.class);
+        }else {
+            initView(ChatActivity.class);
+        }
     }
 
-    private void initView() {
+    private void initView(final Class<? extends Activity> clazz) {
         //透明状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.main_loading);
         loadImg.startAnimation(animation);
-
-
 
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -50,7 +52,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                startActivity(new Intent(MainActivity.this, clazz));
                 MainActivity.this.finish();
                 overridePendingTransition(R.anim.activity_enter,R.anim.activity_exit);
             }

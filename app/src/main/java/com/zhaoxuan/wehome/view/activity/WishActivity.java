@@ -66,8 +66,6 @@ public class WishActivity extends BaseActivity<WishPresenter> implements IWishVi
     private WishListAdapter unFinishListAdapter;
     private WishListAdapter finishListAdapter;
 
-    private IWishPresenter presenter;
-
     public static void startActivity(Activity activity) {
         Intent intent = new Intent(activity, WishActivity.class);
         activity.startActivity(intent);
@@ -88,8 +86,7 @@ public class WishActivity extends BaseActivity<WishPresenter> implements IWishVi
 
     protected void initView() {
         setTitle("家庭计划");
-        setPresenter(WishPresenter.class);
-        getPresenter().setView(this);
+        presenter = new WishPresenter(this);
 
         LayoutInflater inflater = getLayoutInflater();
         finishView = inflater.inflate(R.layout.layout_wish_list, null);

@@ -25,7 +25,7 @@ import java.util.List;
 
 import butterknife.Bind;
 
-public class MemorialDayActivity extends BaseViewActivity implements IMemorialDayView {
+public class MemorialDayActivity extends BaseViewActivity<IMemorialDayPresenter> implements IMemorialDayView {
 
     @Bind(R.id.refreshLayout)
     protected SwipeRefreshLayout refreshLayout;
@@ -50,7 +50,6 @@ public class MemorialDayActivity extends BaseViewActivity implements IMemorialDa
 
     private MemorialListAdapter listAdapter;
 
-    private IMemorialDayPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

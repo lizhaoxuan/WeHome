@@ -14,6 +14,7 @@ import com.rey.material.app.DialogFragment;
 import com.rey.material.app.ThemeManager;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
 import com.zhaoxuan.wehome.framework.presenter.IMemorialDayDetailPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.MemorialDayPresenter;
 import com.zhaoxuan.wehome.framework.view.IMemorialDayDetailView;
@@ -23,7 +24,7 @@ import com.zhaoxuan.wehome.view.widget.TopToast;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class MemorialDayDetailActivity extends BaseActivity implements IMemorialDayDetailView {
+public class MemorialDayDetailActivity extends BaseViewActivity<IMemorialDayDetailPresenter> implements IMemorialDayDetailView {
 
     @Bind(R.id.titleEdit)
     protected EditText titleEdit;
@@ -36,7 +37,6 @@ public class MemorialDayDetailActivity extends BaseActivity implements IMemorial
     @Bind(R.id.falseBtn)
     protected RadioButton falseBtn;
 
-    private IMemorialDayDetailPresenter presenter;
     private boolean isLoop;
     private long memorialDate;
 

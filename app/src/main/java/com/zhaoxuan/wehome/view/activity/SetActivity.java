@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
 import com.zhaoxuan.wehome.framework.presenter.ISetPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.SetPresenter;
 import com.zhaoxuan.wehome.framework.view.ISetView;
@@ -21,7 +22,7 @@ import com.zhaoxuan.wehome.view.widget.ValueSetLabel;
 
 import butterknife.Bind;
 
-public class SetActivity extends BaseActivity implements ISetView, View.OnClickListener, SetDialog.ISetDialogListener {
+public class SetActivity extends BaseViewActivity<ISetPresenter> implements ISetView, View.OnClickListener, SetDialog.ISetDialogListener {
 
     @Bind(R.id.headImg)
     protected ImageView headImg;
@@ -45,8 +46,6 @@ public class SetActivity extends BaseActivity implements ISetView, View.OnClickL
     protected Button logoutBtn;
 
     private SetDialog setDialog;
-
-    private ISetPresenter presenter;
 
     public static void startActivity(Activity activity) {
         Intent intent = new Intent(activity, SetActivity.class);

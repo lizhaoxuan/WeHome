@@ -29,6 +29,9 @@ public class FamilyDto implements Serializable {
 
     private String weather;
 
+    public FamilyDto() {
+    }
+
     public FamilyDto(String account, String city, int electric, String headPath, String headUrl, int id, String name, String post) {
         this.account = account;
         this.city = city;

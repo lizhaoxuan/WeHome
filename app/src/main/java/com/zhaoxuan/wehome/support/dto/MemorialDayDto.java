@@ -40,6 +40,9 @@ public class MemorialDayDto implements Serializable {
     private String nameStr;
     private long day;
 
+    public MemorialDayDto() {
+    }
+
     public MemorialDayDto(String buildAccount, String buildName, String datetime, int id, boolean loop, String title) {
 
         this.buildAccount = buildAccount;

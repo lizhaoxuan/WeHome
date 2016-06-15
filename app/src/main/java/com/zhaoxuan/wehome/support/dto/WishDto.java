@@ -29,6 +29,9 @@ public class WishDto implements Serializable {
     @DataProperty
     protected boolean isFinish;
 
+    public WishDto() {
+    }
+
     public WishDto(String buildAccount, String buildName, String buildPost, int id, String imgUrl, boolean isFinish, String time, String title, String wishContent) {
         this.buildAccount = buildAccount;
         this.buildName = buildName;

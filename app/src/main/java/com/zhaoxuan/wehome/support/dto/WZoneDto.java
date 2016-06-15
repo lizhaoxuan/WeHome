@@ -32,6 +32,9 @@ public class WZoneDto implements Serializable {
     private String[] praiseArray;
     private String[] picArray;
 
+    public WZoneDto() {
+    }
+
     public WZoneDto(String buildName, String buildPost, String familyAccount, String familyName, int id, String msg, String picUrlList, String praiseList, String time) {
         this.buildName = buildName;
         this.buildPost = buildPost;

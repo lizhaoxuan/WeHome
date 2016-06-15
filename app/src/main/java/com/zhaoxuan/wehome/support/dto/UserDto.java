@@ -38,6 +38,9 @@ public class UserDto implements Serializable {
     @DataProperty
     protected String city;
 
+    public UserDto() {
+    }
+
     public UserDto(String account, String city, String familyBuild, String headImageUri, String homeId, String homeName, int id, String name, String password, String post) {
         this.account = account;
         this.city = city;

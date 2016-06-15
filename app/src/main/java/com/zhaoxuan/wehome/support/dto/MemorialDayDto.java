@@ -1,7 +1,9 @@
 package com.zhaoxuan.wehome.support.dto;
 
-import com.zhaoxuan.wehome.support.entity.MemorialDayEntity;
+import com.example.DataProperty;
+import com.example.IdProperty;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,10 +14,23 @@ import java.util.GregorianCalendar;
 /**
  * Created by lizhaoxuan on 16/1/7.
  */
-public class MemorialDayDto extends MemorialDayEntity {
+public class MemorialDayDto implements Serializable {
 
     private static final DateFormat DATE_FORMAT = SimpleDateFormat.getDateInstance();
     private Calendar calendar = GregorianCalendar.getInstance();
+
+    @IdProperty
+    protected long id;
+    @DataProperty
+    protected String title;
+    @DataProperty
+    protected String datetime;
+    @DataProperty
+    protected String buildName;
+    @DataProperty
+    protected String buildAccount;
+    @DataProperty
+    protected boolean loop;
 
     private Date nowDate;
     private Date targetDate;
@@ -26,7 +41,14 @@ public class MemorialDayDto extends MemorialDayEntity {
     private long day;
 
     public MemorialDayDto(String buildAccount, String buildName, String datetime, int id, boolean loop, String title) {
-        super(buildAccount, buildName, datetime, id, loop, title);
+
+        this.buildAccount = buildAccount;
+        this.buildName = buildName;
+        this.datetime = datetime;
+        this.id = id;
+        this.loop = loop;
+        this.title = title;
+
         try {
             nowDate = new Date();
             targetDate = DATE_FORMAT.parse(datetime);
@@ -78,7 +100,7 @@ public class MemorialDayDto extends MemorialDayEntity {
 
     /**
      * 计算与给定日期之间的天数
-     * <p>
+     * <p/>
      * 非循环
      * day = now - target
      * nameStr = 已经
@@ -118,6 +140,54 @@ public class MemorialDayDto extends MemorialDayEntity {
             nameStr = "已经";
             day = ((nowDate.getTime() - targetDate.getTime()) / 1000 / 60 / 60 / 24);
         }
+    }
+
+    public String getBuildAccount() {
+        return buildAccount;
+    }
+
+    public void setBuildAccount(String buildAccount) {
+        this.buildAccount = buildAccount;
+    }
+
+    public String getBuildName() {
+        return buildName;
+    }
+
+    public void setBuildName(String buildName) {
+        this.buildName = buildName;
+    }
+
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public boolean isLoop() {
+        return loop;
+    }
+
+    public void setLoop(boolean loop) {
+        this.loop = loop;
     }
 
 

@@ -17,7 +17,7 @@ public class LoginModel implements ILoginModel {
         UserDto userDto = new UserDto("690770333@qq.com", "上海", "2016-1-1", "",
                 "690770333@qq.com", "吉祥三宝",0, "卡卡", "123456", "爸爸");
 
-        WeHomeApplication.getInstance().setUserDto(userDto);
+//        WeHomeApplication.getInstance().setUserDto(userDto);
         //保存到 share 中
 
         callBack.callBackSuccess(userDto);
@@ -36,7 +36,7 @@ public class LoginModel implements ILoginModel {
         UserDto userDto = new UserDto("690770333@qq.com", "上海", "", "",
                 "", "",0, "卡卡", "123456", "爸爸");
 
-        WeHomeApplication.getInstance().setUserDto(userDto);
+//        WeHomeApplication.getInstance().setUserDto(userDto);
 
         callBack.callBackSuccess(userDto);
 

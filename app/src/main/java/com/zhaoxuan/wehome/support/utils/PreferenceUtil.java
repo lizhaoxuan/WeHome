@@ -1,4 +1,4 @@
-package com.zhaoxuan.wehome.module.tool;
+package com.zhaoxuan.wehome.support.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

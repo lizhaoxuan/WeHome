@@ -4,6 +4,7 @@ import com.zhaoxuan.wehome.WeHomeApplication;
 import com.zhaoxuan.wehome.framework.base.BasePresenter;
 import com.zhaoxuan.wehome.framework.presenter.IMenuPresenter;
 import com.zhaoxuan.wehome.framework.view.IMenuView;
+import com.zhaoxuan.wehome.module.manager.UserManager;
 import com.zhaoxuan.wehome.support.dto.UserDto;
 
 /**
@@ -23,7 +24,7 @@ public class MenuPresenter extends BasePresenter implements IMenuPresenter {
 
     @Override
     public void updateView() {
-        UserDto user = WeHomeApplication.getInstance().getUserDto();
+        UserDto user = UserManager.getInstance().getUserDto();
         view.setUserData(user.getFullName(), user.getHomeName());
     }
 }

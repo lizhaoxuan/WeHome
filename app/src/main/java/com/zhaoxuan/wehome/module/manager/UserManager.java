@@ -11,10 +11,10 @@ public class UserManager {
 
     private static volatile UserManager instance;
 
-    public static UserManager getInstance(){
-        if (instance == null){
-            synchronized (UserManager.class){
-                if (instance == null){
+    public static UserManager getInstance() {
+        if (instance == null) {
+            synchronized (UserManager.class) {
+                if (instance == null) {
                     instance = new UserManager();
                 }
             }
@@ -25,16 +25,20 @@ public class UserManager {
     private UserDto userDto = null;
 
     public UserDto getUserDto() {
-        if (userDto==null){
-            WLog.w(TAG,"userDto == null");
-            return null;
-        }else{
+        if (userDto == null) {
+            userDto = SharedManager.loadUser();
+            return userDto;
+        } else {
             return userDto;
         }
     }
 
     public void setUserDto(UserDto userDto) {
+        if (userDto == null) {
+            return;
+        }
         this.userDto = userDto;
+        SharedManager.saveUser(userDto);
     }
 
 }

@@ -10,7 +10,7 @@ import com.zhaoxuan.wehome.framework.presenter.IRegisterPresenter;
 import com.zhaoxuan.wehome.framework.view.IForgetView;
 import com.zhaoxuan.wehome.framework.view.ILoginView;
 import com.zhaoxuan.wehome.framework.view.IRegisterView;
-import com.zhaoxuan.wehome.module.tool.StrUtils;
+import com.zhaoxuan.wehome.support.utils.StrUtils;
 import com.zhaoxuan.wehome.support.constants.Ints;
 import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;

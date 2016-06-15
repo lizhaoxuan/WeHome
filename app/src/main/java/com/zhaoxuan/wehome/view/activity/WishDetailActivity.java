@@ -16,6 +16,7 @@ import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.presenter.IWishDetailPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.WishPresenter;
 import com.zhaoxuan.wehome.framework.view.IWishDetailView;
+import com.zhaoxuan.wehome.module.manager.UserManager;
 import com.zhaoxuan.wehome.support.dto.WishDto;
 
 import java.text.DateFormat;
@@ -89,8 +90,8 @@ public class WishDetailActivity extends BaseActivity implements IWishDetailView 
         DateFormat dateFormat = SimpleDateFormat.getDateInstance();
         String time = dateFormat.format(new Date());
         timeText.setText(time);
-        String buildOf = WeHomeApplication.getInstance().getUserDto().getName() + " | "
-                + WeHomeApplication.getInstance().getUserDto().getPost();
+        String buildOf = UserManager.getInstance().getUserDto().getName() + " | "
+                + UserManager.getInstance().getUserDto().getPost();
         buildOfText.setText(buildOf);
         statesText.setText("未完成");
         finishBtn.setVisibility(View.GONE);

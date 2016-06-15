@@ -10,7 +10,7 @@ import com.zhaoxuan.wehome.framework.presenter.IMemorialDayDetailPresenter;
 import com.zhaoxuan.wehome.framework.presenter.IMemorialDayPresenter;
 import com.zhaoxuan.wehome.framework.view.IMemorialDayDetailView;
 import com.zhaoxuan.wehome.framework.view.IMemorialDayView;
-import com.zhaoxuan.wehome.module.tool.StrUtils;
+import com.zhaoxuan.wehome.support.utils.StrUtils;
 import com.zhaoxuan.wehome.support.dto.MemorialDayDto;
 
 import java.io.Serializable;

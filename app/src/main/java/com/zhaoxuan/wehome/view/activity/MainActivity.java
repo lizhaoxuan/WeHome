@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.zhaoxuan.wehome.R;
+import com.zhaoxuan.wehome.support.dto.UserDto;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,9 +25,13 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        initView();
+        init();
     }
 
+    private void init(){
+
+        initView();
+    }
 
     private void initView() {
         //透明状态栏
@@ -45,7 +50,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                startActivity(new Intent(MainActivity.this, MemorialDayDetailActivity.class));
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 MainActivity.this.finish();
                 overridePendingTransition(R.anim.activity_enter,R.anim.activity_exit);
             }

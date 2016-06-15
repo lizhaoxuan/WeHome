@@ -11,7 +11,7 @@ import com.zhaoxuan.wehome.framework.presenter.IWishDetailPresenter;
 import com.zhaoxuan.wehome.framework.presenter.IWishPresenter;
 import com.zhaoxuan.wehome.framework.view.IWishDetailView;
 import com.zhaoxuan.wehome.framework.view.IWishView;
-import com.zhaoxuan.wehome.module.tool.StrUtils;
+import com.zhaoxuan.wehome.support.utils.StrUtils;
 import com.zhaoxuan.wehome.support.dto.WishDto;
 
 import java.io.Serializable;

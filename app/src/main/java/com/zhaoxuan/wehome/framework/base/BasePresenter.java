@@ -5,10 +5,6 @@ package com.zhaoxuan.wehome.framework.base;
  */
 public class BasePresenter{
 
-    public void onCreate() {
-
-    }
-
     public void onStart() {
 
     }

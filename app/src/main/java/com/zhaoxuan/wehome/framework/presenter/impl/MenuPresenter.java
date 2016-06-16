@@ -14,11 +14,7 @@ import com.zhaoxuan.wehome.support.dto.UserDto;
 public class MenuPresenter extends BasePresenter implements IMenuPresenter {
     private IMenuView view;
 
-    public MenuPresenter() {
-
-    }
-
-    public void setView(IMenuView view) {
+    public MenuPresenter(IMenuView view) {
         this.view = view;
     }
 

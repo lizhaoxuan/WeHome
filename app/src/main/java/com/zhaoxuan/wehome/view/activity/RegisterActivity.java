@@ -38,7 +38,7 @@ public class RegisterActivity extends BaseViewActivity<IRegisterPresenter> imple
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        presenter = new LoginPresenter(this);
+        setPresenter(new LoginPresenter(this));
     }
 
 

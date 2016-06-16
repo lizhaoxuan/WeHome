@@ -3,6 +3,7 @@ package com.zhaoxuan.wehome.view.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,19 +54,16 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView, Image
     private View view;
     private IMenuPresenter presenter;
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         view = inflater.inflate(R.layout.fragment_menu, container, false);
-
         return view;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter = new MenuPresenter();
+        presenter = new MenuPresenter(this);
         initView();
     }
 
@@ -77,7 +75,6 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView, Image
     }
 
     private void initView() {
-
         chatMenu.setListener(this);
         memorydatMenu.setListener(this);
         wishMenu.setListener(this);
@@ -111,6 +108,7 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView, Image
             case R.id.setMenu:
                 SetActivity.startActivity(activity);
                 return;
+            default:
         }
     }
 

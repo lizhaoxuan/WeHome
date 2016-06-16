@@ -2,9 +2,13 @@ package com.zhaoxuan.wehome.view.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -50,6 +54,25 @@ public class ChatFragment extends BaseFragment {
                 activity.openDrawerLayout();
             }
         });
+
+        AppBarLayout appBarLayout = (AppBarLayout) view.findViewById(R.id.appbar);
+
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isEnabled = activity.isRefreshLayoutEnabled();
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (verticalOffset == 0 && !isEnabled){
+                    activity.setRefreshLayoutEnabled(true);
+                    isEnabled = activity.isRefreshLayoutEnabled();
+                }else if (verticalOffset!= 0 && isEnabled){
+                    activity.setRefreshLayoutEnabled(false);
+                    isEnabled = activity.isRefreshLayoutEnabled();
+                }
+            }
+        });
+
+
     }
 
 

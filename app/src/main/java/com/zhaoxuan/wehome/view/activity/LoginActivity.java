@@ -20,7 +20,6 @@ import com.zhaoxuan.wehome.support.constants.Ints;
 import com.zhaoxuan.wehome.view.widget.TopToast;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
@@ -46,7 +45,7 @@ public class LoginActivity extends BaseActivity<ILoginPresenter> implements ILog
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        presenter = new LoginPresenter(this);
+        setPresenter(new LoginPresenter(this));
 
         initView();
     }

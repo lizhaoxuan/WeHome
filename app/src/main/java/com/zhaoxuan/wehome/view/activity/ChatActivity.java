@@ -6,15 +6,12 @@ import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
-import com.zhaoxuan.cakedao.CakeDao;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 public class ChatActivity extends BaseActivity {
     @Bind(R.id.drawer_layout)
@@ -33,12 +30,7 @@ public class ChatActivity extends BaseActivity {
         setContentView(R.layout.activity_chat);
         //透明状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-    }
-
-    @Override
-    public void setContentView(int layoutResID) {
-        super.setContentView(layoutResID);
-        ButterKnife.bind(this);
+//        presenter = new BasePresenter();
     }
 
     public void closeDrawerLayout() {
@@ -47,5 +39,19 @@ public class ChatActivity extends BaseActivity {
 
     public void openDrawerLayout() {
         drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+
+    public void setRefreshLayoutEnabled(boolean enabled) {
+        if (refreshLayout != null){
+            refreshLayout.setEnabled(enabled);
+        }
+    }
+
+    public boolean isRefreshLayoutEnabled(){
+        if (refreshLayout == null){
+            return false;
+        }
+        return refreshLayout.isEnabled();
     }
 }

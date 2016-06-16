@@ -33,7 +33,7 @@ public class ForgetActivity extends BaseViewActivity<IForgetPresenter> implement
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget);
-        presenter = new LoginPresenter(this);
+        setPresenter(new LoginPresenter(this));
 
     }
 

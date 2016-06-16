@@ -1,6 +1,5 @@
 package com.zhaoxuan.wehome.framework.model.impl;
 
-import com.zhaoxuan.wehome.WeHomeApplication;
 import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.ILoginModel;
 import com.zhaoxuan.wehome.module.manager.UserManager;

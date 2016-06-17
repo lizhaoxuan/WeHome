@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by lizhaoxuan on 16/1/11.
  */
-public interface IMemorialDayDetailView extends IBaseView{
+public interface IMemorialDetailView extends IBaseView{
 
     void updateView(MemorialDayDto memorialDayDto);
 

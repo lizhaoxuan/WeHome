@@ -4,19 +4,20 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import com.zhaoxuan.wehome.R;
-import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
 import com.zhaoxuan.wehome.framework.presenter.IMemorialDayPresenter;
-import com.zhaoxuan.wehome.framework.presenter.impl.MemorialDayPresenter;
+import com.zhaoxuan.wehome.framework.presenter.impl.MemorialPresenter;
 import com.zhaoxuan.wehome.framework.view.IMemorialDayView;
-import com.zhaoxuan.wehome.support.dto.MemorialDayDto;
+import com.zhaoxuan.wehome.support.dto.MemorialDto;
 import com.zhaoxuan.wehome.support.utils.ViewUtils;
 import com.zhaoxuan.wehome.view.adapter.MemorialListAdapter;
 import com.zhaoxuan.wehome.view.widget.TopToast;
@@ -25,7 +26,7 @@ import java.util.List;
 
 import butterknife.Bind;
 
-public class MemorialDayActivity extends BaseViewActivity<IMemorialDayPresenter> implements IMemorialDayView {
+public class MemorialActivity extends BaseViewActivity<IMemorialDayPresenter> implements IMemorialDayView {
 
     @Bind(R.id.refreshLayout)
     protected SwipeRefreshLayout refreshLayout;
@@ -62,17 +63,17 @@ public class MemorialDayActivity extends BaseViewActivity<IMemorialDayPresenter>
     protected void initView() {
         setTitle("纪念日");
         applyBlur();
-        presenter = new MemorialDayPresenter(this);
+        setPresenter(new MemorialPresenter(this));
         listAdapter = new MemorialListAdapter(this);
         listAdapter.setItemClickListener(new BaseRecyclerHolder.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                MemorialDayDetailActivity.startActivity(MemorialDayActivity.this, position, (MemorialDayPresenter) presenter);
+                MemorialDayDetailActivity.startActivity(MemorialActivity.this, position, (MemorialPresenter) presenter);
             }
         });
-        presenter.initData();
 
-        refreshLayout.setRefreshing(false);
+
+        refreshLayout.setRefreshing(true);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -91,19 +92,40 @@ public class MemorialDayActivity extends BaseViewActivity<IMemorialDayPresenter>
 
                 Bitmap bmp = contentLayout.getDrawingCache();
                 ViewUtils.CreateBlurView(bmp, titleLayout);
-                //
+
+                presenter.initData();
                 return true;
             }
         });
     }
 
     @Override
-    public void initData(MemorialDayDto family, MemorialDayDto wehome, List<MemorialDayDto> dataList) {
-        refreshLayout.setRefreshing(true);
-        familyTitleText.setText(family.getNameStr());
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_memorial, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.memorialAdd:
+                MemorialDayDetailActivity.startActivity(this, (MemorialPresenter) presenter);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * ------View ----------
+     **/
+    @Override
+    public void initData(MemorialDto family, MemorialDto wehome, List<MemorialDto> dataList) {
+        refreshLayout.setRefreshing(false);
+        familyTitleText.setText(family.getFullName());
         familyDayText.setText(family.getDayStr());
         familyLabelText.setText("天");
-        wehomeTitleText.setText(wehome.getNameStr());
+        wehomeTitleText.setText(wehome.getFullName());
         wehomeDayText.setText(wehome.getDayStr());
         wehomeLabelText.setText("天");
         listAdapter.setDatas(dataList);
@@ -112,6 +134,7 @@ public class MemorialDayActivity extends BaseViewActivity<IMemorialDayPresenter>
 
     @Override
     public void updateData() {
+        refreshLayout.setRefreshing(false);
         listAdapter.notifyDataSetChanged();
     }
 

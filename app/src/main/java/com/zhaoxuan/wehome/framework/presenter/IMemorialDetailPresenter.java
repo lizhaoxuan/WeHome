@@ -1,15 +1,13 @@
 package com.zhaoxuan.wehome.framework.presenter;
 
-import com.zhaoxuan.wehome.framework.view.IMemorialDayDetailView;
-
-import java.util.Date;
+import com.zhaoxuan.wehome.framework.view.IMemorialDetailView;
 
 /**
  * Created by lizhaoxuan on 16/1/10.
  */
-public interface IMemorialDayDetailPresenter {
+public interface IMemorialDetailPresenter {
 
-    void setDetailView(IMemorialDayDetailView view, int detailPosition);
+    void setDetailView(IMemorialDetailView view, int detailPosition);
 
     void initView();
 

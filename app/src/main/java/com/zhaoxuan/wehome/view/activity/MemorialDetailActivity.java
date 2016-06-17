@@ -13,18 +13,17 @@ import com.rey.material.app.Dialog;
 import com.rey.material.app.DialogFragment;
 import com.rey.material.app.ThemeManager;
 import com.zhaoxuan.wehome.R;
-import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
-import com.zhaoxuan.wehome.framework.presenter.IMemorialDayDetailPresenter;
-import com.zhaoxuan.wehome.framework.presenter.impl.MemorialDayPresenter;
-import com.zhaoxuan.wehome.framework.view.IMemorialDayDetailView;
-import com.zhaoxuan.wehome.support.dto.MemorialDayDto;
+import com.zhaoxuan.wehome.framework.presenter.IMemorialDetailPresenter;
+import com.zhaoxuan.wehome.framework.presenter.impl.MemorialPresenter;
+import com.zhaoxuan.wehome.framework.view.IMemorialDetailView;
+import com.zhaoxuan.wehome.support.dto.MemorialDto;
 import com.zhaoxuan.wehome.view.widget.TopToast;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class MemorialDayDetailActivity extends BaseViewActivity<IMemorialDayDetailPresenter> implements IMemorialDayDetailView {
+public class MemorialDetailActivity extends BaseViewActivity<IMemorialDetailPresenter> implements IMemorialDetailView {
 
     @Bind(R.id.titleEdit)
     protected EditText titleEdit;
@@ -40,14 +39,14 @@ public class MemorialDayDetailActivity extends BaseViewActivity<IMemorialDayDeta
     private boolean isLoop;
     private long memorialDate;
 
-    public static void startActivity(Context activity, int position, MemorialDayPresenter presenter) {
-        Intent intent = new Intent(activity, MemorialDayDetailActivity.class);
+    public static void startActivity(Context activity, int position, MemorialPresenter presenter) {
+        Intent intent = new Intent(activity, MemorialDetailActivity.class);
         intent.putExtra("position", position);
         intent.putExtra("presenter", presenter);
         activity.startActivity(intent);
     }
 
-    public static void startActivity(Context activity, MemorialDayPresenter presenter) {
+    public static void startActivity(Context activity, MemorialPresenter presenter) {
         startActivity(activity, -1, presenter);
     }
 
@@ -75,7 +74,7 @@ public class MemorialDayDetailActivity extends BaseViewActivity<IMemorialDayDeta
 
     private void initIntent() {
         Intent intent = getIntent();
-        presenter = (IMemorialDayDetailPresenter) intent.getSerializableExtra("presenter");
+        presenter = (IMemorialDetailPresenter) intent.getSerializableExtra("presenter");
         int position = intent.getIntExtra("position", -1);
         presenter.setDetailView(this, position);
         if (position == -1) {
@@ -124,7 +123,7 @@ public class MemorialDayDetailActivity extends BaseViewActivity<IMemorialDayDeta
 
     /* -----------  View 方法  -----------*/
     @Override
-    public void updateView(MemorialDayDto memorialDayDto) {
+    public void updateView(MemorialDto memorialDayDto) {
         titleEdit.setText(memorialDayDto.getTitle());
         timeText.setText(memorialDayDto.getDateStr());
         isLoop = memorialDayDto.isLoop();

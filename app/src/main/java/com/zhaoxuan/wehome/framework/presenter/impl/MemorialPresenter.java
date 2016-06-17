@@ -10,6 +10,7 @@ import com.zhaoxuan.wehome.framework.presenter.IMemorialDayDetailPresenter;
 import com.zhaoxuan.wehome.framework.presenter.IMemorialDayPresenter;
 import com.zhaoxuan.wehome.framework.view.IMemorialDayDetailView;
 import com.zhaoxuan.wehome.framework.view.IMemorialDayView;
+import com.zhaoxuan.wehome.module.event.MemorialEvent;
 import com.zhaoxuan.wehome.support.utils.StrUtils;
 import com.zhaoxuan.wehome.support.dto.MemorialDayDto;
 
@@ -23,7 +24,7 @@ import java.util.List;
 /**
  * Created by lizhaoxuan on 16/1/10.
  */
-public class MemorialDayPresenter extends BasePresenter implements IMemorialDayPresenter, IMemorialDayDetailPresenter, Serializable {
+public class MemorialPresenter extends BasePresenter implements IMemorialDayPresenter, IMemorialDayDetailPresenter, Serializable {
 
     private IMemorialDayView view;
     private IMemorialDayModel model;
@@ -31,7 +32,7 @@ public class MemorialDayPresenter extends BasePresenter implements IMemorialDayP
     private SparseArray<MemorialDayDto> memorialDataList;
     private MemorialDayDto detailData;
 
-    public MemorialDayPresenter(IMemorialDayView view) {
+    public MemorialPresenter(IMemorialDayView view) {
         this.view = view;
         model = new MemorialDayModel();
     }
@@ -45,28 +46,28 @@ public class MemorialDayPresenter extends BasePresenter implements IMemorialDayP
     }
 
 
-    /* IMemorialDayPresenter */
+    /** ------ IMemorialDayPresenter -------- **/
     @Override
     public void initData() {
         view.showLoading();
-        model.getData(new ICallBack<SparseArray<MemorialDayDto>>() {
-            @Override
-            public void callBackSuccess(SparseArray<MemorialDayDto> dto) {
-                memorialDataList = dto;
-                view.initData(memorialDataList.valueAt(0), memorialDataList.valueAt(1),
-                        refreshDataList());
-                view.requestEnd();
-            }
-
-            @Override
-            public void callBackError(String error) {
-                view.requestEnd();
-                view.showToast(error);
-            }
-        });
+        model.getData();
     }
 
-    /* IMemorialDayDetailPresenter */
+    public void onEventMemorialData(MemorialEvent event){
+        view.hideLoading();
+        if (event.isSuccess()){
+            memorialDataList = event.getDtos();
+            view.initData(memorialDataList.valueAt(0), memorialDataList.valueAt(1),
+                    refreshDataList());
+            if (memorialDataList == null ||memorialDataList.size() == 0){
+                view.doNoDataTip();
+            }
+        } else {
+            view.showToast(event.getError());
+        }
+    }
+
+    /** ------  IMemorialDayDetailPresenter -------- **/
     @Override
     public void setDetailView(IMemorialDayDetailView view, int detailPosition) {
         this.detailView = view;
@@ -105,8 +106,6 @@ public class MemorialDayPresenter extends BasePresenter implements IMemorialDayP
         if (StrUtils.isNullStr(title)) {
             detailView.showToast("标题不能为空");
         }
-
-
     }
 
     @Override

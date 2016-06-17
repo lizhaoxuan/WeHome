@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
 /**
  * Created by lizhaoxuan on 16/1/7.
  */
-public class MemorialDayDto implements Serializable {
+public class MemorialDto implements Serializable {
 
     private static final DateFormat DATE_FORMAT = SimpleDateFormat.getDateInstance();
     private Calendar calendar = GregorianCalendar.getInstance();
@@ -40,15 +40,14 @@ public class MemorialDayDto implements Serializable {
     private String nameStr;
     private long day;
 
-    public MemorialDayDto() {
+    public MemorialDto() {
     }
 
-    public MemorialDayDto(String buildAccount, String buildName, String datetime, int id, boolean loop, String title) {
+    public MemorialDto(String buildAccount, String buildName, String datetime, boolean loop, String title) {
 
         this.buildAccount = buildAccount;
         this.buildName = buildName;
         this.datetime = datetime;
-        this.id = id;
         this.loop = loop;
         this.title = title;
 
@@ -63,6 +62,10 @@ public class MemorialDayDto implements Serializable {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getFullName() {
+        return title + nameStr;
     }
 
     public int getDateYear() {
@@ -90,8 +93,10 @@ public class MemorialDayDto implements Serializable {
     }
 
     public String getDayStr() {
-        if (day == 0) {
+        if (day == 0 && loop) {
             return "今";
+        } else if (day == 0) {
+            return "0";
         } else {
             return String.valueOf(day);
         }

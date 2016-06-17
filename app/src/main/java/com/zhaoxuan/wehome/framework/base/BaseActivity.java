@@ -1,5 +1,6 @@
 package com.zhaoxuan.wehome.framework.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
@@ -15,10 +16,10 @@ public class BaseActivity<T> extends AppCompatActivity {
 
     protected T presenter;
 
-    protected void setPresenter(T presenter){
+    protected void setPresenter(T presenter) {
+        this.presenter = presenter;
         DispenseBus.getInstance().register(presenter);
     }
-
 
 
     @Override
@@ -35,7 +36,7 @@ public class BaseActivity<T> extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (presenter != null){
+        if (presenter != null) {
             ((BasePresenter) presenter).onStart();
         }
     }
@@ -43,7 +44,7 @@ public class BaseActivity<T> extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (presenter != null){
+        if (presenter != null) {
             ((BasePresenter) presenter).onResume();
         }
     }
@@ -51,7 +52,7 @@ public class BaseActivity<T> extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (presenter != null){
+        if (presenter != null) {
             ((BasePresenter) presenter).onPause();
         }
     }
@@ -59,7 +60,7 @@ public class BaseActivity<T> extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if (presenter != null){
+        if (presenter != null) {
             ((BasePresenter) presenter).onStop();
         }
     }
@@ -67,10 +68,10 @@ public class BaseActivity<T> extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (presenter != null){
+        if (presenter != null) {
             ((BasePresenter) presenter).onDestroy();
         }
-        DispenseBus.getInstance().unRegister(this);
+        DispenseBus.getInstance().unRegister(presenter);
         ButterKnife.unbind(this);
     }
 }

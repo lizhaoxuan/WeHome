@@ -10,12 +10,14 @@ import com.zhaoxuan.wehome.support.dto.UserDto;
 public interface ISetPresenter {
 
 
-    void setValue(int key , String value);
+    void setValue(int key , String value ,String hint);
 
     void changePassword(String args1,String args2,String args3);
 
     void setHeadImg(String path);
 
     void updateView();
+
+    void logout();
 
 }

@@ -1,19 +1,25 @@
 package com.zhaoxuan.wehome.framework.presenter.impl;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
+
 import com.zhaoxuan.wehome.framework.base.BasePresenter;
-import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.ISetModel;
 import com.zhaoxuan.wehome.framework.model.impl.SetModel;
 import com.zhaoxuan.wehome.framework.presenter.ISetPresenter;
 import com.zhaoxuan.wehome.framework.view.ISetView;
-import com.zhaoxuan.wehome.support.utils.StrUtils;
+import com.zhaoxuan.wehome.module.event.SetValueEvent;
+import com.zhaoxuan.wehome.module.manager.UserManager;
 import com.zhaoxuan.wehome.support.dto.UserDto;
+import com.zhaoxuan.wehome.support.utils.StrUtils;
 
 /**
  * 设置 presenter
  * Created by lizhaoxuan on 15/11/26.
  */
 public class SetPresenter extends BasePresenter implements ISetPresenter {
+
     private ISetView view;
     private ISetModel model;
 
@@ -27,25 +33,12 @@ public class SetPresenter extends BasePresenter implements ISetPresenter {
     }
 
     @Override
-    public void setValue(int key, String value) {
+    public void setValue(int key, String value, String hint) {
         if (StrUtils.isNullStr(value)) {
             view.showToast("值不能为空哦~");
-        } else {
-//            view.hideDialog();
-            model.setValue(key, value, new ICallBack<String>() {
-                @Override
-                public void callBackSuccess(String t) {
-                    view.showToast(t);
-                    updateView();
-                }
-
-                @Override
-                public void callBackError(String error) {
-                    view.showToast(error);
-                }
-            });
+        } else if (!value.equals(hint)) {
+            model.setValue(key, value);
         }
-
     }
 
     @Override
@@ -55,44 +48,41 @@ public class SetPresenter extends BasePresenter implements ISetPresenter {
         } else if (args2.equals(args3)) {
             view.showToast("两次密码输入不一样，再检查一下吧");
         } else {
-//            view.hideDialog();
-            model.changePassword(args1, args2, new ICallBack<String>() {
-                @Override
-                public void callBackSuccess(String t) {
-                    view.showToast(t);
-                }
-
-                @Override
-                public void callBackError(String error) {
-                    view.showToast(error);
-                }
-            });
+            model.changePassword(args1, args2);
         }
     }
 
     @Override
     public void setHeadImg(String path) {
-        model.setHeadImg(path, new ICallBack<String>() {
-            @Override
-            public void callBackSuccess(String t) {
-                view.showToast(t);
-            }
+        if (!StrUtils.isNullStr(path)) {
+            model.setHeadImg(path);
+        } else {
+            view.showToast("图片路径不能为空");
+        }
+    }
 
-            @Override
-            public void callBackError(String error) {
-                view.showToast(error);
-            }
-        });
+    public void onEventSetValue(SetValueEvent event) {
+        view.hideDialog();
+        if (event.isSuccess()) {
+            updateView();
+        }
+        view.showToast(event.getMsg());
     }
 
     @Override
     public void updateView() {
         UserDto user = model.getUserDto();
-//        if (!user.getHeadImagePath().equals("")) {
-//            Bitmap bitmap = BitmapFactory.decodeFile(user.getHeadImagePath());
-//            view.updateHeadImg(bitmap);
-//        }
+        if (!user.getHeadImageUri().equals("")) {
+            Bitmap bitmap = BitmapFactory.decodeFile(user.getHeadImageUri());
+            view.updateHeadImg(bitmap);
+        }
         view.updateView(user.getName(), user.getPost(), user.getHomeId(),
                 user.getHomeName(), user.getCity(), user.getAccount());
+    }
+
+    @Override
+    public void logout() {
+        UserManager.getInstance().clearSharedForUser();
+        view.toLoginActivity();
     }
 }

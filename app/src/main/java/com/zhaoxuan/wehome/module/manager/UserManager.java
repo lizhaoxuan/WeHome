@@ -1,6 +1,9 @@
 package com.zhaoxuan.wehome.module.manager;
 
-import com.zhaoxuan.wehome.module.log.WLog;
+import android.util.Log;
+
+import com.zhaoxuan.cakedao.AbstractCakeDao;
+import com.zhaoxuan.cakedao.CakeDao;
 import com.zhaoxuan.wehome.support.dto.UserDto;
 
 /**
@@ -22,7 +25,17 @@ public class UserManager {
         return instance;
     }
 
+    private UserManager() {
+        if (CakeDao.instance.classMap == null) {
+            Log.d("TAG", "CakeDao.instance.classMap == null");
+        } else {
+            userDao = CakeDao.getCakeDao(UserDto.class);
+        }
+    }
+
     private UserDto userDto = null;
+    private AbstractCakeDao<UserDto> userDao;
+
 
     public UserDto getUserDto() {
         if (userDto == null) {
@@ -39,6 +52,42 @@ public class UserManager {
         }
         this.userDto = userDto;
         SharedManager.saveUser(userDto);
+    }
+
+    public void setUserValue(int key, String value) {
+        switch (key) {
+            case UserDto.KEY_NAME:
+                userDto.setName(value);
+                break;
+            case UserDto.KEY_POST:
+                userDto.setPost(value);
+                break;
+            case UserDto.KEY_HOME_NAME:
+                userDto.setHomeName(value);
+                break;
+            case UserDto.KEY_HOME_ID:
+                userDto.setHomeId(value);
+                break;
+            case UserDto.KEY_ACCOUNT:
+                userDto.setAccount(value);
+                break;
+            case UserDto.KEY_CITY:
+                userDto.setCity(value);
+                break;
+            case UserDto.KEY_PASSWORD:
+                userDto.setPassword(value);
+                break;
+            case UserDto.KEY_HEAD_IMAGE_URI:
+                userDto.setHeadImageUri(value);
+                break;
+        }
+        SharedManager.saveUser(userDto);
+        userDao.update(userDto);
+    }
+
+    public void clearSharedForUser() {
+        userDao = null;
+        SharedManager.clearUser();
     }
 
 }

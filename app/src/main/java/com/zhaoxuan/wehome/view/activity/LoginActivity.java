@@ -117,6 +117,17 @@ public class LoginActivity extends BaseActivity<ILoginPresenter> implements ILog
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent home = new Intent(Intent.ACTION_MAIN);
+        home.addCategory(Intent.CATEGORY_HOME);
+        home.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        startActivity(home);
+        finish();
+    }
+
     /**
      * -------------- View方法 ----------------
      **/

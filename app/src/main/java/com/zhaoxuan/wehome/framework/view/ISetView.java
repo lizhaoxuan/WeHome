@@ -14,4 +14,8 @@ public interface ISetView extends IBaseView{
 
     void updateHeadImg(Bitmap bitmap);
 
+    void hideDialog();
+
+    void toLoginActivity();
+
 }

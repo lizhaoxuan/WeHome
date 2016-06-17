@@ -1,9 +1,9 @@
 package com.zhaoxuan.wehome.view.fragment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +15,7 @@ import com.zhaoxuan.wehome.framework.base.BaseFragment;
 import com.zhaoxuan.wehome.framework.presenter.IMenuPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.MenuPresenter;
 import com.zhaoxuan.wehome.framework.view.IMenuView;
+import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
 import com.zhaoxuan.wehome.view.activity.InviteActivity;
 import com.zhaoxuan.wehome.view.activity.MemorialDayActivity;
@@ -113,8 +114,12 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView, Image
     }
 
     @Override
-    public void setUserData(String name, String homeName) {
-        nameText.setText(name);
-        homeNameText.setText(homeName);
+    public void setUserData(UserDto userDto) {
+        if (!userDto.getHeadImageUri().equals("")) {
+            Bitmap bitmap = BitmapFactory.decodeFile(userDto.getHeadImageUri());
+            headImg.setImageBitmap(bitmap);
+        }
+        nameText.setText(userDto.getName());
+        homeNameText.setText(userDto.getHomeName());
     }
 }

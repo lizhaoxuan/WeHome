@@ -73,7 +73,7 @@ public class EmbedManager {
                 //获取主题中定义的悬浮标志
                 boolean overly = typedArray.getBoolean(0, false);
                 //获取主题中定义的toolbar的高度
-                int toolBarSize = (int) typedArray.getDimension((int) mContext.getResources().getDimension(R.dimen.abc_action_bar_default_height_material), 1);
+                int toolBarSize = (int) typedArray.getDimension(1,(int) mContext.getResources().getDimension(R.dimen.abc_action_bar_default_height_material));
                 typedArray.recycle();
                 //如果是悬浮状态，则不需要设置间距
                 mFrameParams.topMargin = overly ? 0 : toolBarSize;

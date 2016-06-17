@@ -47,39 +47,46 @@ public class ImageEditText extends LinearLayout {
             return;
 
         LayoutInflater.from(context).inflate(R.layout.widget_image_edit_text, this, true);
-        imageView = (ImageView)findViewById(R.id.imageView);
-        editText = (EditText)findViewById(R.id.editText);
+        imageView = (ImageView) findViewById(R.id.imageView);
+        editText = (EditText) findViewById(R.id.editText);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ImageEditText);
         CharSequence text = a.getText(R.styleable.ImageEditText_android_text);
-        if(text!=null) editText.setText(text);
+        if (text != null) editText.setText(text);
         CharSequence hint = a.getText(R.styleable.ImageEditText_android_hint);
-        if(hint!=null) editText.setHint(hint);
+        if (hint != null) editText.setHint(hint);
         Drawable drawable = a.getDrawable(R.styleable.ImageEditText_android_src);
-        if(drawable != null) imageView.setImageDrawable(drawable);
+        if (drawable != null) imageView.setImageDrawable(drawable);
 
-        int inputType = a.getInt(R.styleable.ImageEditText_android_inputType,InputType.TYPE_CLASS_TEXT);
+        int inputType = a.getInt(R.styleable.ImageEditText_android_inputType, InputType.TYPE_CLASS_TEXT);
         editText.setInputType(inputType);
 
         a.recycle();
     }
 
-    public void setText(String str){
+    public void setText(String str) {
         editText.setText(str);
     }
-    public void setImageDrawable(Drawable drawable){
+
+    public void setImageDrawable(Drawable drawable) {
         imageView.setImageDrawable(drawable);
     }
-    public void setHint(String str){
+
+    public void setHint(String str) {
         editText.setHint(str);
     }
-    public void setinputType(){
+
+    public void setinputType() {
         editText.setInputType(InputType.TYPE_NUMBER_VARIATION_PASSWORD);
     }
-    public String getText(){
+
+    public String getText() {
         return editText.getText().toString();
     }
 
+    public String getHint() {
+        return editText.getHint().toString();
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {

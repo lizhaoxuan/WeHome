@@ -2,6 +2,7 @@ package com.zhaoxuan.wehome.support.dto;
 
 import com.example.DataProperty;
 import com.example.IdProperty;
+import com.zhaoxuan.wehome.support.utils.StrUtils;
 
 import java.io.Serializable;
 
@@ -16,6 +17,7 @@ public class UserDto implements Serializable {
     public static final int KEY_ACCOUNT = 5;
     public static final int KEY_CITY = 6;
     public static final int KEY_PASSWORD = 7;
+    public static final int KEY_HEAD_IMAGE_URI = 8;
 
     @IdProperty
     protected long id;
@@ -62,32 +64,6 @@ public class UserDto implements Serializable {
         return !homeId.equals("");
     }
 
-    public void setValue(int key, String value) {
-        switch (key) {
-            case KEY_NAME:
-                name = value;
-                return;
-            case KEY_POST:
-                post = value;
-                return;
-            case KEY_HOME_NAME:
-                homeName = value;
-                return;
-            case KEY_HOME_ID:
-                homeId = value;
-                return;
-            case KEY_ACCOUNT:
-                account = value;
-                return;
-            case KEY_CITY:
-                city = value;
-                return;
-            case KEY_PASSWORD:
-                password = value;
-                return;
-        }
-    }
-
     public long getId() {
         return id;
     }
@@ -97,7 +73,7 @@ public class UserDto implements Serializable {
     }
 
     public String getAccount() {
-        return account;
+        return StrUtils.getStr(account);
     }
 
     public void setAccount(String account) {
@@ -105,7 +81,7 @@ public class UserDto implements Serializable {
     }
 
     public String getCity() {
-        return city;
+        return StrUtils.getStr(city);
     }
 
     public void setCity(String city) {
@@ -113,7 +89,7 @@ public class UserDto implements Serializable {
     }
 
     public String getFamilyBuild() {
-        return familyBuild;
+        return StrUtils.getStr(familyBuild);
     }
 
     public void setFamilyBuild(String familyBuild) {
@@ -121,7 +97,7 @@ public class UserDto implements Serializable {
     }
 
     public String getHeadImageUri() {
-        return headImageUri;
+        return StrUtils.getStr(headImageUri);
     }
 
     public void setHeadImageUri(String headImageUri) {
@@ -129,7 +105,7 @@ public class UserDto implements Serializable {
     }
 
     public String getHomeId() {
-        return homeId;
+        return StrUtils.getStr(homeId);
     }
 
     public void setHomeId(String homeId) {
@@ -137,7 +113,7 @@ public class UserDto implements Serializable {
     }
 
     public String getHomeName() {
-        return homeName;
+        return StrUtils.getStr(homeName);
     }
 
     public void setHomeName(String homeName) {
@@ -145,7 +121,7 @@ public class UserDto implements Serializable {
     }
 
     public String getName() {
-        return name;
+        return StrUtils.getStr(name);
     }
 
     public void setName(String name) {
@@ -153,7 +129,7 @@ public class UserDto implements Serializable {
     }
 
     public String getPassword() {
-        return password;
+        return StrUtils.getStr(password);
     }
 
     public void setPassword(String password) {
@@ -161,7 +137,7 @@ public class UserDto implements Serializable {
     }
 
     public String getPost() {
-        return post;
+        return StrUtils.getStr(post);
     }
 
     public void setPost(String post) {

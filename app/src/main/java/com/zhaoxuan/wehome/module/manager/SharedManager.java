@@ -1,6 +1,7 @@
 package com.zhaoxuan.wehome.module.manager;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.zhaoxuan.wehome.WeHomeApplication;
 import com.zhaoxuan.wehome.support.dto.UserDto;
@@ -29,6 +30,10 @@ public class SharedManager {
 
     public static void saveUser(UserDto user) {
         PreferenceUtil.putString(CONTEXT, PREFERENCE_NAME, USER, StrUtils.toJson(user));
+    }
+
+    public static void clearUser(){
+        PreferenceUtil.putString(CONTEXT, PREFERENCE_NAME, USER, "");
     }
 
 

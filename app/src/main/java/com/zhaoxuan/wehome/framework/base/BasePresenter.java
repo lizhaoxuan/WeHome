@@ -1,9 +1,15 @@
 package com.zhaoxuan.wehome.framework.base;
 
+import android.content.Intent;
+
 /**
  * Created by lizhaoxuan on 16/2/23.
  */
 public class BasePresenter{
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+
+    }
 
     public void onStart() {
 

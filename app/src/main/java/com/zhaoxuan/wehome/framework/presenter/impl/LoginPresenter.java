@@ -42,7 +42,7 @@ public class LoginPresenter extends BasePresenter implements ILoginPresenter, IF
         init();
     }
 
-    private void init(){
+    private void init() {
         model = new LoginModel();
     }
 
@@ -53,8 +53,8 @@ public class LoginPresenter extends BasePresenter implements ILoginPresenter, IF
         } else {
             model.login(account, password, new ICallBack<UserDto>() {
                 @Override
-                public void callBackSuccess(UserDto t) {
-                    if (t.isHaveHome()) {
+                public void callBackSuccess(UserDto dto) {
+                    if (dto.isHaveHome()) {
                         loginView.loginSuccess(ChatActivity.class);
                     } else {
                         loginView.loginSuccess(JoinFamilyActivity.class);
@@ -105,10 +105,10 @@ public class LoginPresenter extends BasePresenter implements ILoginPresenter, IF
 
     @Override
     public void register(String account, String password, String passwordAgain) {
-        if (account.equals("") || password.equals("") || passwordAgain.equals("")) {
+        if (StrUtils.isNullStr(account) || StrUtils.isNullStr(password) || StrUtils.isNullStr(passwordAgain)) {
             registerView.showToast("账号或密码不能为空哦~");
             return;
-        } else if (password.equals(passwordAgain)) {
+        } else if (!password.equals(passwordAgain)) {
             registerView.showToast("两次密码要相同哦~");
         } else {
             model.register(account, password, new ICallBack<UserDto>() {

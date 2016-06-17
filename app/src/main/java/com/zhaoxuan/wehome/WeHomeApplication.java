@@ -10,13 +10,11 @@ import com.zhaoxuan.cakedao.CakeDao;
 public class WeHomeApplication extends Application {
     private static final String TAG = WeHomeApplication.class.getName();
 
-
     private static WeHomeApplication mInstance = null;
 
     public static WeHomeApplication getInstance() {
         return mInstance;
     }
-
 
     @Override
     public void onCreate() {
@@ -29,6 +27,7 @@ public class WeHomeApplication extends Application {
         String dbName = "home_db";
         int version = 1;
         CakeDao.init(this, dbName, version, true);
+        CakeDao.instance.classMap.getMap();
     }
 
 }

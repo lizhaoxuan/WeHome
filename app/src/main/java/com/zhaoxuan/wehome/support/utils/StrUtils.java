@@ -18,6 +18,10 @@ public class StrUtils {
         return str == null || str.equals("");
     }
 
+    public static String getStr(String str) {
+        return str == null ? "" : str;
+    }
+
     public static <T> T fromJson(String json, Class<T> classOfT) throws JsonSyntaxException {
         return GSON.fromJson(json, classOfT);
     }

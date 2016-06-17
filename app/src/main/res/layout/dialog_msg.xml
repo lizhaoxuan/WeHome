@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_rounded_rect"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="登出"
+        android:textColor="@color/black_tag_3"
+        android:textSize="20sp" />
+
+    <View
+        android:id="@+id/lineView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/titleText"
+        android:layout_marginTop="6dp"
+        android:background="@color/gray_tag_1" />
+
+    <TextView
+        android:id="@+id/contentText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_tag_3"
+        android:layout_centerInParent="true"
+        android:textSize="19sp"
+        android:text="你确定要注销账号登出吗？"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="7dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_rounded_rect"
+            android:text="取消"
+            android:textColor="@color/black_tag_3"
+            android:textSize="18sp" />
+
+        <com.zhaoxuan.wehome.view.widget.softwidget.SRoundRect_Button
+            android:id="@+id/enterBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:text="确定"
+            android:textColor="@color/white_tag_1"
+            android:textSize="20sp"
+            app:backgroundColor="@color/red_tag_6"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -10,6 +10,8 @@ import com.zhaoxuan.wehome.support.embedview.EmbedManager;
 import com.zhaoxuan.wehome.support.embedview.EmbedView;
 import com.zhaoxuan.wehome.view.widget.NoDataTips;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by lizhaoxuan on 16/3/30.
  */
@@ -30,7 +32,9 @@ public abstract class BaseViewActivity<T> extends BaseActivity<T> implements IBa
         setSupportActionBar(toolbar);
         /*自定义的一些操作*/
         onCreateCustomToolBar(toolbar);
+        ButterKnife.bind(this);
         initView();
+
     }
 
     private void initEmbedView(int layoutResID){
@@ -40,6 +44,7 @@ public abstract class BaseViewActivity<T> extends BaseActivity<T> implements IBa
                 .addLoadView(LayoutInflater.from(this).inflate(R.layout.widget_loading_view, null))
                 .build();
         rootView = embedManager.getEmbedView();
+        toolbar = rootView.getToolbar();
     }
 
     public void onCreateCustomToolBar(Toolbar toolbar) {

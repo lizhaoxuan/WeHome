@@ -35,7 +35,7 @@
                 android:layout_marginTop="10dp"
                 android:text="暴打小女孩"
                 android:textColor="@color/black_tag_3"
-                android:textSize="16sp" />
+                android:textSize="17sp" />
 
             <ImageView
                 android:id="@+id/nameImg"
@@ -100,7 +100,7 @@
                 android:layout_marginTop="20dp"
                 android:text="退出"
                 android:textColor="@color/white_tag_1"
-                android:textSize="20sp"
+                android:textSize="19sp"
                 app:backgroundColor="@color/red_tag_6"/>
         </LinearLayout>
 

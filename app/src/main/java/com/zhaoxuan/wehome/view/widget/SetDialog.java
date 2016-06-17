@@ -45,17 +45,15 @@ public class SetDialog {
         dialog = builder.create();
 
 
-
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
             }
         });
-
     }
 
-    public static SetDialog makeDialog(Context context, ISetDialogListener listener){
+    public static SetDialog makeDialog(Context context, ISetDialogListener listener) {
         return new SetDialog(context, listener);
     }
 
@@ -99,7 +97,7 @@ public class SetDialog {
             changeBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.enterClick(type, oneEdit.getText());
+                    listener.enterClick(type, oneEdit.getText(),oneEdit.getHint());
                 }
             });
         }
@@ -113,6 +111,6 @@ public class SetDialog {
     public interface ISetDialogListener {
         void enterClick(int key, String args1, String args2, String args3);
 
-        void enterClick(int key, String args1);
+        void enterClick(int key, String textStr, String hintStr);
     }
 }

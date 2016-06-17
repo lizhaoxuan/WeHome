@@ -11,9 +11,11 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseFragment;
+import com.zhaoxuan.wehome.module.manager.UserManager;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
 
 import butterknife.Bind;
@@ -25,6 +27,8 @@ public class ChatFragment extends BaseFragment {
 
     @Bind(R.id.toolbar)
     protected Toolbar toolbar;
+    @Bind(R.id.addBtn)
+    protected ImageButton addBtn;
 
     private View view;
 
@@ -47,7 +51,7 @@ public class ChatFragment extends BaseFragment {
 
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) view.findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle("Love+");
+        collapsingToolbar.setTitle(UserManager.getInstance().getUserDto().getHomeName());
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,28 +1,34 @@
 package com.zhaoxuan.wehome.view.activity;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zhaoxuan.wehome.R;
-import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
 import com.zhaoxuan.wehome.framework.presenter.ISetPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.SetPresenter;
 import com.zhaoxuan.wehome.framework.view.ISetView;
 import com.zhaoxuan.wehome.support.dto.UserDto;
+import com.zhaoxuan.wehome.view.widget.MessageDialog;
 import com.zhaoxuan.wehome.view.widget.SetDialog;
 import com.zhaoxuan.wehome.view.widget.TopToast;
 import com.zhaoxuan.wehome.view.widget.ValueSetLabel;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
-public class SetActivity extends BaseViewActivity<ISetPresenter> implements ISetView, View.OnClickListener, SetDialog.ISetDialogListener {
+public class SetActivity extends BaseViewActivity<ISetPresenter> implements ISetView, SetDialog.ISetDialogListener {
+    protected static final int RESULT_LOAD_IMAGE = 1;
 
     @Bind(R.id.headImg)
     protected ImageView headImg;
@@ -39,7 +45,7 @@ public class SetActivity extends BaseViewActivity<ISetPresenter> implements ISet
     @Bind(R.id.accountLabel)
     protected ValueSetLabel accountLabel;
     @Bind(R.id.passwordLabel)
-    protected ValueSetLabel passwrodLabel;
+    protected ValueSetLabel passwordLabel;
     @Bind(R.id.nameImg)
     protected ImageView nameImg;
     @Bind(R.id.logoutBtn)
@@ -56,24 +62,12 @@ public class SetActivity extends BaseViewActivity<ISetPresenter> implements ISet
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set);
-        presenter = new SetPresenter(this);
+        setPresenter(new SetPresenter(this));
     }
 
+    @Override
     protected void initView() {
         setTitle("设置");
-
-        nameImg.setOnClickListener(this);
-        nameText.setOnClickListener(this);
-        headImg.setOnClickListener(this);
-        postLabel.setOnClickListener(this);
-        homeIdLabel.setOnClickListener(this);
-        homeNameLabel.setOnClickListener(this);
-        accountLabel.setOnClickListener(this);
-        passwrodLabel.setOnClickListener(this);
-        cityLabel.setOnClickListener(this);
-        logoutBtn.setOnClickListener(this);
-
-
     }
 
     @Override
@@ -82,13 +76,17 @@ public class SetActivity extends BaseViewActivity<ISetPresenter> implements ISet
         presenter.updateView();
     }
 
-    @Override
+    @OnClick({R.id.nameImg, R.id.nameText, R.id.headImg, R.id.postLabel, R.id.homeIdLabel,
+            R.id.homeNameLabel, R.id.accountLabel, R.id.passwordLabel,
+            R.id.cityLabel, R.id.logoutBtn})
     public void onClick(View v) {
         //不可重复使用
         setDialog = SetDialog.makeDialog(this, this);
         int viewId = v.getId();
         switch (viewId) {
             case R.id.headImg:
+                Intent i=new Intent(Intent.ACTION_PICK , android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
                 return;
             case R.id.nameText:
                 setDialog.show(UserDto.KEY_NAME, "修改昵称", nameText.getText().toString());
@@ -120,7 +118,34 @@ public class SetActivity extends BaseViewActivity<ISetPresenter> implements ISet
                 setDialog.show(UserDto.KEY_PASSWORD, "修改密码", "");
                 return;
             case R.id.logoutBtn:
+                MessageDialog.makeDialog(this, new MessageDialog.IDialogListener() {
+                    @Override
+                    public void onCancel() {
+
+                    }
+
+                    @Override
+                    public void onEnter() {
+                        presenter.logout();
+                    }
+                }).show("退出登录", "你确定要注销账号登出吗？");
                 return;
+                default:
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data){
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            presenter.setHeadImg(picturePath);
         }
     }
 
@@ -168,6 +193,12 @@ public class SetActivity extends BaseViewActivity<ISetPresenter> implements ISet
         }
     }
 
+    @Override
+    public void toLoginActivity() {
+        startActivity(new Intent(this,LoginActivity.class));
+        finish();
+    }
+
     /**
      * Set Dialog 事件方法
      **/
@@ -177,7 +208,7 @@ public class SetActivity extends BaseViewActivity<ISetPresenter> implements ISet
     }
 
     @Override
-    public void enterClick(int key, String args1) {
-        presenter.setValue(key, args1);
+    public void enterClick(int key, String textStr, String hintStr) {
+        presenter.setValue(key, textStr, hintStr);
     }
 }

@@ -1,8 +1,7 @@
 package com.zhaoxuan.wehome.framework.view;
 
 import com.zhaoxuan.wehome.framework.base.IBaseListView;
-import com.zhaoxuan.wehome.framework.base.IBaseView;
-import com.zhaoxuan.wehome.support.dto.MemorialDayDto;
+import com.zhaoxuan.wehome.support.dto.MemorialDto;
 
 import java.util.List;
 
@@ -11,8 +10,7 @@ import java.util.List;
  */
 public interface IMemorialDayView extends IBaseListView{
 
-    void initData(MemorialDayDto family, MemorialDayDto wehome, List<MemorialDayDto> dataList);
+    void initData(MemorialDto family, MemorialDto wehome, List<MemorialDto> dataList);
 
     void updateData();
-
 }

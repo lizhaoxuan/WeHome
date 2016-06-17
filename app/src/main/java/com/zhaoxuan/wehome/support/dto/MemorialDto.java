@@ -64,7 +64,22 @@ public class MemorialDto implements Serializable {
         }
     }
 
+    private void initValue(){
+        try {
+            nowDate = new Date();
+            targetDate = DATE_FORMAT.parse(datetime);
+            calendar.setTime(targetDate);
+            dateYear = calendar.get(Calendar.YEAR);
+            dateMonth = calendar.get(Calendar.MONTH);
+            dateDay = calendar.get(Calendar.DATE);
+            calculateDate();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
     public String getFullName() {
+        initValue();
         return title + nameStr;
     }
 
@@ -93,6 +108,7 @@ public class MemorialDto implements Serializable {
     }
 
     public String getDayStr() {
+        initValue();
         if (day == 0 && loop) {
             return "今";
         } else if (day == 0) {

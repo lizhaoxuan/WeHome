@@ -7,12 +7,12 @@ import android.widget.TextView;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
-import com.zhaoxuan.wehome.support.dto.MemorialDayDto;
+import com.zhaoxuan.wehome.support.dto.MemorialDto;
 
 /**
  * Created by lizhaoxuan on 16/2/24.
  */
-public class MemorialDayHolder extends BaseRecyclerHolder<MemorialDayDto> {
+public class MemorialDayHolder extends BaseRecyclerHolder<MemorialDto> {
 
     protected TextView titleText;
     protected TextView dayText;
@@ -24,8 +24,8 @@ public class MemorialDayHolder extends BaseRecyclerHolder<MemorialDayDto> {
     }
 
     @Override
-    public void updateView(MemorialDayDto data) {
-        titleText.setText(data.getNameStr());
+    public void updateView(MemorialDto data) {
+        titleText.setText(data.getFullName());
         dayText.setText(data.getDayStr());
     }
 }

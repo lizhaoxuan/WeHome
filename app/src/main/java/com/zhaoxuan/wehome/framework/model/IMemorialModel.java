@@ -1,7 +1,5 @@
 package com.zhaoxuan.wehome.framework.model;
 
-import android.util.SparseArray;
-
 import com.zhaoxuan.wehome.support.dto.MemorialDto;
 
 /**
@@ -11,6 +9,9 @@ public interface IMemorialModel {
 
     void getData();
 
-    void changeData(MemorialDto wishDto, ICallBack<SparseArray<MemorialDto>> callBack);
+    void addData(MemorialDto dto);
 
+    void changeData(MemorialDto dto);
+
+    void deleteData(long id);
 }

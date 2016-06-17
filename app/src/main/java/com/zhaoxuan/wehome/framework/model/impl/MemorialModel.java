@@ -4,8 +4,8 @@ import android.util.SparseArray;
 
 import com.zhaoxuan.cakedao.AbstractCakeDao;
 import com.zhaoxuan.cakedao.CakeDao;
-import com.zhaoxuan.wehome.framework.model.ICallBack;
 import com.zhaoxuan.wehome.framework.model.IMemorialModel;
+import com.zhaoxuan.wehome.module.event.MemorialDetailEvent;
 import com.zhaoxuan.wehome.module.event.MemorialEvent;
 import com.zhaoxuan.wehome.support.dispensebus.DispenseBus;
 import com.zhaoxuan.wehome.support.dto.MemorialDto;
@@ -31,25 +31,66 @@ public class MemorialModel implements IMemorialModel {
             MemorialDto[] memorialDayDtos = memorialDao.loadAllData();
             if (memorialDayDtos != null) {
                 for (int i = 0, l = memorialDayDtos.length; i < l; i++) {
-                    dtos.append(i,memorialDayDtos[i]);
+                    dtos.append(i, memorialDayDtos[i]);
                 }
             } else {
-                dtos.append(0,new MemorialDto("0","wehome", DateUtil.getDefaultDate(new Date()),false,"我们的家建立"));
-                dtos.append(1,new MemorialDto("0","wehome",DateUtil.getDefaultDate(new Date()),false,"微家创建"));
+                MemorialDto m1 = new MemorialDto("0", "wehome", DateUtil.getDefaultDate(new Date()), false, "我们的家建立");
+                MemorialDto m2 = new MemorialDto("0", "wehome", DateUtil.getDefaultDate(new Date()), false, "微家创建");
+                dtos.append(0, m1);
+                dtos.append(1, m2);
+                memorialDao.insert(m1);
+                memorialDao.insert(m2);
             }
-            dispenseBus.post(new MemorialEvent(true,dtos));
-        }else {
-            dispenseBus.post(new MemorialEvent(false,dtos,"暂无网络，请稍后重试"));
+            dispenseBus.post(new MemorialEvent(true, dtos));
+        } else {
+            dispenseBus.post(new MemorialEvent(false, dtos, "暂无网络，请稍后重试"));
         }
     }
-
 
     /**
      * ------  IMemorialDayDetailModel ------
      **/
-    @Override
-    public void changeData(MemorialDto wishDto, ICallBack<SparseArray<MemorialDto>> callBack) {
 
+    @Override
+    public void addData(MemorialDto dto) {
+        if (NetUtil.isConnectingToInternet()) {
+            long result = memorialDao.insert(dto);
+            if (result >= 0) {
+                dispenseBus.post(new MemorialDetailEvent(true, MemorialDetailEvent.ADD_MEMORIAL, "新建纪念日成功"));
+            } else {
+                dispenseBus.post(new MemorialDetailEvent(false, MemorialDetailEvent.ADD_MEMORIAL, "新建纪念日失败"));
+            }
+        } else {
+            dispenseBus.post(new MemorialDetailEvent(false, MemorialDetailEvent.ADD_MEMORIAL, "网络请求失败，请稍后重试"));
+        }
+    }
+
+    @Override
+    public void changeData(MemorialDto dto) {
+        if (NetUtil.isConnectingToInternet()) {
+            long result = memorialDao.update(dto);
+            if (result >= 0) {
+                dispenseBus.post(new MemorialDetailEvent(true, MemorialDetailEvent.CHANGE_MEMORIAL, "修改纪念日成功"));
+            } else {
+                dispenseBus.post(new MemorialDetailEvent(false, MemorialDetailEvent.CHANGE_MEMORIAL, "修改纪念日失败，纪念日可能不存在"));
+            }
+        } else {
+            dispenseBus.post(new MemorialDetailEvent(false, MemorialDetailEvent.CHANGE_MEMORIAL, "网络请求失败，请稍后重试"));
+        }
+    }
+
+    @Override
+    public void deleteData(long id) {
+        if (NetUtil.isConnectingToInternet()) {
+            long result = memorialDao.deleteById(id);
+            if (result >= 0) {
+                dispenseBus.post(new MemorialDetailEvent(true, MemorialDetailEvent.DELETE_MEMORIAL, "删除纪念日成功"));
+            } else {
+                dispenseBus.post(new MemorialDetailEvent(false, MemorialDetailEvent.DELETE_MEMORIAL, "删除纪念日失败，纪念日可能不存在"));
+            }
+        } else {
+            dispenseBus.post(new MemorialDetailEvent(false, MemorialDetailEvent.DELETE_MEMORIAL, "网络请求失败，请稍后重试"));
+        }
     }
 
 

@@ -37,13 +37,13 @@
         <activity android:name=".view.activity.SetActivity" />
         <activity android:name=".view.activity.WishActivity" />
         <activity android:name=".view.activity.WishDetailActivity" />
-        <activity android:name=".view.activity.MemorialDayActivity" >
+        <activity android:name=".view.activity.MemorialActivity" >
         </activity>
         <activity android:name=".view.activity.FamilyActivity" >
         </activity>
         <activity android:name=".view.activity.WZoneActivity" >
         </activity>
-        <activity android:name=".view.activity.MemorialDayDetailActivity" >
+        <activity android:name=".view.activity.MemorialDetailActivity" >
         </activity>
         <activity android:name=".view.activity.WZoneDetailActivity" >
         </activity>

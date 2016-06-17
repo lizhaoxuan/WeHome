@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 /**
  * Created by lizhaoxuan on 16/3/30.
  */
-public abstract class BaseViewActivity<T> extends BaseActivity<T> implements IBaseView{
+public abstract class BaseViewActivity<T> extends BaseActivity<T> implements IBaseView {
 
     /**
      * 子类可以通过rootView获取提前包装好的公共控件
@@ -37,9 +37,9 @@ public abstract class BaseViewActivity<T> extends BaseActivity<T> implements IBa
 
     }
 
-    private void initEmbedView(int layoutResID){
+    private void initEmbedView(int layoutResID) {
         EmbedManager embedManager = new EmbedManager.Builder(this, layoutResID)
-                .addToolbar(R.layout.widget_toolbar, R.id.id_tool_bar)
+                .addToolbar(R.layout.widget_toolbar, R.id.toolbar)
                 .addCenterTipView(new NoDataTips(this))
                 .addLoadView(LayoutInflater.from(this).inflate(R.layout.widget_loading_view, null))
                 .build();
@@ -54,7 +54,7 @@ public abstract class BaseViewActivity<T> extends BaseActivity<T> implements IBa
     protected abstract void initView();
 
     protected void setTitle(String title) {
-        if (getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(title);
         }
     }
@@ -70,10 +70,9 @@ public abstract class BaseViewActivity<T> extends BaseActivity<T> implements IBa
         }
     }
 
-
     @Override
     public void showToast(String msg) {
-        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override

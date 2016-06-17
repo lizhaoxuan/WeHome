@@ -1,6 +1,7 @@
 package com.zhaoxuan.wehome.framework.base;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -21,8 +22,9 @@ public abstract class BaseRecyclerHolder<T> extends RecyclerView.ViewHolder impl
 
     @Override
     public void onClick(View v) {
-        if (itemClickListener != null)
-            itemClickListener.onItemClick(v, (int) getItemId());
+        if (itemClickListener != null){
+            itemClickListener.onItemClick(v, getAdapterPosition());
+        }
     }
 
     public abstract void updateView(T data);

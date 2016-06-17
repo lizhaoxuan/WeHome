@@ -3,6 +3,7 @@ package com.zhaoxuan.wehome.view.activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,9 +15,10 @@ import android.widget.TextView;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
-import com.zhaoxuan.wehome.framework.presenter.IMemorialDayPresenter;
+import com.zhaoxuan.wehome.framework.presenter.IMemorialPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.MemorialPresenter;
 import com.zhaoxuan.wehome.framework.view.IMemorialDayView;
+import com.zhaoxuan.wehome.module.log.WLog;
 import com.zhaoxuan.wehome.support.dto.MemorialDto;
 import com.zhaoxuan.wehome.support.utils.ViewUtils;
 import com.zhaoxuan.wehome.view.adapter.MemorialListAdapter;
@@ -25,8 +27,9 @@ import com.zhaoxuan.wehome.view.widget.TopToast;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
-public class MemorialActivity extends BaseViewActivity<IMemorialDayPresenter> implements IMemorialDayView {
+public class MemorialActivity extends BaseViewActivity<MemorialPresenter> implements IMemorialDayView {
 
     @Bind(R.id.refreshLayout)
     protected SwipeRefreshLayout refreshLayout;
@@ -64,14 +67,14 @@ public class MemorialActivity extends BaseViewActivity<IMemorialDayPresenter> im
         setTitle("纪念日");
         applyBlur();
         setPresenter(new MemorialPresenter(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         listAdapter = new MemorialListAdapter(this);
         listAdapter.setItemClickListener(new BaseRecyclerHolder.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                MemorialDayDetailActivity.startActivity(MemorialActivity.this, position, (MemorialPresenter) presenter);
+                MemorialDetailActivity.startActivity(MemorialActivity.this, listAdapter.getData(position));
             }
         });
-
 
         refreshLayout.setRefreshing(true);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -99,6 +102,18 @@ public class MemorialActivity extends BaseViewActivity<IMemorialDayPresenter> im
         });
     }
 
+    @OnClick({R.id.familyTitleText, R.id.familyDayText, R.id.familyLabelText,
+            R.id.wehomeTitleText, R.id.wehomeDayText, R.id.wehomeLabelText,})
+    public void onClick(View view) {
+        int id = view.getId();
+        if (id == R.id.familyTitleText || id == R.id.familyDayText || id == R.id.familyLabelText) {
+            MemorialDetailActivity.startActivity(MemorialActivity.this, presenter.getData(0));
+        }
+        if (id == R.id.wehomeTitleText || id == R.id.wehomeDayText || id == R.id.wehomeLabelText) {
+            MemorialDetailActivity.startActivity(MemorialActivity.this, presenter.getData(1));
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_memorial, menu);
@@ -109,7 +124,7 @@ public class MemorialActivity extends BaseViewActivity<IMemorialDayPresenter> im
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.memorialAdd:
-                MemorialDayDetailActivity.startActivity(this, (MemorialPresenter) presenter);
+                MemorialDetailActivity.startActivity(this);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -121,6 +136,8 @@ public class MemorialActivity extends BaseViewActivity<IMemorialDayPresenter> im
      **/
     @Override
     public void initData(MemorialDto family, MemorialDto wehome, List<MemorialDto> dataList) {
+        WLog.d("TAG","Memorial dtos.size"+dataList.size());
+
         refreshLayout.setRefreshing(false);
         familyTitleText.setText(family.getFullName());
         familyDayText.setText(family.getDayStr());

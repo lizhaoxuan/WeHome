@@ -2,9 +2,6 @@ package com.zhaoxuan.wehome.framework.base;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.ViewGroup;
-
-import com.zhaoxuan.wehome.support.dto.FamilyDto;
 
 import java.util.List;
 
@@ -37,5 +34,9 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseRecyclerHo
     @Override
     public int getItemCount() {
         return datas == null ? 0 : datas.size();
+    }
+
+    public T getData(int position) {
+        return datas.get(position);
     }
 }

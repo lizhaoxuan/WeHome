@@ -2,6 +2,8 @@ package com.zhaoxuan.wehome.framework.base;
 
 import android.content.Intent;
 
+import java.io.Serializable;
+
 /**
  * Created by lizhaoxuan on 16/2/23.
  */

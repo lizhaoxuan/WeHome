@@ -73,12 +73,13 @@ public class NetUtil {
     }
 
     public static boolean isConnectingToInternet() {
-        ConnectivityManager cm = (ConnectivityManager) WeHomeApplication.getInstance()
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (cm == null)
-            return false;
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        return netInfo != null && netInfo.isAvailable();
+//        ConnectivityManager cm = (ConnectivityManager) WeHomeApplication.getInstance()
+//                .getSystemService(Context.CONNECTIVITY_SERVICE);
+//        if (cm == null)
+//            return false;
+//        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+//        return netInfo != null && netInfo.isAvailable();
+        return true;
     }
 
     public static String getWlanMac(Context context) {

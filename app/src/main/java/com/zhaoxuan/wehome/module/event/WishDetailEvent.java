@@ -5,11 +5,6 @@ package com.zhaoxuan.wehome.module.event;
  */
 public class WishDetailEvent {
 
-    public static final int ADD_WISH = 1;
-    public static final int CHANGE_WISH = 2;
-    public static final int DELETE_WISH = 3;
-
-
     private int kind;
     private boolean isSuccess;
     private String msg;

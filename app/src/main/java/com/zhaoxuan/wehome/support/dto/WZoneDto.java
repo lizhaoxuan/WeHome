@@ -2,6 +2,7 @@ package com.zhaoxuan.wehome.support.dto;
 
 import com.example.DataProperty;
 import com.example.IdProperty;
+import com.zhaoxuan.wehome.support.utils.StrUtils;
 
 import java.io.Serializable;
 
@@ -23,14 +24,13 @@ public class WZoneDto implements Serializable {
     @DataProperty
     protected String msg;
     @DataProperty
-    protected String praiseList;
+    protected String praiseList = "";
     @DataProperty
     protected String time;
     @DataProperty
-    protected String picUrlList;
+    protected String picUrl;
 
     private String[] praiseArray;
-    private String[] picArray;
 
     public WZoneDto() {
     }
@@ -42,10 +42,27 @@ public class WZoneDto implements Serializable {
         this.familyName = familyName;
         this.id = id;
         this.msg = msg;
-        this.picUrlList = picUrlList;
+        this.picUrl = picUrlList;
         this.praiseList = praiseList;
         this.time = time;
-        picArray = picUrlList.split(",");
+        praiseArray = praiseList.split(",");
+    }
+
+    public int getPraiseNum() {
+        praiseArray = praiseList.split(",");
+        if (praiseList.length() == 0) {
+            return 0;
+        } else {
+            return praiseArray.length;
+        }
+    }
+
+    public void addPraise(String praise) {
+        if (StrUtils.isNullStr(praiseList)) {
+            praiseList = praise;
+        } else {
+            praiseList = praiseList + "," + praise;
+        }
         praiseArray = praiseList.split(",");
     }
 
@@ -53,20 +70,19 @@ public class WZoneDto implements Serializable {
         return buildName + " | " + buildPost;
     }
 
-    public String[] getPicArray() {
-        return picArray;
+    public String getPicArray() {
+        return picUrl;
     }
 
     public String[] getPraiseArray() {
+        if (!StrUtils.isNullStr(praiseList)) {
+            praiseArray = praiseList.split(",");
+        }
         return praiseArray;
     }
 
     public boolean hasPic() {
-        return picArray.length == 0;
-    }
-
-    public int getpPraiseNum() {
-        return picArray.length;
+        return !StrUtils.isNullStr(picUrl);
     }
 
     public String getBuildName() {
@@ -117,12 +133,12 @@ public class WZoneDto implements Serializable {
         this.msg = msg;
     }
 
-    public String getPicUrlList() {
-        return picUrlList;
+    public String getPicUrl() {
+        return picUrl;
     }
 
-    public void setPicUrlList(String picUrlList) {
-        this.picUrlList = picUrlList;
+    public void setPicUrl(String picUrlList) {
+        this.picUrl = picUrlList;
     }
 
     public String getPraiseList() {

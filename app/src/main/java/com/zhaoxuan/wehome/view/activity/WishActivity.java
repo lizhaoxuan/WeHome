@@ -94,8 +94,6 @@ public class WishActivity extends BaseViewActivity<WishPresenter> implements IWi
         unFinishView = inflater.inflate(R.layout.layout_wish_list, null);
         finishListView = (RecyclerView) finishView.findViewById(R.id.recyclerView);
         unFinishListView = (RecyclerView) unFinishView.findViewById(R.id.recyclerView);
-        finishListView.setLayoutManager(new LinearLayoutManager(this));
-        unFinishListView.setLayoutManager(new LinearLayoutManager(this));
 
 
         views.add(unFinishView);

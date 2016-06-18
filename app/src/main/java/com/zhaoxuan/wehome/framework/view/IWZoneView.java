@@ -15,12 +15,4 @@ public interface IWZoneView extends IBaseListView{
 
     void updateData();
 
-    void showToast(String msg);
-
-    void showLoading();
-
-    void hideLoading();
-
-    void doNoDataTip();
-
 }

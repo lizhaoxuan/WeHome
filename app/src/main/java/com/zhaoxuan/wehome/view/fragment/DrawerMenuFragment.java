@@ -20,6 +20,7 @@ import com.zhaoxuan.wehome.view.activity.ChatActivity;
 import com.zhaoxuan.wehome.view.activity.InviteActivity;
 import com.zhaoxuan.wehome.view.activity.MemorialActivity;
 import com.zhaoxuan.wehome.view.activity.SetActivity;
+import com.zhaoxuan.wehome.view.activity.WZoneActivity;
 import com.zhaoxuan.wehome.view.activity.WishActivity;
 import com.zhaoxuan.wehome.view.widget.ImageTextLabel;
 
@@ -105,6 +106,7 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView, Image
                 InviteActivity.startActivity(getActivity());
                 return;
             case R.id.zoneMenu:
+                WZoneActivity.startActivity(getActivity());
                 return;
             case R.id.setMenu:
                 SetActivity.startActivity(activity);

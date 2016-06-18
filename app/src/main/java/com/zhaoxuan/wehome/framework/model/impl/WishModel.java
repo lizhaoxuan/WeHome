@@ -4,6 +4,7 @@ import com.zhaoxuan.cakedao.AbstractCakeDao;
 import com.zhaoxuan.cakedao.CakeDao;
 import com.zhaoxuan.wehome.module.event.WishDetailEvent;
 import com.zhaoxuan.wehome.module.event.WishEvent;
+import com.zhaoxuan.wehome.support.constants.Ints;
 import com.zhaoxuan.wehome.support.dispensebus.DispenseBus;
 import com.zhaoxuan.wehome.support.dto.WishDto;
 import com.zhaoxuan.wehome.support.utils.NetUtil;
@@ -28,12 +29,12 @@ public class WishModel {
         if (NetUtil.isConnectingToInternet()) {
             long result = wishDao.insert(dto);
             if (result >= 0) {
-                dispenseBus.post(new WishDetailEvent(true, WishDetailEvent.ADD_WISH, "添加计划成功"));
+                dispenseBus.post(new WishDetailEvent(true, Ints.DATA_ADD, "添加计划成功"));
             } else {
-                dispenseBus.post(new WishDetailEvent(false, WishDetailEvent.ADD_WISH, "添加计划失败"));
+                dispenseBus.post(new WishDetailEvent(false, Ints.DATA_ADD, "添加计划失败"));
             }
         } else {
-            dispenseBus.post(new WishDetailEvent(false, WishDetailEvent.ADD_WISH, "网络请求失败，请稍后重试"));
+            dispenseBus.post(new WishDetailEvent(false, Ints.DATA_ADD, "网络请求失败，请稍后重试"));
         }
     }
 
@@ -41,12 +42,12 @@ public class WishModel {
         if (NetUtil.isConnectingToInternet()) {
             long result = wishDao.update(dto);
             if (result >= 0) {
-                dispenseBus.post(new WishDetailEvent(true, WishDetailEvent.CHANGE_WISH, "修改计划成功"));
+                dispenseBus.post(new WishDetailEvent(true, Ints.DATA_CHANGE, "修改计划成功"));
             } else {
-                dispenseBus.post(new WishDetailEvent(false, WishDetailEvent.CHANGE_WISH, "修改计划失败"));
+                dispenseBus.post(new WishDetailEvent(false, Ints.DATA_CHANGE, "修改计划失败"));
             }
         } else {
-            dispenseBus.post(new WishDetailEvent(false, WishDetailEvent.CHANGE_WISH, "网络请求失败，请稍后重试"));
+            dispenseBus.post(new WishDetailEvent(false, Ints.DATA_CHANGE, "网络请求失败，请稍后重试"));
         }
     }
 
@@ -54,12 +55,12 @@ public class WishModel {
         if (NetUtil.isConnectingToInternet()) {
             long result = wishDao.deleteById(dto);
             if (result >= 0) {
-                dispenseBus.post(new WishDetailEvent(true, WishDetailEvent.DELETE_WISH, "删除计划成功"));
+                dispenseBus.post(new WishDetailEvent(true, Ints.DATA_DELETE, "删除计划成功"));
             } else {
-                dispenseBus.post(new WishDetailEvent(false, WishDetailEvent.DELETE_WISH, "删除计划失败"));
+                dispenseBus.post(new WishDetailEvent(false, Ints.DATA_DELETE, "删除计划失败"));
             }
         } else {
-            dispenseBus.post(new WishDetailEvent(false, WishDetailEvent.DELETE_WISH, "网络请求失败，请稍后重试"));
+            dispenseBus.post(new WishDetailEvent(false, Ints.DATA_DELETE, "网络请求失败，请稍后重试"));
         }
     }
 }

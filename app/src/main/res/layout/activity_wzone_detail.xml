@@ -36,32 +36,36 @@
         android:textColor="@color/black_tag_3"
         android:textSize="15sp" />
 
-    <GridView
-        android:id="@+id/picLayout"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+
+
+    <ImageView
+        android:id="@+id/picImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/msgText"
-        android:layout_marginTop="10dp">
+        android:layout_centerHorizontal="true"
+        android:minHeight="100dp"
+        android:minWidth="100dp"
+        android:src="@drawable/family_photo"
+        android:layout_marginTop="10dp"/>
 
 
-    </GridView>
 
     <View
         android:id="@+id/lineView"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/picLayout"
+        android:layout_below="@id/picImg"
         android:layout_marginTop="10dp"
         android:background="@color/gray_tag_7" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/commentEdit"
         android:layout_below="@id/lineView"
-        android:layout_marginTop="10dp"
-        android:dividerHeight="10dp" />
+        android:layout_marginTop="10dp" />
 
     <EditText
         android:id="@+id/commentEdit"
@@ -72,6 +76,7 @@
         android:layout_toLeftOf="@+id/sendBtn"
         android:background="@drawable/bg_rounded_border_rect"
         android:hint="点击这里评论"
+        android:textColor="@color/black_tag_3"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textSize="15sp" />
@@ -82,7 +87,7 @@
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="登录"
+        android:text="评论"
         android:textColor="@color/white_tag_1"
         android:textSize="15sp"
         app:backgroundColor="@color/red_tag_6" />

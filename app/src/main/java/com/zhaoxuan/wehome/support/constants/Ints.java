@@ -19,4 +19,13 @@ public class Ints {
 
     public static final int INTENT_FORGET = 1001;
 
+    /** ---------Event 相关 ----------------**/
+    public static final int DATA_ADD = 1000;
+
+    public static final int DATA_CHANGE = 1001;
+
+    public static final int DATA_DELETE = 1002;
+
+    public static final int DATA_LOAD = 1003;
+
 }

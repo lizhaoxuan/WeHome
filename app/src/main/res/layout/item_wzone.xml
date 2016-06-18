@@ -35,55 +35,46 @@
         android:text="今天天气不错哦，我们出去玩啦!!"
         android:layout_marginTop="10dp"/>
 
-    <GridView
-        android:id="@+id/picLayout"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+    <ImageView
+        android:id="@+id/picImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:minWidth="100dp"
+        android:minHeight="100dp"
+        android:scaleType="centerCrop"
         android:layout_below="@id/msgText"
-        android:layout_marginTop="10dp">
+        android:src="@drawable/family_photo"
+        android:layout_marginTop="10dp"/>
 
-        
-
-    </GridView>
-    
     <View
         android:id="@+id/lineView"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/picLayout"
+        android:layout_below="@id/picImg"
         android:layout_marginTop="10dp"
         android:background="@color/gray_tag_7"/>
 
-    <ImageView
-        android:id="@+id/holdImg"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_below="@id/lineView"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/ico_action_hold"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lineView"
-        android:layout_toRightOf="@id/holdImg"
-        android:layout_alignTop="@id/holdImg"
-        android:layout_alignBaseline="@id/holdImg"
-        android:layout_marginLeft="5dp"
-        android:textColor="@color/black_tag_3"
-        android:text="抱抱"/>
-    
     <TextView
         android:id="@+id/commentText"
-        android:layout_alignParentRight="true"
+        android:layout_toLeftOf="@+id/commentNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/lineView"
         android:textColor="@color/black_tag_3"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="5dp"
         android:text="评论"/>
+
+    <TextView
+        android:id="@+id/commentNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_tag_3"
+        android:layout_alignBaseline="@id/commentText"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:text="2"/>
 
     <ImageView
         android:layout_width="15dp"
@@ -91,7 +82,7 @@
         android:layout_below="@id/lineView"
         android:layout_toLeftOf="@id/commentText"
         android:layout_marginRight="5dp"
-        android:layout_alignTop="@id/holdImg"
+        android:layout_alignTop="@id/commentText"
         android:background="@drawable/ico_action_comment"/>
 
 </RelativeLayout>

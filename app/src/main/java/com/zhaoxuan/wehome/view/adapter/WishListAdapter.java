@@ -22,9 +22,4 @@ public class WishListAdapter extends BaseAdapter<WishDto> {
     public BaseRecyclerHolder<WishDto> onCreateViewHolder(ViewGroup parent, int viewType) {
         return new WishHolder(context, R.layout.item_wish, parent, itemClickListener);
     }
-
-    @Override
-    public long getItemId(int position) {
-        return datas == null ? 0 : datas.get(position).getId();
-    }
 }

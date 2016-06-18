@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
-import com.zhaoxuan.wehome.framework.presenter.IMemorialPresenter;
 import com.zhaoxuan.wehome.framework.presenter.impl.MemorialPresenter;
 import com.zhaoxuan.wehome.framework.view.IMemorialDayView;
 import com.zhaoxuan.wehome.module.log.WLog;
@@ -136,8 +135,6 @@ public class MemorialActivity extends BaseViewActivity<MemorialPresenter> implem
      **/
     @Override
     public void initData(MemorialDto family, MemorialDto wehome, List<MemorialDto> dataList) {
-        WLog.d("TAG","Memorial dtos.size"+dataList.size());
-
         refreshLayout.setRefreshing(false);
         familyTitleText.setText(family.getFullName());
         familyDayText.setText(family.getDayStr());

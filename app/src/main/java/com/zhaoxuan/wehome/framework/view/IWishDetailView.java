@@ -1,5 +1,6 @@
 package com.zhaoxuan.wehome.framework.view;
 
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
 import com.zhaoxuan.wehome.framework.base.IBaseView;
@@ -12,9 +13,13 @@ public interface IWishDetailView extends IBaseView{
 
     void updateView(WishDto dto);
 
-    void updateImg(Drawable drawable);
+    void initViewForAdd();
+
+    void updateImg(Bitmap bitmap);
 
     void updateFinishBtn(boolean isFinish);
 
     void finishActivity();
+
+
 }

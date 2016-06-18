@@ -2,23 +2,29 @@ package com.zhaoxuan.wehome.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.zhaoxuan.wehome.WeHomeApplication;
 import com.zhaoxuan.wehome.R;
-import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
-import com.zhaoxuan.wehome.framework.presenter.IWishDetailPresenter;
-import com.zhaoxuan.wehome.framework.presenter.impl.WishPresenter;
+import com.zhaoxuan.wehome.framework.presenter.impl.WishDetailPresenter;
 import com.zhaoxuan.wehome.framework.view.IWishDetailView;
 import com.zhaoxuan.wehome.module.manager.UserManager;
 import com.zhaoxuan.wehome.support.dto.WishDto;
+import com.zhaoxuan.wehome.support.utils.DateUtil;
+import com.zhaoxuan.wehome.support.utils.StrUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -27,9 +33,9 @@ import java.util.Date;
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class WishDetailActivity extends BaseViewActivity<IWishDetailPresenter> implements IWishDetailView {
-    protected static final int CHANGE_WISH = 100;
-    protected static final int ADD_WISH = 101;
+public class WishDetailActivity extends BaseViewActivity<WishDetailPresenter> implements IWishDetailView {
+    protected static final int RESULT_LOAD_IMAGE = 1;
+
 
     @Bind(R.id.wishImg)
     protected ImageView wishImg;
@@ -47,20 +53,21 @@ public class WishDetailActivity extends BaseViewActivity<IWishDetailPresenter> i
     protected Button unFinsihBtn;
     @Bind(R.id.finishBtn)
     protected Button finishBtn;
+    @Bind(R.id.deleteBtn)
+    protected Button deleteBtn;
+    @Bind(R.id.addBtn)
+    protected Button addBtn;
+    @Bind(R.id.changeBtn)
+    protected Button changeBtn;
 
-    private IWishDetailPresenter presenter;
-
-    public static void startActivity(Context activity, int position, WishPresenter presenter) {
+    public static void startActivity(Context activity, WishDto dto) {
         Intent intent = new Intent(activity, WishDetailActivity.class);
-        intent.putExtra("position", position);
-        intent.putExtra("presenter", presenter);
+        intent.putExtra("data", dto);
         activity.startActivity(intent);
     }
 
-    public static void startActivity(Context activity, WishPresenter presenter) {
-        Intent intent = new Intent(activity, WishDetailActivity.class);
-        intent.putExtra("presenter", presenter);
-        activity.startActivity(intent);
+    public static void startActivity(Context activity) {
+        startActivity(activity, null);
     }
 
     @Override
@@ -77,26 +84,29 @@ public class WishDetailActivity extends BaseViewActivity<IWishDetailPresenter> i
 
     private void initIntent() {
         Intent intent = getIntent();
-        presenter = (IWishDetailPresenter) intent.getSerializableExtra("presenter");
-        int position = intent.getIntExtra("position", -1);
-        presenter.setDetailView(this, position);
-        if (position == -1) {
-            initViewForAdd();
-        } else {
-            presenter.initView();
+        WishDto wishDto = (WishDto) intent.getSerializableExtra("data");
+        setPresenter(new WishDetailPresenter(this, wishDto));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            presenter.changeWishImg(picturePath);
         }
     }
 
-    private void initViewForAdd() {
-        DateFormat dateFormat = SimpleDateFormat.getDateInstance();
-        String time = dateFormat.format(new Date());
-        timeText.setText(time);
-        String buildOf = UserManager.getInstance().getUserDto().getName() + " | "
-                + UserManager.getInstance().getUserDto().getPost();
-        buildOfText.setText(buildOf);
-        statesText.setText("未完成");
-        finishBtn.setVisibility(View.GONE);
-        unFinsihBtn.setVisibility(View.GONE);
+    @OnClick(R.id.wishImg)
+    protected void wishImgClick() {
+        Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(i, RESULT_LOAD_IMAGE);
     }
 
     @OnClick(R.id.finishBtn)
@@ -114,21 +124,53 @@ public class WishDetailActivity extends BaseViewActivity<IWishDetailPresenter> i
         presenter.changeWish(titleEdit.getText().toString(), contentEdit.getText().toString());
     }
 
+    @OnClick(R.id.addBtn)
+    protected void addBtnClick() {
+        presenter.addWish(DateUtil.getDefaultDate(new Date()),
+                titleEdit.getText().toString(), contentEdit.getText().toString());
+    }
+
+    @OnClick(R.id.deleteBtn)
+    protected void deleteBtnClick() {
+        presenter.deleteWish();
+    }
+
     /* ----- View 方法 ------ */
     @Override
     public void updateView(WishDto wishDto) {
+        Log.d("TAG", "updateView" + wishDto.getImgUrl());
+        if (!StrUtils.isNullStr(wishDto.getImgUrl())) {
+            Bitmap bitmap = BitmapFactory.decodeFile(wishDto.getImgUrl());
+            wishImg.setImageBitmap(bitmap);
+        }
         timeText.setText(wishDto.getTime());
         buildOfText.setText(wishDto.getFullName());
         statesText.setText(wishDto.getFinsih());
         titleEdit.setText(wishDto.getTitle());
         contentEdit.setText(wishDto.getWishContent());
         updateFinishBtn(wishDto.isFinish());
+        addBtn.setVisibility(View.GONE);
     }
 
     @Override
-    public void updateImg(Drawable drawable) {
-        if (drawable != null) {
-            wishImg.setImageDrawable(drawable);
+    public void initViewForAdd() {
+        DateFormat dateFormat = SimpleDateFormat.getDateInstance();
+        String time = dateFormat.format(new Date());
+        timeText.setText(time);
+        String buildOf = UserManager.getInstance().getUserDto().getName() + " | "
+                + UserManager.getInstance().getUserDto().getPost();
+        buildOfText.setText(buildOf);
+        statesText.setText("未完成");
+        finishBtn.setVisibility(View.GONE);
+        unFinsihBtn.setVisibility(View.GONE);
+        deleteBtn.setVisibility(View.GONE);
+        changeBtn.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void updateImg(Bitmap bitmap) {
+        if (bitmap != null) {
+            wishImg.setImageBitmap(bitmap);
         }
     }
 
@@ -150,7 +192,7 @@ public class WishDetailActivity extends BaseViewActivity<IWishDetailPresenter> i
 
     @Override
     public void showToast(String msg) {
-
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override

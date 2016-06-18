@@ -7,6 +7,8 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 
+import com.zhaoxuan.wehome.WeHomeApplication;
+
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -71,13 +73,12 @@ public class NetUtil {
     }
 
     public static boolean isConnectingToInternet() {
-//        ConnectivityManager cm = (ConnectivityManager) WeHomeApplication.getInstance()
-//                .getSystemService(Context.CONNECTIVITY_SERVICE);
-//        if (cm == null)
-//            return false;
-//        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-//        return netInfo != null && netInfo.isAvailable();
-        return true;
+        ConnectivityManager cm = (ConnectivityManager) WeHomeApplication.getInstance()
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm == null)
+            return false;
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isAvailable();
     }
 
     public static String getWlanMac(Context context) {

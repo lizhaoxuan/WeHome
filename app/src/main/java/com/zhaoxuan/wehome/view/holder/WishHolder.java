@@ -1,6 +1,9 @@
 package com.zhaoxuan.wehome.view.holder;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,6 +12,7 @@ import android.widget.TextView;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
 import com.zhaoxuan.wehome.support.dto.WishDto;
+import com.zhaoxuan.wehome.support.utils.StrUtils;
 
 /**
  * Created by lizhaoxuan on 16/2/24.
@@ -31,7 +35,9 @@ public class WishHolder extends BaseRecyclerHolder<WishDto> {
     public void updateView(WishDto data) {
         titleText.setText(data.getTitle());
         timeText.setText(data.getTime());
-        //图片加载暂缺
-
+        if (!StrUtils.isNullStr(data.getImgUrl())){
+            Bitmap bitmap = BitmapFactory.decodeFile(data.getImgUrl());
+            wishImg.setImageBitmap(bitmap);
+        }
     }
 }

@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,9 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.zhaoxuan.wehome.R;
-import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
-import com.zhaoxuan.wehome.framework.presenter.IWishPresenter;
+import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
 import com.zhaoxuan.wehome.framework.presenter.impl.WishPresenter;
 import com.zhaoxuan.wehome.framework.view.IWishView;
 import com.zhaoxuan.wehome.support.dto.WishDto;
@@ -31,7 +31,7 @@ import java.util.List;
 
 import butterknife.Bind;
 
-public class WishActivity extends BaseActivity<WishPresenter> implements IWishView {
+public class WishActivity extends BaseViewActivity<WishPresenter> implements IWishView {
 
     @Bind(R.id.refreshLayout)
     protected SwipeRefreshLayout refreshLayout;
@@ -86,16 +86,20 @@ public class WishActivity extends BaseActivity<WishPresenter> implements IWishVi
 
     protected void initView() {
         setTitle("家庭计划");
-        presenter = new WishPresenter(this);
+
+        setPresenter(new WishPresenter(this));
 
         LayoutInflater inflater = getLayoutInflater();
         finishView = inflater.inflate(R.layout.layout_wish_list, null);
         unFinishView = inflater.inflate(R.layout.layout_wish_list, null);
         finishListView = (RecyclerView) finishView.findViewById(R.id.recyclerView);
         unFinishListView = (RecyclerView) unFinishView.findViewById(R.id.recyclerView);
+        finishListView.setLayoutManager(new LinearLayoutManager(this));
+        unFinishListView.setLayoutManager(new LinearLayoutManager(this));
 
-        views.add(finishView);
+
         views.add(unFinishView);
+        views.add(finishView);
 
         viewPager.setAdapter(new WishPagerAdapter(views));
         viewPager.setCurrentItem(0);
@@ -126,19 +130,18 @@ public class WishActivity extends BaseActivity<WishPresenter> implements IWishVi
         finishListAdapter.setItemClickListener(new BaseRecyclerHolder.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                WishDetailActivity.startActivity(WishActivity.this, position, (WishPresenter) presenter);
+                WishDetailActivity.startActivity(WishActivity.this,finishListAdapter.getData(position));
             }
         });
-        finishListAdapter.setItemClickListener(new BaseRecyclerHolder.ItemClickListener() {
+        unFinishListAdapter.setItemClickListener(new BaseRecyclerHolder.ItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                WishDetailActivity.startActivity(WishActivity.this, position, (WishPresenter) presenter);
+                WishDetailActivity.startActivity(WishActivity.this, unFinishListAdapter.getData(position));
             }
         });
 
         presenter.initData();
 
-        refreshLayout.setRefreshing(false);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -149,7 +152,22 @@ public class WishActivity extends BaseActivity<WishPresenter> implements IWishVi
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_wish, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.wishAdd:
+                WishDetailActivity.startActivity(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     /* -------View 方法 --------*/
 
@@ -160,9 +178,10 @@ public class WishActivity extends BaseActivity<WishPresenter> implements IWishVi
      */
     @Override
     public void initData(List<WishDto> unFinishList, List<WishDto> finishList) {
-        refreshLayout.setRefreshing(true);
+        refreshLayout.setRefreshing(false);
         finishListAdapter.setDatas(finishList);
         unFinishListAdapter.setDatas(unFinishList);
+        updateData();
     }
 
     @Override
@@ -173,7 +192,7 @@ public class WishActivity extends BaseActivity<WishPresenter> implements IWishVi
 
     @Override
     public void showToast(String msg) {
-        TopToast.makeText(this, msg).show(viewPager);
+        TopToast.makeText(this, msg).show(refreshLayout);
     }
 
     @Override
@@ -235,23 +254,6 @@ public class WishActivity extends BaseActivity<WishPresenter> implements IWishVi
              * ViewPager 切换时，改变光标
              */
             setViewPagerCursor(viewPager.getCurrentItem());
-            Toast.makeText(WishActivity.this, "第" + arg0 + "页", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_wish, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-
-        } else if (item.getItemId() == R.id.wishAdd) {
-            WishDetailActivity.startActivity(this, (WishPresenter) presenter);
-        }
-        return true;
     }
 }

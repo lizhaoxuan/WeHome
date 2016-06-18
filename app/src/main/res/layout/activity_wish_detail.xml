@@ -15,7 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_margin="1dp"
-            android:background="@drawable/family_photo" />
+            android:scaleType="fitEnd"
+            android:src="@drawable/family_photo" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,6 +82,7 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/bg_rounded_rect"
             android:hint="标题:"
+            android:textColor="@color/black_tag_3"
             android:padding="5dp" />
 
 
@@ -92,6 +94,7 @@
             android:background="@drawable/bg_rounded_rect"
             android:gravity="left|top"
             android:hint="计划内容："
+            android:textColor="@color/black_tag_3"
             android:inputType="textMultiLine"
             android:padding="5dp"
             android:singleLine="false" />
@@ -125,6 +128,26 @@
             android:textColor="@color/white_tag_1"
             android:textSize="20sp"
             app:backgroundColor="@color/red_tag_6" />
+
+        <com.zhaoxuan.wehome.view.widget.softwidget.SRoundRect_Button
+            android:id="@+id/addBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:text="增加"
+            android:textColor="@color/white_tag_1"
+            android:textSize="20sp"
+            app:backgroundColor="@color/red_tag_6" />
+
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_rounded_rect"
+            android:text="删除"
+            android:textColor="@color/black_tag_3"
+            android:textSize="20sp" />
     </LinearLayout>
 
 

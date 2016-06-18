@@ -17,6 +17,7 @@ import com.zhaoxuan.wehome.framework.presenter.impl.MenuPresenter;
 import com.zhaoxuan.wehome.framework.view.IMenuView;
 import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.view.activity.ChatActivity;
+import com.zhaoxuan.wehome.view.activity.FamilyActivity;
 import com.zhaoxuan.wehome.view.activity.InviteActivity;
 import com.zhaoxuan.wehome.view.activity.MemorialActivity;
 import com.zhaoxuan.wehome.view.activity.SetActivity;
@@ -95,12 +96,13 @@ public class DrawerMenuFragment extends BaseFragment implements IMenuView, Image
                 ((ChatActivity) getActivity()).closeDrawerLayout();
                 return;
             case R.id.memorydatMenu:
-                startActivity(new Intent(getActivity(), MemorialActivity.class));
+                MemorialActivity.startActivity(getActivity());
                 return;
             case R.id.wishMenu:
                 WishActivity.startActivity(getActivity());
                 return;
             case R.id.homeMenu:
+                FamilyActivity.startActivity(getActivity());
                 return;
             case R.id.inviteMenu:
                 InviteActivity.startActivity(getActivity());

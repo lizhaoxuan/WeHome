@@ -1,8 +1,11 @@
 package com.zhaoxuan.wehome.view.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.zhaoxuan.wehome.R;
@@ -27,20 +30,24 @@ public class FamilyActivity extends BaseViewActivity<IFamilyPresenter> implement
     protected RecyclerView recyclerView;
 
     private FamilyListAdapter listAdapter;
-    private IFamilyPresenter presenter;
+
+    public static void startActivity(Activity activity) {
+        Intent intent = new Intent(activity, FamilyActivity.class);
+        activity.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family);
-        presenter = new FamilyPresent(this);
     }
 
     @Override
     protected void initView() {
         setTitle("我的家");
-        presenter = new FamilyPresent(this);
+        setPresenter(new FamilyPresent(this));
         listAdapter = new FamilyListAdapter(this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         presenter.initData();
 
         refreshLayout.setRefreshing(false);
@@ -57,9 +64,10 @@ public class FamilyActivity extends BaseViewActivity<IFamilyPresenter> implement
 
     @Override
     public void init(List<FamilyDto> familyDtos) {
-        refreshLayout.setRefreshing(true);
+        refreshLayout.setRefreshing(false);
         listAdapter.setDatas(familyDtos);
         recyclerView.setAdapter(listAdapter);
+        listAdapter.notifyDataSetChanged();
     }
 
     @Override

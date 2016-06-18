@@ -21,8 +21,6 @@ public class FamilyDto implements Serializable {
     @DataProperty
     protected String city;
     @DataProperty
-    protected String headUrl;
-    @DataProperty
     protected String headPath;
     @DataProperty
     protected int electric;
@@ -32,13 +30,11 @@ public class FamilyDto implements Serializable {
     public FamilyDto() {
     }
 
-    public FamilyDto(String account, String city, int electric, String headPath, String headUrl, int id, String name, String post) {
+    public FamilyDto(String account, String city, int electric, String headPath, String name, String post) {
         this.account = account;
         this.city = city;
         this.electric = electric;
         this.headPath = headPath;
-        this.headUrl = headUrl;
-        this.id = id;
         this.name = name;
         this.post = post;
     }
@@ -77,14 +73,6 @@ public class FamilyDto implements Serializable {
 
     public void setHeadPath(String headPath) {
         this.headPath = headPath;
-    }
-
-    public String getHeadUrl() {
-        return headUrl;
-    }
-
-    public void setHeadUrl(String headUrl) {
-        this.headUrl = headUrl;
     }
 
     public long getId() {

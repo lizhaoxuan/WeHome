@@ -10,6 +10,7 @@ import android.view.WindowManager;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.module.manager.UserManager;
 
 import butterknife.Bind;
 
@@ -30,7 +31,7 @@ public class ChatActivity extends BaseActivity {
         setContentView(R.layout.activity_chat);
         //透明状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//        presenter = new BasePresenter();
+        UserManager.electricMoniter(this);
     }
 
     public void closeDrawerLayout() {

@@ -1,5 +1,8 @@
 package com.zhaoxuan.wehome.module.manager;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.util.Log;
 
 import com.zhaoxuan.cakedao.AbstractCakeDao;
@@ -35,7 +38,16 @@ public class UserManager {
 
     private UserDto userDto = null;
     private AbstractCakeDao<UserDto> userDao;
+    private int electricLevel;
 
+
+
+    public static void electricMoniter(Context context){
+        BatteryInfoBroadcastReceiver receiver = new BatteryInfoBroadcastReceiver() ;
+        IntentFilter filter = new IntentFilter(
+                Intent.ACTION_BATTERY_CHANGED) ;
+        context.registerReceiver(receiver, filter) ;
+    }
 
     public UserDto getUserDto() {
         if (userDto == null) {
@@ -90,4 +102,11 @@ public class UserManager {
         SharedManager.clearUser();
     }
 
+    public int getElectricLevel() {
+        return electricLevel;
+    }
+
+    public void setElectricLevel(int electricLevel) {
+        this.electricLevel = electricLevel;
+    }
 }

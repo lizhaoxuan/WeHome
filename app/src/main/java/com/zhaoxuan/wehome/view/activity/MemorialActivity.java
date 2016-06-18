@@ -1,5 +1,7 @@
 package com.zhaoxuan.wehome.view.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -53,6 +55,11 @@ public class MemorialActivity extends BaseViewActivity<MemorialPresenter> implem
 
     private MemorialListAdapter listAdapter;
 
+
+    public static void startActivity(Activity activity) {
+        Intent intent = new Intent(activity, MemorialActivity.class);
+        activity.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

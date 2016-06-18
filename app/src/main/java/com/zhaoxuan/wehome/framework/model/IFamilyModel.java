@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface IFamilyModel {
 
-    void getData(ICallBack<List<FamilyDto>> callBack);
+    void getData();
 
 }

@@ -15,7 +15,7 @@ public class SharedManager {
     private static final String TAG = SharedManager.class.getSimpleName();
     private static final String PREFERENCE_NAME = "WE_HOME";
     private static final String USER = "USER";
-
+    private static final String PHOTO = "PHOTO";
 
     private SharedManager() {
 
@@ -34,6 +34,14 @@ public class SharedManager {
 
     public static void clearUser(){
         PreferenceUtil.putString(CONTEXT, PREFERENCE_NAME, USER, "");
+    }
+
+    public static String getFamilyPhoto(){
+        return PreferenceUtil.getString(CONTEXT,PREFERENCE_NAME,PHOTO);
+    }
+
+    public static void setFamilyPhoto(String path){
+        PreferenceUtil.putString(CONTEXT, PREFERENCE_NAME, PHOTO, path);
     }
 
 

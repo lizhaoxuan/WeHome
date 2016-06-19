@@ -70,8 +70,8 @@ public class WishDetailPresenter extends BasePresenter {
             wishDto.setImgUrl(picPath);
         }
         if (!picPath.equals("")) {
-            Bitmap bitmap = BitmapFactory.decodeFile(picPath);
-            view.updateImg(bitmap);
+            Drawable drawable = Drawable.createFromPath(picPath);
+            view.updateImg(drawable);
         }
     }
 

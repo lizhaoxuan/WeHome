@@ -2,14 +2,12 @@ package com.zhaoxuan.wehome.view.holder;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
-import com.zhaoxuan.wehome.module.weather.Weather;
 import com.zhaoxuan.wehome.support.dto.FamilyDto;
 
 /**
@@ -36,12 +34,7 @@ public class FamilyHolder extends BaseRecyclerHolder<FamilyDto> {
     public void updateView(FamilyDto data) {
         nameText.setText(data.getFullName());
         cityText.setText(data.getCity());
-        Weather.getWeather(data.getCity(), new Weather.WeatherCallBack() {
-            @Override
-            public void onSuccess(String weather) {
-                weatherText.setText(weather);
-            }
-        });
+        weatherText.setText(data.getWeather());
     }
 
 

@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -183,8 +184,8 @@ public class SetActivity extends BaseViewActivity<ISetPresenter> implements ISet
     }
 
     @Override
-    public void updateHeadImg(Bitmap bitmap) {
-        headImg.setImageBitmap(bitmap);
+    public void updateHeadImg(Drawable drawable) {
+        headImg.setImageDrawable(drawable);
     }
 
     public void hideDialog() {

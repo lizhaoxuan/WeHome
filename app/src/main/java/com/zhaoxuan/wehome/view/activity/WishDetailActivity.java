@@ -168,9 +168,9 @@ public class WishDetailActivity extends BaseViewActivity<WishDetailPresenter> im
     }
 
     @Override
-    public void updateImg(Bitmap bitmap) {
-        if (bitmap != null) {
-            wishImg.setImageBitmap(bitmap);
+    public void updateImg(Drawable drawable) {
+        if (drawable != null) {
+            wishImg.setImageDrawable(drawable);
         }
     }
 

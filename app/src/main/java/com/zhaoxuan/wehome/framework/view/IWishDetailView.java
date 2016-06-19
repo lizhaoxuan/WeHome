@@ -15,7 +15,7 @@ public interface IWishDetailView extends IBaseView{
 
     void initViewForAdd();
 
-    void updateImg(Bitmap bitmap);
+    void updateImg(Drawable drawable);
 
     void updateFinishBtn(boolean isFinish);
 

@@ -133,7 +133,6 @@
     <item name="actionbar_background" type="color">@color/blue_tag_4</item>
     <!-- actionbar end -->
 
-    <!-- 远景精神图表 begin -->
     <item name="envision_challenge_chart_will" type="color">@color/blue_tag_28</item>
     <item name="envision_challenge_chart_wisdom" type="color">@color/blue_tag_29</item>
     <item name="envision_challenge_chart_caritas" type="color">@color/blue_tag_30</item>

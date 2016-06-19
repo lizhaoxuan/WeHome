@@ -7,6 +7,8 @@ import com.zhaoxuan.cakedao.CakeDao;
 import com.zhaoxuan.wehome.framework.model.IMemorialModel;
 import com.zhaoxuan.wehome.module.event.MemorialDetailEvent;
 import com.zhaoxuan.wehome.module.event.MemorialEvent;
+import com.zhaoxuan.wehome.module.event.NotificationEvent;
+import com.zhaoxuan.wehome.module.manager.UserManager;
 import com.zhaoxuan.wehome.support.constants.Ints;
 import com.zhaoxuan.wehome.support.dispensebus.DispenseBus;
 import com.zhaoxuan.wehome.support.dto.MemorialDto;
@@ -58,6 +60,8 @@ public class MemorialModel implements IMemorialModel {
             long result = memorialDao.insert(dto);
             if (result >= 0) {
                 dispenseBus.post(new MemorialDetailEvent(true, Ints.DATA_ADD, "新建纪念日成功"));
+                dispenseBus.post(new NotificationEvent("新的纪念日",
+                        UserManager.getInstance().getUserDto().getFullName() + "新创建了一个纪念日"));
             } else {
                 dispenseBus.post(new MemorialDetailEvent(false, Ints.DATA_ADD, "新建纪念日失败"));
             }

@@ -57,7 +57,7 @@ public class RegisterActivity extends BaseViewActivity<IRegisterPresenter> imple
      **/
     @Override
     public void sendSuccess() {
-        ChatActivity.startActivity(this);
+        finish();
     }
 
     @Override

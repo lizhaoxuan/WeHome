@@ -2,6 +2,7 @@ package com.zhaoxuan.wehome.support.dto;
 
 import com.example.DataProperty;
 import com.example.IdProperty;
+import com.zhaoxuan.wehome.support.utils.StrUtils;
 
 import java.io.Serializable;
 
@@ -100,6 +101,9 @@ public class FamilyDto implements Serializable {
     }
 
     public String getWeather() {
+        if (StrUtils.isNullStr(weather)) {
+            weather = "-";
+        }
         return weather;
     }
 

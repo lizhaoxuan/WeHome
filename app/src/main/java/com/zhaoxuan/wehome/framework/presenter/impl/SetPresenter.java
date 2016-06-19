@@ -2,6 +2,7 @@ package com.zhaoxuan.wehome.framework.presenter.impl;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import com.zhaoxuan.wehome.framework.base.BasePresenter;
@@ -73,8 +74,8 @@ public class SetPresenter extends BasePresenter implements ISetPresenter {
     public void updateView() {
         UserDto user = model.getUserDto();
         if (!user.getHeadImageUri().equals("")) {
-            Bitmap bitmap = BitmapFactory.decodeFile(user.getHeadImageUri());
-            view.updateHeadImg(bitmap);
+            Drawable drawable = Drawable.createFromPath(user.getHeadImageUri());
+            view.updateHeadImg(drawable);
         }
         view.updateView(user.getName(), user.getPost(), user.getHomeId(),
                 user.getHomeName(), user.getCity(), user.getAccount());

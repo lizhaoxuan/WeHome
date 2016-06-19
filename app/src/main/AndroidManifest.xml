@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zhaoxuan.wehome">
+    package="com.zhaoxuan.wehome" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -17,8 +17,8 @@
         android:label="@string/app_name"
         android:launchMode="singleTask"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.MainActivity">
+        android:theme="@style/AppTheme" >
+        <activity android:name=".view.activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,12 +38,14 @@
         <activity android:name=".view.activity.SetActivity" />
         <activity android:name=".view.activity.WishActivity" />
         <activity android:name=".view.activity.WishDetailActivity" />
-        <activity android:name=".view.activity.MemorialActivity"></activity>
-        <activity android:name=".view.activity.FamilyActivity"></activity>
-        <activity android:name=".view.activity.WZoneActivity"></activity>
-        <activity android:name=".view.activity.MemorialDetailActivity"></activity>
-        <activity android:name=".view.activity.WZoneDetailActivity"></activity>
-        <activity android:name=".view.activity.WZoneAddActivity"></activity>
+        <activity android:name=".view.activity.MemorialActivity" />
+        <activity android:name=".view.activity.FamilyActivity" />
+        <activity android:name=".view.activity.WZoneActivity" />
+        <activity android:name=".view.activity.MemorialDetailActivity" />
+        <activity android:name=".view.activity.WZoneDetailActivity" />
+        <activity android:name=".view.activity.WZoneAddActivity" />
+        <activity android:name=".view.activity.ChatAddActivity" >
+        </activity>
     </application>
 
 </manifest>

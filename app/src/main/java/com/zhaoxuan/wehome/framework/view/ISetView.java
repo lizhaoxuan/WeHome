@@ -1,6 +1,7 @@
 package com.zhaoxuan.wehome.framework.view;
 
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 
 import com.zhaoxuan.wehome.framework.base.IBaseView;
 
@@ -12,7 +13,7 @@ public interface ISetView extends IBaseView{
 
     void updateView(String name, String post, String homeId, String homeName, String city, String account);
 
-    void updateHeadImg(Bitmap bitmap);
+    void updateHeadImg(Drawable drawable);
 
     void hideDialog();
 

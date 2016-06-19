@@ -10,7 +10,9 @@ import android.view.WindowManager;
 
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
+import com.zhaoxuan.wehome.module.event.ChatRefreshEvent;
 import com.zhaoxuan.wehome.module.manager.UserManager;
+import com.zhaoxuan.wehome.support.dispensebus.DispenseBus;
 
 import butterknife.Bind;
 
@@ -32,6 +34,21 @@ public class ChatActivity extends BaseActivity {
         //透明状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         UserManager.electricMoniter(this);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                DispenseBus.getInstance().post(new ChatRefreshEvent());
+            }
+        });
+
+
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        UserManager.unRegisterElectricMoniter(this);
     }
 
     public void closeDrawerLayout() {
@@ -55,4 +72,12 @@ public class ChatActivity extends BaseActivity {
         }
         return refreshLayout.isEnabled();
     }
+
+    public void setRefreshingClose(){
+        if (refreshLayout.isRefreshing()){
+            refreshLayout.setRefreshing(false);
+        }
+    }
+
+
 }

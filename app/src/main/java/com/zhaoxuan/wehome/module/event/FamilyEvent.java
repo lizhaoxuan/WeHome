@@ -14,11 +14,11 @@ public class FamilyEvent {
     private List<FamilyDto> familyDtos;
 
     public FamilyEvent(boolean isSuccess, List<FamilyDto> familyDtos, String msg) {
-
         this.familyDtos = familyDtos;
         this.isSuccess = isSuccess;
         this.msg = msg;
     }
+
 
     public List<FamilyDto> getFamilyDtos() {
         return familyDtos;

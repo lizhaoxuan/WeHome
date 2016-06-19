@@ -2,8 +2,10 @@ package com.zhaoxuan.wehome.framework.model.impl;
 
 import com.zhaoxuan.cakedao.AbstractCakeDao;
 import com.zhaoxuan.cakedao.CakeDao;
+import com.zhaoxuan.wehome.module.event.NotificationEvent;
 import com.zhaoxuan.wehome.module.event.WishDetailEvent;
 import com.zhaoxuan.wehome.module.event.WishEvent;
+import com.zhaoxuan.wehome.module.manager.UserManager;
 import com.zhaoxuan.wehome.support.constants.Ints;
 import com.zhaoxuan.wehome.support.dispensebus.DispenseBus;
 import com.zhaoxuan.wehome.support.dto.WishDto;
@@ -30,6 +32,8 @@ public class WishModel {
             long result = wishDao.insert(dto);
             if (result >= 0) {
                 dispenseBus.post(new WishDetailEvent(true, Ints.DATA_ADD, "添加计划成功"));
+                dispenseBus.post(new NotificationEvent("新的计划", UserManager.getInstance().getUserDto().getFullName() + "新创建了一个家庭计划"));
+
             } else {
                 dispenseBus.post(new WishDetailEvent(false, Ints.DATA_ADD, "添加计划失败"));
             }

@@ -48,7 +48,7 @@ public class WeatherManager {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String json = request(URL,"cityname="+dto.getCity());
+                String json = request(URL, "cityname=" + dto.getCity());
                 dto.setWeather(getWeatherStr(json));
                 familyDao.update(dto);
             }
@@ -59,7 +59,7 @@ public class WeatherManager {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                final String json = request(URL, "cityname="+dto.getCity());
+                final String json = request(URL, "cityname=" + dto.getCity());
                 dto.setWeather(getWeatherStr(json));
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
@@ -124,5 +124,33 @@ public class WeatherManager {
     public interface ICallBack {
         void callBack(FamilyDto dto);
     }
+
+
+    /**
+     *
+     {
+     errNum: 0,
+     errMsg: "success",
+     retData: {
+     city: "北京", //城市
+     pinyin: "beijing", //城市拼音
+     citycode: "101010100",  //城市编码
+     date: "15-02-11", //日期
+     time: "11:00", //发布时间
+     postCode: "100000", //邮编
+     longitude: 116.391, //经度
+     latitude: 39.904, //维度
+     altitude: "33", //海拔
+     weather: "晴",  //天气情况
+     temp: "10", //气温
+     l_tmp: "-4", //最低气温
+     h_tmp: "10", //最高气温
+     WD: "无持续风向",	 //风向
+     WS: "微风(<10m/h)", //风力
+     sunrise: "07:12", //日出时间
+     sunset: "17:44" //日落时间
+     }
+     }
+     */
 
 }

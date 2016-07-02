@@ -5,6 +5,8 @@ import com.example.IdProperty;
 import com.zhaoxuan.wehome.support.utils.StrUtils;
 
 import java.io.Serializable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by lizhaoxuan on 16/1/7.
@@ -14,19 +16,19 @@ public class FamilyDto implements Serializable {
     @IdProperty
     protected long id;
     @DataProperty
-    protected String account;
+    protected String account = "";
     @DataProperty
-    protected String name;
+    protected String name = "";
     @DataProperty
-    protected String post;
+    protected String post = "";
     @DataProperty
-    protected String city;
+    protected String city = "";
     @DataProperty
-    protected String headPath;
+    protected String headPath = "";
     @DataProperty
     protected int electric;
-
-    private String weather;
+    @DataProperty
+    protected String weather = "";
 
     public FamilyDto() {
     }
@@ -101,13 +103,11 @@ public class FamilyDto implements Serializable {
     }
 
     public String getWeather() {
-        if (StrUtils.isNullStr(weather)) {
-            weather = "-";
-        }
         return weather;
     }
 
     public void setWeather(String weather) {
         this.weather = weather;
     }
+
 }

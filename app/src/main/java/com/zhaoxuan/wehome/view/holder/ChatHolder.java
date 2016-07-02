@@ -35,10 +35,15 @@ public class ChatHolder extends BaseRecyclerHolder<ChatDto> {
 
     @Override
     public void updateView(ChatDto data) {
-        if (!StrUtils.isNullStr(data.getPicPath())){
-            Drawable drawable = Drawable.createFromPath(data.getPicPath());
-            headImg.setImageDrawable(drawable);
+        String headPath = data.getHeadPath();
+        if (!StrUtils.isNullStr(headPath)) {
+            if (StrUtils.isNumeric(headPath)) {
+                headImg.setImageResource(Integer.valueOf(headPath));
+            } else {
+                headImg.setImageDrawable(Drawable.createFromPath(headPath));
+            }
         }
+
         nameText.setText(data.getBuildOf());
         timeText.setText(data.getTime());
         contentText.setText(data.getContent());

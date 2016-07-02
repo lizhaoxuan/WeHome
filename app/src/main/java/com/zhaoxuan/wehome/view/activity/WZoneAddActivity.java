@@ -1,5 +1,6 @@
 package com.zhaoxuan.wehome.view.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lizhaoxuan.cakerun.CakeRun;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
 import com.zhaoxuan.wehome.framework.presenter.IWZoneAddPresenter;
@@ -38,8 +40,9 @@ public class WZoneAddActivity extends BaseViewActivity<IWZoneAddPresenter> imple
 
     private String picPath = "";
 
-    public static void startActivity(Context activity) {
+    public static void startActivity(Activity activity) {
         Intent intent = new Intent(activity, WZoneAddActivity.class);
+//        CakeRun.getInstance().startActivity(activity,WZoneAddActivity.class,intent);
         activity.startActivity(intent);
     }
 

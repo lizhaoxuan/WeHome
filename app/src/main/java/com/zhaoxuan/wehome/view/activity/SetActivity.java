@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -64,6 +65,22 @@ public class SetActivity extends BaseViewActivity<ISetPresenter> implements ISet
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set);
         setPresenter(new SetPresenter(this));
+
+        headImg.setOnClickListener(new View.OnClickListener() {
+
+            long now = 0;
+
+            @Override
+            public void onClick(View v) {
+                long temp = System.currentTimeMillis();
+                if (now - temp > 1500){
+                    now = temp;
+                    //执行点击事件
+                }
+            }
+        });
+
+
     }
 
     @Override

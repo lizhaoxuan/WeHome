@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.WindowManager;
 
+import com.lizhaoxuan.cakerun.CakeRun;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.module.event.ChatRefreshEvent;
@@ -23,7 +24,9 @@ public class ChatActivity extends BaseActivity {
     protected SwipeRefreshLayout refreshLayout;
 
 
+
     public static void startActivity(Activity activity) {
+//        CakeRun.getInstance().startActivity(activity,ChatActivity.class,new Intent(activity, ChatActivity.class));
         activity.startActivity(new Intent(activity, ChatActivity.class));
     }
 

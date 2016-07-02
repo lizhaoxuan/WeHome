@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lizhaoxuan.cakerun.CakeRun;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
 import com.zhaoxuan.wehome.framework.presenter.IChatAddPresenter;
@@ -42,7 +43,9 @@ public class ChatAddActivity extends BaseViewActivity<IChatAddPresenter> impleme
     private String picPath="";
 
     public static void startActivity(Activity activity) {
+
         Intent intent = new Intent(activity, ChatAddActivity.class);
+//        CakeRun.getInstance().startActivity(activity,ChatAddActivity.class,intent);
         activity.startActivity(intent);
     }
 

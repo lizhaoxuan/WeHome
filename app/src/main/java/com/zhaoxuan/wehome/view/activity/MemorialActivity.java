@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
+import com.lizhaoxuan.cakerun.CakeRun;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
@@ -58,6 +59,7 @@ public class MemorialActivity extends BaseViewActivity<MemorialPresenter> implem
 
     public static void startActivity(Activity activity) {
         Intent intent = new Intent(activity, MemorialActivity.class);
+//        CakeRun.getInstance().startActivity(activity,MemorialActivity.class,intent);
         activity.startActivity(intent);
     }
 

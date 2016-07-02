@@ -34,7 +34,7 @@ public class MessageDialog {
         LayoutInflater inflaterDl = LayoutInflater.from(context);
         dialogLayout = (RelativeLayout) inflaterDl.inflate(R.layout.dialog_msg, null);
 
-        titleText = (TextView) dialogLayout.findViewById(R.id.titleEdit);
+        titleText = (TextView) dialogLayout.findViewById(R.id.titleText);
         cancelBtn = (Button) dialogLayout.findViewById(R.id.cancelBtn);
         enterBtn = (Button) dialogLayout.findViewById(R.id.enterBtn);
         contentText = (TextView) dialogLayout.findViewById(R.id.contentText);

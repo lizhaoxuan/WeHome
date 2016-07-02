@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.lizhaoxuan.cakerun.CakeRun;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
@@ -68,6 +69,7 @@ public class WishActivity extends BaseViewActivity<WishPresenter> implements IWi
 
     public static void startActivity(Activity activity) {
         Intent intent = new Intent(activity, WishActivity.class);
+//        CakeRun.getInstance().startActivity(activity,WishActivity.class,intent);
         activity.startActivity(intent);
     }
 

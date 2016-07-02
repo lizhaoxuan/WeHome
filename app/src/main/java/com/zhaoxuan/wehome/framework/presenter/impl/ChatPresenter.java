@@ -2,6 +2,7 @@ package com.zhaoxuan.wehome.framework.presenter.impl;
 
 import android.graphics.drawable.Drawable;
 
+import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BasePresenter;
 import com.zhaoxuan.wehome.framework.model.impl.ChatModel;
 import com.zhaoxuan.wehome.framework.presenter.IChatAddPresenter;
@@ -91,9 +92,10 @@ public class ChatPresenter extends BasePresenter implements IChatPresenter, ICha
             ChatDto chatDto = new ChatDto();
             chatDto.setBuildAccount("WeHome");
             chatDto.setBuildOf("0000");
-            chatDto.setContent(event.getDes() +",快去看看吧~");
-            chatDto.setPicPath("");
+            chatDto.setContent(event.getDes() + ",快去看看吧~");
+            chatDto.setHeadPath(String.valueOf(R.drawable.logo));
             chatDto.setTime(DateUtil.getDefaultDate(new Date()));
+            chatDto.setPicPath("");
             model.addChatData(chatDto);
             model.getData();
         }
@@ -113,7 +115,7 @@ public class ChatPresenter extends BasePresenter implements IChatPresenter, ICha
             } else {
                 view.showToast(event.getMsg());
             }
-        } else if (event.getKind() == Ints.DATA_ADD) {
+        } else if (event.getKind() == Ints.DATA_ADD && addView != null) {
             addView.showToast(event.getMsg());
             if (event.isSuccess()) {
                 addView.finishActivity();

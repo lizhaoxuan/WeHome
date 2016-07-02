@@ -4,6 +4,7 @@ import com.zhaoxuan.cakedao.AbstractCakeDao;
 import com.zhaoxuan.cakedao.CakeDao;
 import com.zhaoxuan.wehome.framework.model.IFamilyModel;
 import com.zhaoxuan.wehome.module.event.FamilyEvent;
+import com.zhaoxuan.wehome.module.manager.FamilyManager;
 import com.zhaoxuan.wehome.module.manager.UserManager;
 import com.zhaoxuan.wehome.support.dispensebus.DispenseBus;
 import com.zhaoxuan.wehome.support.dto.FamilyDto;
@@ -11,6 +12,8 @@ import com.zhaoxuan.wehome.support.dto.UserDto;
 import com.zhaoxuan.wehome.support.utils.NetUtil;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -24,23 +27,10 @@ public class FamilyModel implements IFamilyModel {
     @Override
     public void getData() {
         if (NetUtil.isConnectingToInternet()) {
-            UserDto userDto = UserManager.getInstance().getUserDto();
             List<FamilyDto> familyDtoList = new ArrayList<>();
-            FamilyDto[] familyDtos = familyDao.loadAllData();
-            if (familyDtos != null && familyDtos.length != 0) {
-                for (FamilyDto dto : familyDtos) {
-                    if (dto.getAccount().equals(userDto.getAccount())){
-                        dto.setElectric(UserManager.getInstance().getElectricLevel());
-                    }
-                    familyDtoList.add(dto);
-                }
-            } else {
-                FamilyDto f1 = new FamilyDto(userDto.getAccount(), userDto.getCity(),
-                        UserManager.getInstance().getElectricLevel(), userDto.getHeadImageUri(),
-                        userDto.getName(), userDto.getPost());
-                familyDao.insert(f1);
-            }
-            dispenseBus.post(new FamilyEvent(true, familyDtoList, "获取家庭列表失败"));
+            FamilyDto[] familyDtos = FamilyManager.getInstance().getFamilys();
+            Collections.addAll(familyDtoList, familyDtos);
+            dispenseBus.post(new FamilyEvent(true, familyDtoList,""));
         } else {
             dispenseBus.post(new FamilyEvent(false, null, "暂无网络，请稍后重试"));
         }

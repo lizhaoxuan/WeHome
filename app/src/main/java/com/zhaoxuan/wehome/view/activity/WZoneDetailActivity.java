@@ -1,5 +1,6 @@
 package com.zhaoxuan.wehome.view.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -13,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lizhaoxuan.cakerun.CakeRun;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
@@ -49,9 +51,11 @@ public class WZoneDetailActivity extends BaseViewActivity<IWZoneDetailPresenter>
         setContentView(R.layout.activity_wzone_detail);
     }
 
-    public static void startActivity(Context activity, WZoneDto dto) {
+    public static void startActivity(Activity activity, WZoneDto dto) {
         Intent intent = new Intent(activity, WZoneDetailActivity.class);
         intent.putExtra("data", dto);
+//        CakeRun.getInstance().startActivity(activity,WZoneDetailActivity.class,intent);
+
         activity.startActivity(intent);
     }
 

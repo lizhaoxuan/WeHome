@@ -18,4 +18,6 @@ public interface IChatView extends IBaseListView{
     void updateView(List<ChatDto> chatDtos);
 
     void updatePhoto(Drawable drawable);
+
+    void showDialog(String msg);
 }

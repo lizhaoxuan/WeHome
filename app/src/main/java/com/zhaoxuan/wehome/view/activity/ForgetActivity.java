@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.Button;
 
+import com.lizhaoxuan.cakerun.CakeRun;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
@@ -26,7 +27,8 @@ public class ForgetActivity extends BaseViewActivity<IForgetPresenter> implement
 
     public static void startActivity(Activity activity, int requestCode) {
         Intent intent = new Intent(activity, ForgetActivity.class);
-        activity.startActivityForResult(intent, requestCode);
+//        CakeRun.getInstance().startActivity(activity,ForgetActivity.class,intent);
+        activity.startActivity(intent);
     }
 
     @Override

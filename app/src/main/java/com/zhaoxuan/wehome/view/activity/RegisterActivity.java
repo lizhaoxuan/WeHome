@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.lizhaoxuan.cakerun.CakeRun;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
@@ -30,7 +31,8 @@ public class RegisterActivity extends BaseViewActivity<IRegisterPresenter> imple
 
     public static void startActivity(Activity activity, int requestCode) {
         Intent intent = new Intent(activity, RegisterActivity.class);
-        activity.startActivityForResult(intent, requestCode);
+//        CakeRun.getInstance().startActivity(activity,RegisterActivity.class,intent);
+        activity.startActivity(intent);
     }
 
     @Override

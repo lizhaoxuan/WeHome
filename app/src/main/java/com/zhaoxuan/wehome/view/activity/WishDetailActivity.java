@@ -1,5 +1,6 @@
 package com.zhaoxuan.wehome.view.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lizhaoxuan.cakerun.CakeRun;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
 import com.zhaoxuan.wehome.framework.presenter.impl.WishDetailPresenter;
@@ -60,13 +62,14 @@ public class WishDetailActivity extends BaseViewActivity<WishDetailPresenter> im
     @Bind(R.id.changeBtn)
     protected Button changeBtn;
 
-    public static void startActivity(Context activity, WishDto dto) {
+    public static void startActivity(Activity activity, WishDto dto) {
         Intent intent = new Intent(activity, WishDetailActivity.class);
         intent.putExtra("data", dto);
+//        CakeRun.getInstance().startActivity(activity,WishDetailActivity.class,intent);
         activity.startActivity(intent);
     }
 
-    public static void startActivity(Context activity) {
+    public static void startActivity(Activity activity) {
         startActivity(activity, null);
     }
 

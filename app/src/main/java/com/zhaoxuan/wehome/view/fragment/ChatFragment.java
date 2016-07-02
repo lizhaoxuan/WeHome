@@ -36,6 +36,7 @@ import com.zhaoxuan.wehome.view.activity.ChatActivity;
 import com.zhaoxuan.wehome.view.activity.ChatAddActivity;
 import com.zhaoxuan.wehome.view.adapter.ChatListAdapter;
 import com.zhaoxuan.wehome.view.adapter.MemorialListAdapter;
+import com.zhaoxuan.wehome.view.widget.MessageDialog;
 
 import java.util.List;
 
@@ -160,6 +161,26 @@ public class ChatFragment extends BaseFragment implements IChatView {
         if (drawable != null) {
             backdrop.setImageDrawable(drawable);
         }
+    }
+
+    @Override
+    public void showDialog(String msg) {
+        MessageDialog.makeDialog(activity, new MessageDialog.IDialogListener() {
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onEnter() {
+                Uri uri = Uri.parse("smsto:");    // 设置操作的路径
+                Intent it = new Intent();
+                it.setAction(Intent.ACTION_SENDTO);    // 设置要操作的Action
+                it.setType("vnd.android-dir/mms-sms");    // 短信的MIME类型
+                it.setData(uri);    // 要设置的数据
+                activity.startActivity(it);    // 执行跳转
+            }
+        }).show("去发短信", msg);
     }
 
     @Override

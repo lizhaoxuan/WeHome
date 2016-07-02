@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.lizhaoxuan.cakerun.CakeRun;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.base.BaseRecyclerHolder;
@@ -36,6 +37,7 @@ public class WZoneActivity extends BaseViewActivity<IWZonePresenter> implements 
 
     public static void startActivity(Activity activity) {
         Intent intent = new Intent(activity, WZoneActivity.class);
+//        CakeRun.getInstance().startActivity(activity,WZoneActivity.class,intent);
         activity.startActivity(intent);
     }
 

@@ -8,6 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.lizhaoxuan.cakerun.CakeRun;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
@@ -33,6 +34,7 @@ public class FamilyActivity extends BaseViewActivity<IFamilyPresenter> implement
 
     public static void startActivity(Activity activity) {
         Intent intent = new Intent(activity, FamilyActivity.class);
+//        CakeRun.getInstance().startActivity(activity,FamilyActivity.class,intent);
         activity.startActivity(intent);
     }
 

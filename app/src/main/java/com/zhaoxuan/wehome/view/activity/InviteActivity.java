@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.lizhaoxuan.cakerun.CakeRun;
 import com.zhaoxuan.wehome.R;
 import com.zhaoxuan.wehome.framework.base.BaseActivity;
 import com.zhaoxuan.wehome.framework.base.BaseViewActivity;
@@ -23,9 +24,9 @@ public class InviteActivity extends BaseViewActivity<IInvitePresenter> implement
     @Bind(R.id.phoneEdit)
     protected ImageEditText phoneEdit;
 
-
     public static void startActivity(Activity activity) {
         Intent intent = new Intent(activity, InviteActivity.class);
+//        CakeRun.getInstance().startActivity(activity,InviteActivity.class,intent);
         activity.startActivity(intent);
     }
 

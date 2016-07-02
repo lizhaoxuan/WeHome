@@ -14,29 +14,41 @@ public class ChatDto implements Serializable {
     protected long id;
 
     @DataProperty
-    protected String content;
+    protected String content = "";
 
     @DataProperty
-    protected String picPath;
+    protected String headPath = "";
 
     @DataProperty
-    protected String time;
+    protected String picPath = "";
 
     @DataProperty
-    protected String buildOf;
+    protected String time = "";
 
     @DataProperty
-    protected String buildAccount;
+    protected String buildOf = "";
+
+    @DataProperty
+    protected String buildAccount = "";
 
     public ChatDto() {
     }
 
-    public ChatDto(String buildAccount, String buildOf, String content, String picPath, String time) {
+    public ChatDto(String buildAccount, String buildOf, String content, String picPath, String time, String headPath) {
         this.buildAccount = buildAccount;
         this.buildOf = buildOf;
         this.content = content;
         this.picPath = picPath;
         this.time = time;
+        this.headPath = headPath;
+    }
+
+    public String getHeadPath() {
+        return headPath;
+    }
+
+    public void setHeadPath(String headPath) {
+        this.headPath = headPath;
     }
 
     public String getBuildAccount() {

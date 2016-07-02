@@ -1,5 +1,6 @@
 package com.zhaoxuan.wehome.view.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lizhaoxuan.cakerun.CakeRun;
 import com.rey.material.app.DatePickerDialog;
 import com.rey.material.app.Dialog;
 import com.rey.material.app.DialogFragment;
@@ -50,13 +52,14 @@ public class MemorialDetailActivity extends BaseViewActivity<IMemorialDetailPres
     private long memorialDate;
     private boolean isAdd = false;
 
-    public static void startActivity(Context activity, MemorialDto dto) {
+    public static void startActivity(Activity activity, MemorialDto dto) {
         Intent intent = new Intent(activity, MemorialDetailActivity.class);
         intent.putExtra("data", dto);
+//        CakeRun.getInstance().startActivity(activity,MemorialDetailActivity.class,intent);
         activity.startActivity(intent);
     }
 
-    public static void startActivity(Context activity) {
+    public static void startActivity(Activity activity) {
         startActivity(activity,null);
     }
 
@@ -99,7 +102,7 @@ public class MemorialDetailActivity extends BaseViewActivity<IMemorialDetailPres
             public void onPositiveActionClicked(DialogFragment fragment) {
                 DatePickerDialog dialog = (DatePickerDialog) fragment.getDialog();
                 memorialDate = dialog.getDate();
-                String str = dialog.getYear() + "年" + dialog.getMonth() + "月" + dialog.getDay() + "日";
+                String str = dialog.getYear() + "年" + (dialog.getMonth()+1) + "月" + dialog.getDay() + "日";
                 timeText.setText(str);
                 super.onPositiveActionClicked(fragment);
             }

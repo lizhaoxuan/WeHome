@@ -52,8 +52,8 @@ public class LoginActivity extends BaseActivity<ILoginPresenter> implements ILog
 
     private void initView() {
         //临时
-        accountEdit.setText("690770333@qq.com");
-        passwordEdit.setText("123456");
+//        accountEdit.setText("690770333@qq.com");
+//        passwordEdit.setText("123456");
 
         //透明状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

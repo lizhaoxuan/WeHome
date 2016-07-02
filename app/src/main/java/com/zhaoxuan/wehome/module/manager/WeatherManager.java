@@ -60,7 +60,9 @@ public class WeatherManager {
             @Override
             public void run() {
                 final String json = request(URL, "cityname=" + dto.getCity());
+                WLog.i("TAG",json);
                 dto.setWeather(getWeatherStr(json));
+                familyDao.update(dto);
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
@@ -76,15 +78,20 @@ public class WeatherManager {
         if ("-".equals(json)) {
             return json;
         }
+        String result = "-";
         try {
             JSONObject jsonObject = new JSONObject(json).getJSONObject("retData");
-            return jsonObject.getString(L_TEMP) + "~"
-                    + jsonObject.getString(H_TEMP) + "℃ "
-                    + jsonObject.getString(WEATHER);
+            String l_tmp = jsonObject.getString("l_tmp");
+            String h_tmp = jsonObject.getString("h_tmp");
+            String weather = jsonObject.getString("weather");
+            result = l_tmp + "~"
+                    + h_tmp + "℃ "
+                    + weather;
         } catch (JSONException e) {
+            String error = e.getMessage();
             e.printStackTrace();
-            return "-";
         }
+        return result;
     }
 
     /**
